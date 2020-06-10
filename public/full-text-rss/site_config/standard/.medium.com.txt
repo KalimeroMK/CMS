@@ -1,0 +1,19 @@
+# Copy changes between medium.com.txt and .medium.com.txt
+
+title: //h1
+body: //article
+
+strip: //button
+# Remove low quality images
+strip: //article//img[contains(@src, '?q=20') or contains(@src, 'max/34/')]
+# Remove empty images (width attribute but no src attribute)
+strip: //article//img[not(@src)]
+# Use the high-quality copies in <noscript> elements
+replace_string(<noscript>): <!-- noscript -->
+replace_string(</noscript>): <!-- /noscript -->
+
+tidy: no
+prune: no
+
+test_url: https://elemental.medium.com/the-dark-side-of-fitness-tracking-9b218989bc47
+test_contains: Apps have turned movement and mindfulness

@@ -1,0 +1,29 @@
+{
+    "name": "kalimeromk/update-htmldom",
+    "type": "library",
+    "description": "Simple Html Dom Parser for Laravel 6",
+    "keywords": ["laravel", "html parser"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zoran",
+            "email": "zbogoevski@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7"
+    },
+    "autoload": {
+        "psr-0": {
+            "Yangqi\\Htmldom": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yangqi\\Htmldom\\HtmldomServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

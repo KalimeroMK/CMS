@@ -1,0 +1,24 @@
+{
+	"name": "kalimeromk/rss",
+	"description": "RSS builder for Laravel 6",
+	"keywords": ["rss", "laravel", "laravel6"],
+	"license": "MIT",
+	"authors": [{
+			"name": "thujohn",
+			"email": "jonathan.thuau@gmail.com"
+
+		},
+		{
+			"name": "KalimeroMK",
+			"email": "zbogoevski@gmail.com"
+		}
+	],
+	"require": {
+		"php": "^7.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Thujohn\\Rss\\": "src/Thujohn/Rss/"
+		}
+	}
+}
