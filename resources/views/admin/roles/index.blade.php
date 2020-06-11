@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title "> {{trans('messages.pages')}}</h4>
-                    <p class="card-category"><a href="{{ route('dashboard')}}">{{trans('messages.home')}}</a> <a
+                    <p class="card-category"><a href="{{ route('dashboard')}}">{{trans('messages.home')}}</a> -> <a
                                 href="{{route('roles.index')}}">{{trans('messages.pages')}}</a></p>
 
                 </div>
@@ -16,7 +16,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>{{trans('messages.name')}}</th>
-                                <th>Action</th>
+                                <th class="float-right">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $role->name }}</td>
-                                    <td>
+                                    <td class="float-right">
                                         <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>
                                         @can('role-edit')
                                             <a class="btn btn-primary"

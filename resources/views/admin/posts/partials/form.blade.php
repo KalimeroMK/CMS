@@ -1,4 +1,5 @@
 {!! csrf_field() !!}
+@include('admin.layouts.notify')
 <div class="row">
     <div class="col-md-8">
         <label for="title" class="form-group control-label">{{trans('messages.title')}}</label>
@@ -13,7 +14,7 @@
     <div class="col-4">
         <label for="category" class="col-4 control-label">{{trans('messages.category')}}</label>
         <div class="col-sm-8">
-            <select id="category" name="category[]" class="form-control">
+            <select class="js-example-basic-multiple" name="category[]" multiple="multiple">
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">@for ($i = 0; $i < $category->depth; $i++)
                             - @endfor {{ $category->title }}</option>
@@ -27,7 +28,6 @@
                class="control-label">{{trans('messages.description')}}</label>
         <textarea class="ckeditor" id="elm3"
                   name="description">{{ old('title', $post->description ?? null) }}</textarea>
-        <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
     </div>
 
 
@@ -44,7 +44,8 @@
                           <span class="btn btn-round btn-rose btn-file">
                             <span class="fileinput-new">Add Photo</span>
                             <span class="fileinput-exists">Change</span>
-                            <input type="hidden" value="" name="..."><input type="file" name="image">
+                            <input type="hidden" value="" name="featured_image"><input type="file"
+                                                                                       name="featured_image">
                           <div class="ripple-container"></div></span>
                 <br>
                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
@@ -99,20 +100,14 @@
         </div>
     </div>
 </div>
-<input type="hidden" name="user_id" value="{{ Auth::user()->id  }}">
+<input type="hidden" name="author_id" value="{{ Auth::user()->id  }}">
 
 @section('scripts')
+    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script type="text/javascript">
-        $(function () {
-            $('select').each(function () {
-                $(this).select2({
-                    theme: 'bootstrap4',
-                    width: '100%',
-                    placeholder: $(this).attr('placeholder'),
-                    allowClear: Boolean($(this).data('allow-clear')),
-                });
-            });
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
         });
     </script>
     <!-- select2 -->

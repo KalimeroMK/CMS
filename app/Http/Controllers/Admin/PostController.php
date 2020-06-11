@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\Store;
 use App\Http\Requests\Post\Update;
 use App\Models\Category;
-use App\Models\Gallery;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Traits\ImageUpload;
@@ -59,21 +58,10 @@ class PostController extends Controller
      */
     public function store(Store $request)
     {
-        if (!empty($request->featured_image)) {
-            $request->featured_image = $this->verifyAndStoreImage($request);
-        }
 
-        if ($request->hasFile('image_gallery')) {
-            foreach ($request->file('image_gallery') as $images) {
-
-                $images = $this->verifyAndStoreGallery($request);
-
-                Gallery::create($images);
-
-            }
-        }
-
-        $post = Post::create($request->all());
+        $post = Post::create($request->except('featured_image') + [
+                'featured_image' => $this->verifyAndStoreImage($request)
+            ]);
         $post->tags()->attach($request->tags);
         $post->categories()->attach($request->category);
 

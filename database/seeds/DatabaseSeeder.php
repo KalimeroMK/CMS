@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        $this->call('CreateAdminUserSeeder');
+        $this->call('RolesAndPermissionsSeeder');
         Model::reguard();
-        $this->call('PermissionsTableSeeder');
+//        $this->call('PermissionTableSeeder');
         $this->call('SettingsTableSeeder');
 
     }

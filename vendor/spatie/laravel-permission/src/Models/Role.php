@@ -123,7 +123,15 @@ class Role extends Model implements RoleContract
 
         return $role;
     }
-
+        /*
+        * @return $this
+        */
+            public function syncPermissions(...$permissions)
+            {
+                $this->permissions()->detach();
+        
+                return $this->givePermissionTo($permissions);
+            }
     /**
      * Determine if the user may perform the given permission.
      *
@@ -155,4 +163,5 @@ class Role extends Model implements RoleContract
 
         return $this->permissions->contains('id', $permission->id);
     }
+
 }

@@ -9,7 +9,7 @@
                                 href="{{route('posts.index')}}">{{trans('messages.role')}}</a></p>
                 </div>
                 <div class="card-body">
-                    {!! Form::model('role', ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+                    {!! Form::model('role', ['method' => 'PATCH','route' => ['roles.update', $role]]) !!}
                     @include('admin.roles.partials.form')
                     {!! Form::close() !!}
                 </div>

@@ -18,13 +18,11 @@ class CreatePostTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('type');
-            $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('author_id');
+            $table->unsignedInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->text('description');
             $table->text('meta_description');
             $table->string('featured_image');
-            $table->string('image_old');
             $table->integer('views');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

@@ -11,11 +11,16 @@
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
+use App\Models\User;
+
+/** @var TYPE_NAME $factory */
+
+
+$factory->define(User::class, function ($faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => str_random(10),
+        'password' => Hash::make("admin"),
         'remember_token' => str_random(10),
     ];
 });

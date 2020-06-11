@@ -41,7 +41,9 @@
                                         <img src="{{ $post->imageUrl }}" style="width:100px;"/>
                                     </td>
                                     <td><a href="/{{$post->slug}}" target="_blank">{{$post->title}}</a></td>
-                                    <td> {{isset($post->category)?$post->category->title:'NO CATEGORY'}} </td>
+                                    <td> @foreach($post->categories as $category)
+                                            {{$category->title}}
+                                        @endforeach </td>
 
                                     @if($post->type == config('constants.TYPE_SOURCE'))
                                         <td>{{isset($post->source)?$post->source->channel_title:'NO SOURCE'}}</td>

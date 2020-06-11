@@ -48,9 +48,9 @@ class SettingController extends Controller
      */
     public function store(Store $request)
     {
-        if (!empty($request->image)) {
-            $request->image = $this->verifyAndStoreImage($request);
-        }
+        $setting = Setting::create($request->except('image') + [
+                'featured_image' => $this->verifyAndStoreImage($request)
+            ]);
         $setting = Setting::create($request->all());
         Session::flash('success_msg', trans('messages.settings_updated_success'));
         return route('settings.index', $setting);
@@ -72,7 +72,9 @@ class SettingController extends Controller
      */
     public function update(Update $request, Setting $setting)
     {
-        $setting->update($request->all());
+        $setting->update($request->except('image') + [
+                'featured_image' => $this->verifyAndStoreImage($request)
+            ]);
         Session::flash('success_msg', trans('messages.settings_updated_success'));
         return redirect()->route('settings.index');
 

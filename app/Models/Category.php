@@ -53,6 +53,8 @@ use Kalnoy\Nestedset\QueryBuilder;
  * @property-read int|null $categories_count
  * @property-read \Kalnoy\Nestedset\Collection|\App\Models\Category[] $childrenCategories
  * @property-read int|null $children_categories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $posts
+ * @property-read int|null $posts_count
  */
 class Category extends Model
 {
@@ -116,31 +118,7 @@ class Category extends Model
     {
         return $this->hasMany(Post::class, 'category_id');
     }
-
-    /**
-     * @return BelongsTo
-     */
-    public function source()
-    {
-        return $this->belongsTo(Source::class);
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function categories()
-    {
-        return $this->hasMany(Category::class, 'parent_id');
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function childrenCategories()
-    {
-        return $this->hasMany(Category::class, 'parent_id')->with('categories');
-    }
-
+    
     /**
      * @return BelongsToMany
      */

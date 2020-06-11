@@ -11,7 +11,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Input;
 use Session;
 
 class TagController extends Controller
@@ -63,22 +62,10 @@ class TagController extends Controller
 
     public function destroy(Tag $tag)
     {
+        $tag->posts()->detach();
         $tag->delete();
         Session::flash('success_msg', trans('messages.tag_deleted_success'));
         return redirect()->back();
-    }
-
-    /**
-     * multiDelete
-     */
-    public function multiDelete()
-    {
-
-        $id = Input::get('id');
-
-        PostTag::where('tag_id', $id)->delete();
-        Tag::where('id', $id)->delete();
-
     }
 
 }

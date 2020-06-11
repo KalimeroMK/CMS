@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Roles;
+namespace App\Http\Requests\Rules;
 
 use App\Http\Requests\CanAuthorise;
 use Illuminate\Foundation\Http\FormRequest;
+
 
 class Update extends FormRequest
 {
@@ -17,7 +18,7 @@ class Update extends FormRequest
     public function rules()
     {
         return [
-            'role' => 'required',
+            'name' => 'required',
             'permission' => 'required'
         ];
     }
