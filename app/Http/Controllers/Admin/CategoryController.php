@@ -19,6 +19,17 @@ class CategoryController extends Controller
 {
 
     /**
+     * CategoryController constructor.
+     */
+    function __construct()
+    {
+        $this->middleware('permission:categories-list');
+        $this->middleware('permission:categories-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:categories-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:categories-delete', ['only' => ['destroy']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Application|Factory|View

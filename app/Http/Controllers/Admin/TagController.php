@@ -16,10 +16,14 @@ use Session;
 class TagController extends Controller
 {
     /**
-     * CronController constructor.
+     * TagController constructor.
      */
     function __construct()
     {
+        $this->middleware('permission:tags-list');
+        $this->middleware('permission:tags-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:tags-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:tags-delete', ['only' => ['destroy']]);
     }
 
     /**

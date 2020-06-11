@@ -17,19 +17,18 @@ use Session;
 
 class PostController extends Controller
 {
-
-
-    use ImageUpload;
-
     /**
-     * PostController constructor
-     */
-    /**
-     * CronController constructor.
+     * PostController constructor.
      */
     function __construct()
     {
+        $this->middleware('permission:post-list');
+        $this->middleware('permission:post-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:post-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:post-delete', ['only' => ['destroy']]);
     }
+
+    use ImageUpload;
 
     /**
      * @return Factory|View

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Ad;
 use App\Models\Category;
 use App\Models\Post;
-use App\Models\Setting;
 use App\Models\Tag;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -31,11 +30,9 @@ class Controller extends BaseController
         $tag = Tag::get();
         $slider_post = Post::orderBy('id', 'desc')->where('status', '1')->paginate(15);
         $popular_post = Post::orderBy('views', 'desc')->where('status', config('constants.STATUS_PUBLISHED'))->take(5)->get();
-        $settings_general = Setting::all();
         $ads = Ad::all();
 
         View::share([
-            'settings' => $settings_general,
             'tree' => $tree,
             'ads' => $ads,
             'tag' => $tag,

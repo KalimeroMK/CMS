@@ -14,11 +14,16 @@ use Session;
 
 class AdController extends Controller
 {
+
     /**
      * AdController constructor.
      */
     function __construct()
     {
+        $this->middleware('permission:ad-list');
+        $this->middleware('permission:ad-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:ad-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:ad-delete', ['only' => ['destroy']]);
     }
 
     /**

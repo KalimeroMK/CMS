@@ -17,9 +17,15 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-
+    /**
+     * UserController constructor.
+     */
     function __construct()
     {
+        $this->middleware('permission:user-list');
+        $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -33,7 +39,7 @@ class UserController extends Controller
     {
         $data = User::orderBy('id', 'DESC')->paginate(5);
         return view('admin.user.index', compact('data'))
-        ->with('i', ($request->input('page', 1) - 1) * 5);
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -64,7 +70,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-        ->with('success', 'User created successfully');
+            ->with('success', 'User created successfully');
     }
 
     /**
@@ -116,7 +122,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-        ->with('success', 'User updated successfully');
+            ->with('success', 'User updated successfully');
     }
 
 
@@ -132,6 +138,6 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('users.index')
-        ->with('success', 'User deleted successfully');
+            ->with('success', 'User deleted successfully');
     }
 }

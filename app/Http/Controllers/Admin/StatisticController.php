@@ -12,12 +12,6 @@ use Spatie\Analytics\Period;
 
 class StatisticController extends Controller
 {
-    /**
-     * CronController constructor.
-     */
-    function __construct()
-    {
-    }
 
     /**
      * @return Factory|View
