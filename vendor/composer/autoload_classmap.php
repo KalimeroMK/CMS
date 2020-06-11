@@ -12,6 +12,7 @@ return array(
     'AddPostLikesTable' => $baseDir . '/database/migrations/2015_08_11_103313_add_post_likes_table.php',
     'AddRatingDesc' => $baseDir . '/database/migrations/2015_08_11_102144_add_rating_desc.php',
     'AddSlugToUsers' => $baseDir . '/database/migrations/2015_07_30_085814_add_slug_to_users.php',
+    'CreateActivityLogTable' => $baseDir . '/database/migrations/2020_06_11_222843_create_activity_log_table.php',
     'CreateAdsTable' => $baseDir . '/database/migrations/2015_06_25_130151_create_ads_table.php',
     'CreateAvatar' => $baseDir . '/database/migrations/2015_07_18_115508_create_avatar.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2015_06_23_103902_create_categories_table.php',

@@ -17,9 +17,9 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
@@ -29,6 +29,8 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
+        'fe62ba7e10580d903cc46d808b5961a4' => __DIR__ . '/..' . '/tightenco/collect/src/Collect/Support/helpers.php',
+        'caf31cc6ec7cf2241cb6f12c226c3846' => __DIR__ . '/..' . '/tightenco/collect/src/Collect/Support/alias.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '383eaff206634a77a1be54e64e6459c7' => __DIR__ . '/..' . '/sabre/uri/lib/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
@@ -37,6 +39,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '3569eecfeed3bcf0bad3c998a494ecb8' => __DIR__ . '/..' . '/sabre/xml/lib/Deserializer/functions.php',
         '93aa591bc4ca510c520999e34229ee79' => __DIR__ . '/..' . '/sabre/xml/lib/Serializer/functions.php',
+        '0c3c22e27afa83be19b4c938f4c6e9ea' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Helpers/functions.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
     );
 
@@ -61,7 +64,9 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         ),
         'T' => 
         array (
+            'Tree\\' => 5,
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
+            'Tightenco\\Collect\\' => 18,
             'Thujohn\\Rss\\' => 12,
         ),
         'S' => 
@@ -98,9 +103,18 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Cache\\' => 24,
+            'Spatie\\TemporaryDirectory\\' => 26,
+            'Spatie\\Sitemap\\' => 15,
+            'Spatie\\Robots\\' => 14,
             'Spatie\\ResponseCache\\' => 21,
             'Spatie\\Permission\\' => 18,
+            'Spatie\\Image\\' => 13,
+            'Spatie\\ImageOptimizer\\' => 22,
             'Spatie\\Feed\\' => 12,
+            'Spatie\\DbDumper\\' => 16,
+            'Spatie\\Crawler\\' => 15,
+            'Spatie\\Browsershot\\' => 19,
+            'Spatie\\Backup\\' => 14,
             'Spatie\\Analytics\\' => 17,
             'Seld\\PharUtils\\' => 15,
             'Seld\\JsonLint\\' => 14,
@@ -135,6 +149,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         ),
         'L' => 
         array (
+            'League\\Glide\\' => 13,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
             'Laravel\\Ui\\' => 11,
@@ -235,9 +250,17 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
+        'Tree\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nicmart/tree/src',
+        ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
             0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
+        ),
+        'Tightenco\\Collect\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tightenco/collect/src/Collect',
         ),
         'Thujohn\\Rss\\' => 
         array (
@@ -371,6 +394,18 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/symfony/cache',
         ),
+        'Spatie\\TemporaryDirectory\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/temporary-directory/src',
+        ),
+        'Spatie\\Sitemap\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-sitemap/src',
+        ),
+        'Spatie\\Robots\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/robots-txt/src',
+        ),
         'Spatie\\ResponseCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-responsecache/src',
@@ -379,9 +414,33 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-permission/src',
         ),
+        'Spatie\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/image/src',
+        ),
+        'Spatie\\ImageOptimizer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/image-optimizer/src',
+        ),
         'Spatie\\Feed\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-feed/src',
+        ),
+        'Spatie\\DbDumper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/db-dumper/src',
+        ),
+        'Spatie\\Crawler\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/crawler/src',
+        ),
+        'Spatie\\Browsershot\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/browsershot/src',
+        ),
+        'Spatie\\Backup\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-backup/src',
         ),
         'Spatie\\Analytics\\' => 
         array (
@@ -458,6 +517,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'League\\Glide\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/glide/src',
         ),
         'League\\Flysystem\\' => 
         array (
@@ -650,13 +713,6 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
-        'L' => 
-        array (
-            'Laravelium\\Sitemap' => 
-            array (
-                0 => __DIR__ . '/..' . '/laravelium/sitemap/src',
-            ),
-        ),
         'G' => 
         array (
             'Google_Service_' => 
@@ -698,6 +754,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'AddPostLikesTable' => __DIR__ . '/../..' . '/database/migrations/2015_08_11_103313_add_post_likes_table.php',
         'AddRatingDesc' => __DIR__ . '/../..' . '/database/migrations/2015_08_11_102144_add_rating_desc.php',
         'AddSlugToUsers' => __DIR__ . '/../..' . '/database/migrations/2015_07_30_085814_add_slug_to_users.php',
+        'CreateActivityLogTable' => __DIR__ . '/../..' . '/database/migrations/2020_06_11_222843_create_activity_log_table.php',
         'CreateAdsTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_25_130151_create_ads_table.php',
         'CreateAvatar' => __DIR__ . '/../..' . '/database/migrations/2015_07_18_115508_create_avatar.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_23_103902_create_categories_table.php',

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App;
 use App\Models\Ad;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
-use DB;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -83,17 +81,5 @@ class Controller extends BaseController
     {
         return response(view('errors.503'));
     }
-
-    /**
-     * Site map generator
-     */
-    public function sitemap()
-    {
-        $sitemap = App::make("sitemap");
-        $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
-        foreach ($posts as $post) {
-            $sitemap->add($post->slug, $post->title, $post->updated_at);
-        }
-        $sitemap->store('xml', 'sitemap');
-    }
+    
 }
