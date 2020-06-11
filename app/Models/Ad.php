@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use App\Traits\ClearsResponseCache;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 
 /**
@@ -12,23 +15,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $code
  * @property string $position
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ad newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ad newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ad query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ad whereCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ad whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ad whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ad wherePosition($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ad whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Ad newModelQuery()
+ * @method static Builder|Ad newQuery()
+ * @method static Builder|Ad query()
+ * @method static Builder|Ad whereCode($value)
+ * @method static Builder|Ad whereCreatedAt($value)
+ * @method static Builder|Ad whereId($value)
+ * @method static Builder|Ad wherePosition($value)
+ * @method static Builder|Ad whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Ad extends Model
 {
 
     use ClearsResponseCache;
-
 
     protected $fillable = ['code', 'position'];
     protected $table = 'ads';

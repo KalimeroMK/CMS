@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use App\Traits\ClearsResponseCache;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 
 /**
@@ -13,18 +16,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $post_id
  * @property string $image
  * @property int $priority
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery wherePostId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery wherePriority($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Gallery whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Gallery newModelQuery()
+ * @method static Builder|Gallery newQuery()
+ * @method static Builder|Gallery query()
+ * @method static Builder|Gallery whereCreatedAt($value)
+ * @method static Builder|Gallery whereId($value)
+ * @method static Builder|Gallery whereImage($value)
+ * @method static Builder|Gallery wherePostId($value)
+ * @method static Builder|Gallery wherePriority($value)
+ * @method static Builder|Gallery whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Gallery extends Model
 {

@@ -6,7 +6,6 @@ use App\Traits\ClearsResponseCache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
@@ -32,7 +31,6 @@ use Kalnoy\Nestedset\QueryBuilder;
  * @property-read Category|null $parent
  * @property-read \Illuminate\Database\Eloquent\Collection|Post[] $post
  * @property-read int|null $post_count
- * @property-read Source $source
  * @method static Collection|static[] all($columns = ['*'])
  * @method static Builder|Category d()
  * @method static Collection|static[] get($columns = ['*'])
@@ -118,7 +116,7 @@ class Category extends Model
     {
         return $this->hasMany(Post::class, 'category_id');
     }
-    
+
     /**
      * @return BelongsToMany
      */

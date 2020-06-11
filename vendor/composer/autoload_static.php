@@ -18,8 +18,8 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
@@ -100,6 +100,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Symfony\\Component\\Cache\\' => 24,
             'Spatie\\ResponseCache\\' => 21,
             'Spatie\\Permission\\' => 18,
+            'Spatie\\Feed\\' => 12,
             'Spatie\\Analytics\\' => 17,
             'Seld\\PharUtils\\' => 15,
             'Seld\\JsonLint\\' => 14,
@@ -378,6 +379,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-permission/src',
         ),
+        'Spatie\\Feed\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-feed/src',
+        ),
         'Spatie\\Analytics\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-analytics/src',
@@ -645,6 +650,13 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
+        'L' => 
+        array (
+            'Laravelium\\Sitemap' => 
+            array (
+                0 => __DIR__ . '/..' . '/laravelium/sitemap/src',
+            ),
+        ),
         'G' => 
         array (
             'Google_Service_' => 
@@ -683,11 +695,9 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'AddFbColumnsUsers' => __DIR__ . '/../..' . '/database/migrations/2015_07_23_194056_add_fb_columns_users.php',
         'AddFeaturedToPosts' => __DIR__ . '/../..' . '/database/migrations/2015_07_22_225256_add_featured_to_posts.php',
         'AddFieldsToUsers' => __DIR__ . '/../..' . '/database/migrations/2015_07_23_145432_add_fields_to_users.php',
-        'AddGroupsAndAdmin' => __DIR__ . '/../..' . '/database/migrations/2015_08_03_170949_add_groups_and_admin.php',
         'AddPostLikesTable' => __DIR__ . '/../..' . '/database/migrations/2015_08_11_103313_add_post_likes_table.php',
         'AddRatingDesc' => __DIR__ . '/../..' . '/database/migrations/2015_08_11_102144_add_rating_desc.php',
         'AddSlugToUsers' => __DIR__ . '/../..' . '/database/migrations/2015_07_30_085814_add_slug_to_users.php',
-        'CreateAdminUserSeeder' => __DIR__ . '/../..' . '/database/seeds/CreateAdminUserSeeder.php',
         'CreateAdsTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_25_130151_create_ads_table.php',
         'CreateAvatar' => __DIR__ . '/../..' . '/database/migrations/2015_07_18_115508_create_avatar.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_23_103902_create_categories_table.php',

@@ -141,6 +141,4 @@ class Post extends Model
             return $imageUrl = asset('/uploads/images/posts/medium/rsz_biblija.jpg');
         }
     }
-
-
 }
