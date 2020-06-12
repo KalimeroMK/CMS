@@ -14,8 +14,9 @@ class DashboardController extends Controller
     /**
      * CronController constructor.
      */
-    function __construct()
+    public function __construct()
     {
+        
     }
 
     /**

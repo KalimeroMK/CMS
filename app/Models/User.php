@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 
@@ -44,9 +47,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read Post $ProductList
  * @property-read Collection|Post[] $author
  * @property-read int|null $author_count
- * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read Collection|Permission[] $permissions
  * @property-read int|null $permissions_count
- * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read Collection|Role[] $roles
  * @property-read int|null $roles_count
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
@@ -197,6 +200,14 @@ class User extends Authenticatable
     public function ProductList()
     {
         return $this->belongsTo(Post::class, 'id', 'author_id')->orderBy('updated_at', 'desc');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function loginSecurity()
+    {
+        return $this->hasOne(LoginSecurity::class);
     }
 
 }

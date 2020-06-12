@@ -44,6 +44,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAdminRoutes();
 
+        $this->map2faRoutes();
+
         $this->mapWebRoutes();
 
     }
@@ -64,13 +66,25 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     *
+     * Define admin routes protected with auth middleware admin namespace used
      */
     public function mapAdminRoutes()
     {
-        Route::middleware(['web', 'auth'])
+        Route::middleware(['web', 'auth', '2fa'])
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
+
+    }
+
+    /**
+     * Define 2fa routes protected with auth middleware admin namespace used
+     */
+    public function map2faRoutes()
+    {
+        Route::middleware(['web', 'auth'])
+            ->namespace($this->namespace . '\Admin')
+            ->prefix('2fa')
+            ->group(base_path('routes/2fa.php'));
 
     }
 

@@ -136,8 +136,14 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
             'Prophecy\\' => 9,
+            'PragmaRX\\Google2FA\\' => 19,
+            'PragmaRX\\Google2FAQRCode\\Tests\\' => 31,
+            'PragmaRX\\Google2FAQRCode\\' => 25,
+            'PragmaRX\\Google2FALaravel\\Tests\\' => 32,
+            'PragmaRX\\Google2FALaravel\\' => 26,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
+            'ParagonIE\\ConstantTime\\' => 23,
         ),
         'O' => 
         array (
@@ -198,6 +204,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
             'DebugBar\\' => 9,
+            'DASPRiD\\Enum\\' => 13,
         ),
         'C' => 
         array (
@@ -215,6 +222,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Brick\\Math\\' => 11,
             'Barryvdh\\LaravelIdeHelper\\' => 26,
             'Barryvdh\\Debugbar\\' => 18,
+            'BaconQrCode\\' => 12,
         ),
         'A' => 
         array (
@@ -502,6 +510,26 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
+        'PragmaRX\\Google2FA\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pragmarx/google2fa/src',
+        ),
+        'PragmaRX\\Google2FAQRCode\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pragmarx/google2fa-qrcode/tests',
+        ),
+        'PragmaRX\\Google2FAQRCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pragmarx/google2fa-qrcode/src',
+        ),
+        'PragmaRX\\Google2FALaravel\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pragmarx/google2fa-laravel/tests',
+        ),
+        'PragmaRX\\Google2FALaravel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pragmarx/google2fa-laravel/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -509,6 +537,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'ParagonIE\\ConstantTime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
         ),
         'Opis\\Closure\\' => 
         array (
@@ -630,6 +662,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar',
         ),
+        'DASPRiD\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dasprid/enum/src',
+        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
@@ -673,6 +709,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'Barryvdh\\Debugbar\\' => 
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src',
+        ),
+        'BaconQrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
         ),
         'Asm89\\Stack\\' => 
         array (
@@ -760,6 +800,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_23_103902_create_categories_table.php',
         'CreateCategoryProductTable' => __DIR__ . '/../..' . '/database/migrations/2019_04_24_104410_create_category_product_table.php',
         'CreateImageGalleryTable' => __DIR__ . '/../..' . '/database/migrations/2015_07_24_073148_create_image_gallery_table.php',
+        'CreateLoginSecuritiesTable' => __DIR__ . '/../..' . '/database/migrations/2020_03_22_152759_create_login_securities_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePermissionTables' => __DIR__ . '/../..' . '/database/migrations/2020_06_11_155959_create_permission_tables.php',
         'CreatePostRatingsTable' => __DIR__ . '/../..' . '/database/migrations/2015_07_29_171303_create_post_ratings_table.php',

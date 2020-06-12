@@ -18,6 +18,7 @@ return array(
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2015_06_23_103902_create_categories_table.php',
     'CreateCategoryProductTable' => $baseDir . '/database/migrations/2019_04_24_104410_create_category_product_table.php',
     'CreateImageGalleryTable' => $baseDir . '/database/migrations/2015_07_24_073148_create_image_gallery_table.php',
+    'CreateLoginSecuritiesTable' => $baseDir . '/database/migrations/2020_03_22_152759_create_login_securities_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePermissionTables' => $baseDir . '/database/migrations/2020_06_11_155959_create_permission_tables.php',
     'CreatePostRatingsTable' => $baseDir . '/database/migrations/2015_07_29_171303_create_post_ratings_table.php',
