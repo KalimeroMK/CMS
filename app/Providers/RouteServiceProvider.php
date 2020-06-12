@@ -70,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function mapAdminRoutes()
     {
-        Route::middleware(['web', 'auth', '2fa', 'activity'])
+        Route::middleware(['web', 'auth', '2fa', 'activity', 'checkblocked'])
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
 
@@ -81,7 +81,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map2faRoutes()
     {
-        Route::middleware(['web', 'auth'])
+        Route::middleware(['web', 'auth', 'activity', 'checkblocked'])
             ->namespace($this->namespace . '\Admin')
             ->prefix('2fa')
             ->group(base_path('routes/2fa.php'));
@@ -97,7 +97,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
+        Route::middleware(['web', 'activity', 'checkblocked'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
     }

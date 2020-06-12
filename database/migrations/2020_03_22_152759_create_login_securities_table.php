@@ -15,7 +15,7 @@ class CreateLoginSecuritiesTable extends Migration
     {
         Schema::create('login_securities', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->bigInteger('user_id');
             $table->boolean('google2fa_enable')->default(false);
             $table->string('google2fa_secret')->nullable();
             $table->timestamps();

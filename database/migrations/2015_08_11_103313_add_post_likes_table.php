@@ -17,7 +17,7 @@ class AddPostLikesTable extends Migration
             $table->integer('post_id');
             $table->string('name');
             $table->string('email');
-            $table->integer('user_id');
+            $table->bigInteger('user_id');
             $table->tinyInteger('rating');
             $table->tinyInteger('approved');
             $table->timestamps();

@@ -27,11 +27,11 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'fe62ba7e10580d903cc46d808b5961a4' => __DIR__ . '/..' . '/tightenco/collect/src/Collect/Support/helpers.php',
         'caf31cc6ec7cf2241cb6f12c226c3846' => __DIR__ . '/..' . '/tightenco/collect/src/Collect/Support/alias.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '383eaff206634a77a1be54e64e6459c7' => __DIR__ . '/..' . '/sabre/uri/lib/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
@@ -57,6 +57,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'j' => 
         array (
             'jeremykenedy\\LaravelLogger\\' => 27,
+            'jeremykenedy\\LaravelBlocker\\' => 28,
         ),
         'X' => 
         array (
@@ -123,6 +124,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Spatie\\Analytics\\' => 17,
             'Seld\\PharUtils\\' => 15,
             'Seld\\JsonLint\\' => 14,
+            'Seedster\\' => 9,
             'Sabre\\Xml\\' => 10,
             'Sabre\\Uri\\' => 10,
         ),
@@ -256,6 +258,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'jeremykenedy\\LaravelLogger\\' => 
         array (
             0 => __DIR__ . '/..' . '/jeremykenedy/laravel-logger/src',
+        ),
+        'jeremykenedy\\LaravelBlocker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jeremykenedy/laravel-blocker/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -472,6 +478,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'Seld\\JsonLint\\' => 
         array (
             0 => __DIR__ . '/..' . '/seld/jsonlint/src/Seld/JsonLint',
+        ),
+        'Seedster\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/eklundkristoffer/seedster/src',
         ),
         'Sabre\\Xml\\' => 
         array (

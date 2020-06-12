@@ -1445,6 +1445,50 @@
         ]
     },
     {
+        "name": "eklundkristoffer/seedster",
+        "version": "3.4",
+        "version_normalized": "3.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/eklundkristoffer/seedster.git",
+            "reference": "c216c8947de27f3abf292a360a6af2547254cda3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/eklundkristoffer/seedster/zipball/c216c8947de27f3abf292a360a6af2547254cda3",
+            "reference": "c216c8947de27f3abf292a360a6af2547254cda3",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*|6.*|^7.0"
+        },
+        "time": "2020-03-03T19:32:23+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Seedster\\SeedsterServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Seedster\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kristoffer Eklund",
+                "email": "kristoffereklund1@gmail.com"
+            }
+        ]
+    },
+    {
         "name": "fideloper/proxy",
         "version": "4.3.0",
         "version_normalized": "4.3.0.0",
@@ -2333,6 +2377,71 @@
             "php crawler detect",
             "spider",
             "user-agent"
+        ]
+    },
+    {
+        "name": "jeremykenedy/laravel-blocker",
+        "version": "v2.5.0",
+        "version_normalized": "2.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jeremykenedy/laravel-blocker.git",
+            "reference": "70ff0162ff99a65f99232da7668ea3277b3e9e24"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jeremykenedy/laravel-blocker/zipball/70ff0162ff99a65f99232da7668ea3277b3e9e24",
+            "reference": "70ff0162ff99a65f99232da7668ea3277b3e9e24",
+            "shasum": ""
+        },
+        "require": {
+            "eklundkristoffer/seedster": "^3.3",
+            "laravelcollective/html": "^6.0",
+            "php": "^7.2"
+        },
+        "time": "2020-05-26T04:58:07+00:00",
+        "type": "package",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "jeremykenedy\\LaravelBlocker\\LaravelBlockerServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "jeremykenedy\\LaravelBlocker\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeremy Kenedy",
+                "email": "jeremykenedy@gmail.com"
+            }
+        ],
+        "keywords": [
+            "IP blocker",
+            "User blocker",
+            "blocker",
+            "email blocker",
+            "laravel Email blocker",
+            "laravel IP blocker",
+            "laravel blocker"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/jeremykenedy",
+                "type": "github"
+            },
+            {
+                "url": "https://www.patreon.com/jeremykenedy",
+                "type": "patreon"
+            }
         ]
     },
     {

@@ -18,7 +18,7 @@ class CreatePostTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('type');
-            $table->unsignedInteger('author_id');
+            $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->text('description');
             $table->text('meta_description');
