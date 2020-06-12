@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-12 col-sm-12 col-md-6">
         <strong>Name:</strong>
         {{Form::text("name",
              old("name") ? old("name") : (!empty($user) ? $user->name : null),
@@ -10,10 +10,10 @@
              ])
         }}
         <div class="form-group">
-            {{--            {!! Form::text(old('name', $user->url ?? null), ['placeholder' => 'Name','class' => 'form-control']) !!}--}}
+
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-12 col-sm-12 col-md-6">
         <strong>Email:</strong>
         {{Form::text("email",
              old("email") ? old("email") : (!empty($user) ? $user->email : null),
@@ -24,14 +24,14 @@
              ])
         }}
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-12 col-sm-12 col-md-6">
         <strong>Password:</strong>
         <div class="form-group">
             {!! Form::password('password', ['placeholder' => 'Password','class' => 'form-control']) !!}
 
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-12 col-sm-12 col-md-6">
         <strong>Confirm Password:</strong>
         <div class="form-group">
             {!! Form::password('confirm-password', ['placeholder' => 'Confirm Password','class' => 'form-control']) !!}

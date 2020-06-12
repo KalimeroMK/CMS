@@ -11,12 +11,9 @@
                                 href="{{route('categories.index')}}">{{trans('messages.pages')}}</a></p>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-
-                        {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
-                        @include('admin.user.partials.form')
-                        {!! Form::close() !!}
-                    </div>
+                    {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
+                    @include('admin.user.partials.form')
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

@@ -52,6 +52,7 @@ return [
     'ads_section' => 'Додади секција',
     'statistics' => 'Статистика',
     'settings' => 'Подесувања',
+    'logs' => 'Логови',
     'yes' => 'Да',
     'no' => 'Не',
     'status' => 'Статус',
@@ -272,6 +273,7 @@ return [
     'show_sharing_on_posts' => 'Show sharing on posts',
     'custom_js_code' => 'Custom Javascript Code',
     'custom_css_code' => 'Custom CSS Code',
+    'logs' => 'Logs',
 
     //Source
     'manage_sources' => 'Manage Source',

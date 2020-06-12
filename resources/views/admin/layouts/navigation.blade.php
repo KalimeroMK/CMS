@@ -63,6 +63,12 @@
                         <span class="title">{{trans('messages.settings')}}</span>
                     </a>
                 </li>
+                <li class="nav-item {{ Route::currentRouteNamed('activity') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('activity')}}">
+                        <i class="material-icons">bar_chart</i>
+                        <span class="title">{{trans('messages.logs')}}</span>
+                    </a>
+                </li>
 
             </ul>
         </div>
