@@ -8,7 +8,7 @@
     switch (config('laravelblocker.blockerBootstapVersion')) {
         case '4':
             $containerClass = 'card';
-            $containerHeaderClass = 'card-header bg-danger text-white';
+            $containerHeaderClass = 'card-header mk-danger text-white';
             $containerBodyClass = 'card-body';
             break;
         case '3':
@@ -45,7 +45,8 @@
                                 {!! trans('laravelblocker::laravelblocker.blocked-items-deleted-title') !!}
                             </span>
                             <div class="btn-group pull-right btn-group-xs">
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-ellipsis-v fa-fw" aria-hidden="true"></i>
                                     <span class="sr-only">
                                         {!! trans('laravelblocker::laravelblocker.users-menu-alt') !!}

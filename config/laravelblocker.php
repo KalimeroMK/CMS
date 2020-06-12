@@ -47,7 +47,7 @@ return [
 
     // Additional Card classes for styling -
     // See: https://getbootstrap.com/docs/4.0/components/card/#background-and-color
-    // Example classes: 'text-white bg-primary mb-3'
+    // Example classes: 'text-white mk-primary mb-3'
     'blockerBootstrapCardClasses' => env('LARAVEL_BLOCKER_CARD_CLASSES', ''),
 
     // Blade Extension Placement

@@ -109,3 +109,7 @@ ul.tree li:last-child:before {
 .card .card-body .form-group {
     margin: 24px 0 0;
 }
+
+.sidebar[data-background-color=black] {
+    background: #191919;
+}

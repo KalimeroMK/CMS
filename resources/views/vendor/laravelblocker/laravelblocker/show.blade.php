@@ -8,9 +8,9 @@
     switch (config('laravelblocker.blockerBootstapVersion')) {
         case '4':
             $containerClass = 'card';
-            $containerHeaderClass = 'card-header bg-warning text-white';
+            $containerHeaderClass = 'card-header mk-warning text-white';
             if(isset($typeDeleted)) {
-                $containerHeaderClass = 'card-header bg-danger text-white';
+                $containerHeaderClass = 'card-header mk-danger text-white';
             }
             $containerBodyClass = 'card-body';
             break;

@@ -1,6 +1,6 @@
 <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white"
-         data-image="{{ asset('assets/img/sidebar-1.jpg') }}">
+         data-image="{{ asset('images/sidebar-1.jpg') }}">
         <div class="logo"><a href="https://zorandev.com" class="simple-text logo-normal">
                 KalimeroMK CMS vol 2.1
             </a></div>
@@ -66,7 +66,13 @@
                 <li class="nav-item {{ Route::currentRouteNamed('activity') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('activity')}}">
                         <i class="material-icons">bar_chart</i>
-                        <span class="title">{{trans('messages.logs')}}</span>
+                        <span class="title">{{trans('messages.log')}}</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ Route::currentRouteNamed('laravelblocker::blocker.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('laravelblocker::bloclker.index')}}">
+                        <i class="material-icons">bar_chart</i>
+                        <span class="title">{{trans('messages.blocker')}}</span>
                     </a>
                 </li>
 

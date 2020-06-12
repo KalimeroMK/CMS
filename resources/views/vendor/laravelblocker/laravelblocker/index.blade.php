@@ -8,7 +8,7 @@
     switch (config('laravelblocker.blockerBootstapVersion')) {
         case '4':
             $containerClass = 'card';
-            $containerHeaderClass = 'card-header bg-warning text-white';
+            $containerHeaderClass = 'card-header mk-warning text-white';
             $containerBodyClass = 'card-body';
             break;
         case '3':

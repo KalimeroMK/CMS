@@ -1,4 +1,5 @@
 <?php
+
 Route::feeds();
 Route::get('sitemap', 'Controller@sitemap');
 //Admin Routes
