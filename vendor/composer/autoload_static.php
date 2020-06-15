@@ -18,9 +18,9 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
@@ -68,12 +68,17 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
         ),
+        'U' => 
+        array (
+            'UniSharp\\LaravelFilemanager\\' => 28,
+        ),
         'T' => 
         array (
             'Tree\\' => 5,
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
             'Tightenco\\Collect\\' => 18,
             'Thujohn\\Rss\\' => 12,
+            'Tanmuhittin\\LaravelGoogleTranslate\\' => 35,
         ),
         'S' => 
         array (
@@ -109,6 +114,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Cache\\' => 24,
+            'Stichoza\\GoogleTranslate\\' => 25,
             'Spatie\\TemporaryDirectory\\' => 26,
             'Spatie\\Sitemap\\' => 15,
             'Spatie\\Robots\\' => 14,
@@ -181,6 +187,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'I' => 
         array (
             'Intervention\\Image\\' => 19,
+            'Illuminate\\Notifications\\' => 25,
             'Illuminate\\Foundation\\Auth\\' => 27,
             'Illuminate\\' => 11,
         ),
@@ -229,6 +236,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'Barryvdh\\TranslationManager\\' => 28,
             'Barryvdh\\LaravelIdeHelper\\' => 26,
             'Barryvdh\\Debugbar\\' => 18,
             'BaconQrCode\\' => 12,
@@ -275,6 +283,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
+        'UniSharp\\LaravelFilemanager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src',
+        ),
         'Tree\\' => 
         array (
             0 => __DIR__ . '/..' . '/nicmart/tree/src',
@@ -290,6 +302,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'Thujohn\\Rss\\' => 
         array (
             0 => __DIR__ . '/..' . '/kalimeromk/update-thujohn-rss/src/Thujohn/Rss',
+        ),
+        'Tanmuhittin\\LaravelGoogleTranslate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tanmuhittin/laravel-google-translate/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -418,6 +434,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'Symfony\\Component\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/cache',
+        ),
+        'Stichoza\\GoogleTranslate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stichoza/google-translate-php/src',
         ),
         'Spatie\\TemporaryDirectory\\' => 
         array (
@@ -611,6 +631,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
+        'Illuminate\\Notifications\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/slack-notification-channel/src',
+        ),
         'Illuminate\\Foundation\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/ui/auth-backend',
@@ -731,6 +755,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'Barryvdh\\TranslationManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kalimeromk/laravel-translation-manager/src',
+        ),
         'Barryvdh\\LaravelIdeHelper\\' => 
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src',
@@ -838,6 +866,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'CreatePostTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_24_132022_create_post_table.php',
         'CreatePostTags' => __DIR__ . '/../..' . '/database/migrations/2015_07_24_190948_create_post_tags.php',
         'CreateSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_28_112539_create_settings_table.php',
+        'CreateTranslationsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_02_193005_create_translations_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'Database\\Seeds\\BlockedItemsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BlockedItemsTableSeeder.php',

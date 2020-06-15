@@ -141,6 +141,7 @@ return [
          * Application Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        Barryvdh\TranslationManager\ManagerServiceProvider::class,
 
 
         App\Providers\AppServiceProvider::class,

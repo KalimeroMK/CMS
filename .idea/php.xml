@@ -158,7 +158,11 @@
       <path value="$PROJECT_DIR$/vendor/jaybizzle/crawler-detect" />
       <path value="$PROJECT_DIR$/vendor/jeremykenedy/laravel-blocker" />
       <path value="$PROJECT_DIR$/vendor/eklundkristoffer/seedster" />
-      <path value="$PROJECT_DIR$/vendor/freshbitsweb/laravel-log-enhancer" />
+      <path value="$PROJECT_DIR$/vendor/laravel/slack-notification-channel" />
+      <path value="$PROJECT_DIR$/vendor/tanmuhittin/laravel-google-translate" />
+      <path value="$PROJECT_DIR$/vendor/stichoza/google-translate-php" />
+      <path value="$PROJECT_DIR$/vendor/kalimeromk/laravel-translation-manager" />
+      <path value="$PROJECT_DIR$/vendor/unisharp/laravel-filemanager" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

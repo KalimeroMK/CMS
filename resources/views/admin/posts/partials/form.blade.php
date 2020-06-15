@@ -26,7 +26,7 @@
     <div class="col-8 form-group">
         <label for="description"
                class="control-label">{{trans('messages.description')}}</label>
-        <textarea class="ckeditor" id="elm3"
+        <textarea class="ckeditor" id="editor"
                   name="description">{{ old('title', $post->description ?? null) }}</textarea>
     </div>
 
@@ -103,7 +103,18 @@
 <input type="hidden" name="author_id" value="{{ Auth::user()->id  }}">
 
 @section('scripts')
-    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+    <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        };
+    </script>
+    <script>
+        CKEDITOR.replace('editor', options);
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {

@@ -2580,6 +2580,63 @@
         ]
     },
     {
+        "name": "kalimeromk/laravel-translation-manager",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KalimeroMK/lang-manager.git",
+            "reference": "35060405fcd820af620515f9938a9b6691987bcf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KalimeroMK/lang-manager/zipball/35060405fcd820af620515f9938a9b6691987bcf",
+            "reference": "35060405fcd820af620515f9938a9b6691987bcf",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "^5.5|^6|^7",
+            "illuminate/translation": "^5.5|^6|^7",
+            "php": ">=7",
+            "symfony/finder": "^3|^4|^5",
+            "tanmuhittin/laravel-google-translate": "^1.0.2"
+        },
+        "time": "2020-06-12T20:37:13+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.5-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Barryvdh\\TranslationManager\\ManagerServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Barryvdh\\TranslationManager\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Barry vd. Heuvel",
+                "email": "barryvdh@gmail.com"
+            }
+        ],
+        "description": "Manage Laravel Translations",
+        "keywords": [
+            "laravel",
+            "translations",
+            "translator"
+        ]
+    },
+    {
         "name": "kalimeromk/update-htmldom",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -2947,6 +3004,65 @@
         "keywords": [
             "helpers",
             "laravel"
+        ]
+    },
+    {
+        "name": "laravel/slack-notification-channel",
+        "version": "v2.0.2",
+        "version_normalized": "2.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/slack-notification-channel.git",
+            "reference": "ecc90a70791195d6f5e20b2732a5eb1eb9619d10"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/slack-notification-channel/zipball/ecc90a70791195d6f5e20b2732a5eb1eb9619d10",
+            "reference": "ecc90a70791195d6f5e20b2732a5eb1eb9619d10",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/guzzle": "^6.0",
+            "illuminate/notifications": "~5.8.0|^6.0|^7.0",
+            "php": "^7.1.3"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.0",
+            "phpunit/phpunit": "^7.0|^8.0"
+        },
+        "time": "2019-08-27T14:40:26+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Illuminate\\Notifications\\SlackChannelServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\Notifications\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "Slack Notification Channel for laravel.",
+        "keywords": [
+            "laravel",
+            "notifications",
+            "slack"
         ]
     },
     {
@@ -7462,6 +7578,57 @@
         ]
     },
     {
+        "name": "stichoza/google-translate-php",
+        "version": "v4.1.0",
+        "version_normalized": "4.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Stichoza/google-translate-php.git",
+            "reference": "f5b8be4f573d53a52190651de27f16c679d84990"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/f5b8be4f573d53a52190651de27f16c679d84990",
+            "reference": "f5b8be4f573d53a52190651de27f16c679d84990",
+            "shasum": ""
+        },
+        "require": {
+            "ext-json": "*",
+            "ext-mbstring": "*",
+            "guzzlehttp/guzzle": "~6.0",
+            "php": "^7.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.0"
+        },
+        "time": "2020-02-11T01:34:51+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Stichoza\\GoogleTranslate\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Levan Velijanashvili",
+                "email": "me@stichoza.com"
+            }
+        ],
+        "description": "Free Google Translate API PHP Package",
+        "homepage": "http://github.com/Stichoza/google-translate-php",
+        "keywords": [
+            "google",
+            "php",
+            "translate",
+            "translator"
+        ]
+    },
+    {
         "name": "swiftmailer/swiftmailer",
         "version": "v6.2.3",
         "version_normalized": "6.2.3.0",
@@ -10126,6 +10293,56 @@
         ]
     },
     {
+        "name": "tanmuhittin/laravel-google-translate",
+        "version": "1.0.4",
+        "version_normalized": "1.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tanmuhittin/laravel-google-translate.git",
+            "reference": "393e5a85dbbceec4ff233836092f978fdcd5dcce"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tanmuhittin/laravel-google-translate/zipball/393e5a85dbbceec4ff233836092f978fdcd5dcce",
+            "reference": "393e5a85dbbceec4ff233836092f978fdcd5dcce",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/console": ">=5.1",
+            "illuminate/support": "^5.5|^6|^7",
+            "illuminate/translation": "^5.5|^6|^7",
+            "php": ">=7.0.0",
+            "stichoza/google-translate-php": "^4.0"
+        },
+        "require-dev": {
+            "ext-json": "*",
+            "phpunit/phpunit": "^8.3@dev"
+        },
+        "time": "2020-03-04T18:54:19+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Tanmuhittin\\LaravelGoogleTranslate\\LaravelGoogleTranslateServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Tanmuhittin\\LaravelGoogleTranslate\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Muhittin Tan",
+                "email": "tanmuhittin@gmail.com"
+            }
+        ],
+        "description": "Translate translation files to other languages using google translate api"
+    },
+    {
         "name": "theseer/tokenizer",
         "version": "1.1.3",
         "version_normalized": "1.1.3.0",
@@ -10269,6 +10486,83 @@
         ],
         "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
         "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles"
+    },
+    {
+        "name": "unisharp/laravel-filemanager",
+        "version": "v2.1.0",
+        "version_normalized": "2.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/UniSharp/laravel-filemanager.git",
+            "reference": "a2c390b1414fa35457fc5c6d01068dcf6dac7cd2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/a2c390b1414fa35457fc5c6d01068dcf6dac7cd2",
+            "reference": "a2c390b1414fa35457fc5c6d01068dcf6dac7cd2",
+            "shasum": ""
+        },
+        "require": {
+            "ext-exif": "*",
+            "ext-fileinfo": "*",
+            "illuminate/config": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+            "illuminate/container": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+            "illuminate/filesystem": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+            "illuminate/http": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+            "illuminate/support": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+            "intervention/image": "2.*",
+            "php": ">=7.2.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^0.9.9",
+            "phpunit/phpunit": "^6.2",
+            "squizlabs/php_codesniffer": "^3.1"
+        },
+        "suggest": {
+            "ext-gd": "to use GD library based image processing.",
+            "ext-imagick": "to use Imagick based image processing."
+        },
+        "time": "2020-05-10T10:10:07+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider"
+                ],
+                "aliases": []
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "UniSharp\\LaravelFilemanager\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Trevor Sawler",
+                "email": "trevor.sawler@gmail.com"
+            },
+            {
+                "name": "UniSharp Ltd.",
+                "email": "opensource@unisharp.com"
+            }
+        ],
+        "description": "A file upload/editor intended for use with Laravel 5 to 6 and CKEditor / TinyMCE",
+        "keywords": [
+            "CKEditor",
+            "file",
+            "filemanager",
+            "image",
+            "laravel",
+            "manager",
+            "tinymce",
+            "upload"
+        ]
     },
     {
         "name": "vlucas/phpdotenv",

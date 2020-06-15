@@ -70,7 +70,7 @@
                     </a>
                 </li>
                 <li class="nav-item {{ Route::currentRouteNamed('laravelblocker::blocker.index') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('laravelblocker::bloclker.index')}}">
+                    <a class="nav-link" href="{{route('laravelblocker::blocker.index')}}">
                         <i class="material-icons">bar_chart</i>
                         <span class="title">{{trans('messages.blocker')}}</span>
                     </a>

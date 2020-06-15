@@ -27,6 +27,7 @@ return array(
     'CreatePostTable' => $baseDir . '/database/migrations/2015_06_24_132022_create_post_table.php',
     'CreatePostTags' => $baseDir . '/database/migrations/2015_07_24_190948_create_post_tags.php',
     'CreateSettingsTable' => $baseDir . '/database/migrations/2015_06_28_112539_create_settings_table.php',
+    'CreateTranslationsTable' => $baseDir . '/database/migrations/2014_04_02_193005_create_translations_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Database\\Seeds\\BlockedItemsTableSeeder' => $baseDir . '/database/seeds/BlockedItemsTableSeeder.php',
