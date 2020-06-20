@@ -22,7 +22,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255',
+//            'image' => 'mimes:jpeg,jpg,png,gif|required|max:30000' // max 10000kb
         ];
     }
 }

@@ -17,6 +17,7 @@
                                 <th>{{trans('messages.id')}}</th>
                                 <th>{{trans('messages.featured_image')}}</th>
                                 <th>{{trans('messages.title')}}</th>
+                                <th>{{trans('messages.gallery')}}</th>
                                 <th>{{trans('messages.category')}}</th>
                                 <th>{{trans('messages.source')}}</th>
                                 <th>{{trans('messages.views')}}</th>
@@ -24,6 +25,7 @@
                                 <th>{{trans('messages.status')}}</th>
                                 <th>{{trans('messages.edit')}}</th>
                                 <th>{{trans('messages.delete')}}</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -41,6 +43,9 @@
                                         <img src="{{ $post->imageUrl }}" style="width:100px;"/>
                                     </td>
                                     <td><a href="/{{$post->slug}}" target="_blank">{{$post->title}}</a></td>
+                                    <td><span class="time"><a href="{{ route('addGallery', $post->id) }}"
+                                                              class="btn btn-info">{{trans('messages.image_gallery')}}</a></span>
+                                    </td>
                                     <td> @foreach($post->categories as $category)
                                             {{$category->title}}
                                         @endforeach </td>

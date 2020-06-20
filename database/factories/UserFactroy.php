@@ -12,5 +12,8 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->email,
         'password' => Hash::make("admin"),
         'remember_token' => str_random(10),
+        'avatar' => $faker->imageUrl(),
+        'birthday' => $faker->paragraphs(4),
+        
     ];
 });

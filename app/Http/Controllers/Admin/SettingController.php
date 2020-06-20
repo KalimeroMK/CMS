@@ -8,7 +8,7 @@ use App\Http\Requests\Setting\Update;
 use App\Models\Setting;
 use App\Traits\ImageUpload;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use Session;
 
@@ -71,7 +71,7 @@ class SettingController extends Controller
     /**
      * @param Update $request
      * @param Setting $setting
-     * @return RedirectResponse
+     * @return JsonResponse
      */
     public function update(Update $request, Setting $setting)
     {
@@ -79,7 +79,7 @@ class SettingController extends Controller
                 'featured_image' => $this->verifyAndStoreImage($request)
             ]);
         Session::flash('success_msg', trans('messages.settings_updated_success'));
-        return redirect()->route('settings.index');
+        return response()->json($setting);
 
     }
 }

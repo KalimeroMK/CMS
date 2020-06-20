@@ -44,7 +44,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'post-list',
             'post-create',
             'post-edit',
-            'post-delete'
+            'post-delete',
+            'ad-list',
+            'ad-create',
+            'ad-edit',
+            'ad-delete'
+
         ];
 
 

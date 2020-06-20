@@ -845,15 +845,16 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
     );
 
     public static $classMap = array (
+        'AdSeeder' => __DIR__ . '/../..' . '/database/seeds/AdSeeder.php',
         'AddFbColumnsUsers' => __DIR__ . '/../..' . '/database/migrations/2015_07_23_194056_add_fb_columns_users.php',
         'AddFeaturedToPosts' => __DIR__ . '/../..' . '/database/migrations/2015_07_22_225256_add_featured_to_posts.php',
         'AddFieldsToUsers' => __DIR__ . '/../..' . '/database/migrations/2015_07_23_145432_add_fields_to_users.php',
         'AddPostLikesTable' => __DIR__ . '/../..' . '/database/migrations/2015_08_11_103313_add_post_likes_table.php',
         'AddRatingDesc' => __DIR__ . '/../..' . '/database/migrations/2015_08_11_102144_add_rating_desc.php',
         'AddSlugToUsers' => __DIR__ . '/../..' . '/database/migrations/2015_07_30_085814_add_slug_to_users.php',
+        'CategorySeeder' => __DIR__ . '/../..' . '/database/seeds/CategorySeeder.php',
         'CreateActivityLogTable' => __DIR__ . '/../..' . '/database/migrations/2020_06_11_222843_create_activity_log_table.php',
         'CreateAdsTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_25_130151_create_ads_table.php',
-        'CreateAvatar' => __DIR__ . '/../..' . '/database/migrations/2015_07_18_115508_create_avatar.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_23_103902_create_categories_table.php',
         'CreateCategoryProductTable' => __DIR__ . '/../..' . '/database/migrations/2019_04_24_104410_create_category_product_table.php',
         'CreateImageGalleryTable' => __DIR__ . '/../..' . '/database/migrations/2015_07_24_073148_create_image_gallery_table.php',
@@ -1336,7 +1337,6 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
-        'PermissionTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PermissionsTableSeeder.php',
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',
@@ -1517,6 +1517,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'SettingSeeder' => __DIR__ . '/../..' . '/database/seeds/SettingSeeder.php',
         'SettingsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/SettingsTableSeeder.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',

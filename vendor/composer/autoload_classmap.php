@@ -6,15 +6,16 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdSeeder' => $baseDir . '/database/seeds/AdSeeder.php',
     'AddFbColumnsUsers' => $baseDir . '/database/migrations/2015_07_23_194056_add_fb_columns_users.php',
     'AddFeaturedToPosts' => $baseDir . '/database/migrations/2015_07_22_225256_add_featured_to_posts.php',
     'AddFieldsToUsers' => $baseDir . '/database/migrations/2015_07_23_145432_add_fields_to_users.php',
     'AddPostLikesTable' => $baseDir . '/database/migrations/2015_08_11_103313_add_post_likes_table.php',
     'AddRatingDesc' => $baseDir . '/database/migrations/2015_08_11_102144_add_rating_desc.php',
     'AddSlugToUsers' => $baseDir . '/database/migrations/2015_07_30_085814_add_slug_to_users.php',
+    'CategorySeeder' => $baseDir . '/database/seeds/CategorySeeder.php',
     'CreateActivityLogTable' => $baseDir . '/database/migrations/2020_06_11_222843_create_activity_log_table.php',
     'CreateAdsTable' => $baseDir . '/database/migrations/2015_06_25_130151_create_ads_table.php',
-    'CreateAvatar' => $baseDir . '/database/migrations/2015_07_18_115508_create_avatar.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2015_06_23_103902_create_categories_table.php',
     'CreateCategoryProductTable' => $baseDir . '/database/migrations/2019_04_24_104410_create_category_product_table.php',
     'CreateImageGalleryTable' => $baseDir . '/database/migrations/2015_07_24_073148_create_image_gallery_table.php',
@@ -497,7 +498,6 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PermissionTableSeeder' => $baseDir . '/database/seeds/PermissionsTableSeeder.php',
     'PharIo\\Manifest\\Application' => $vendorDir . '/phar-io/manifest/src/values/Application.php',
     'PharIo\\Manifest\\ApplicationName' => $vendorDir . '/phar-io/manifest/src/values/ApplicationName.php',
     'PharIo\\Manifest\\Author' => $vendorDir . '/phar-io/manifest/src/values/Author.php',
@@ -678,6 +678,7 @@ return array(
     'SebastianBergmann\\Type\\UnknownType' => $vendorDir . '/sebastian/type/src/UnknownType.php',
     'SebastianBergmann\\Type\\VoidType' => $vendorDir . '/sebastian/type/src/VoidType.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+    'SettingSeeder' => $baseDir . '/database/seeds/SettingSeeder.php',
     'SettingsTableSeeder' => $baseDir . '/database/seeds/SettingsTableSeeder.php',
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Tests\\TestCase' => $baseDir . '/tests/TestCase.php',

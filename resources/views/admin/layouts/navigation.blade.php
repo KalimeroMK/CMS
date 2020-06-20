@@ -1,9 +1,6 @@
 <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white"
          data-image="{{ asset('images/sidebar-1.jpg') }}">
-        <div class="logo"><a href="https://zorandev.com" class="simple-text logo-normal">
-                KalimeroMK CMS vol 2.1
-            </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li class="nav-item {{ Route::currentRouteNamed('dashboard') ? 'active' : '' }}">
@@ -65,14 +62,20 @@
                 </li>
                 <li class="nav-item {{ Route::currentRouteNamed('activity') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('activity')}}">
-                        <i class="material-icons">bar_chart</i>
+                        <i class="material-icons">biotech</i>
                         <span class="title">{{trans('messages.log')}}</span>
                     </a>
                 </li>
                 <li class="nav-item {{ Route::currentRouteNamed('laravelblocker::blocker.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('laravelblocker::blocker.index')}}">
-                        <i class="material-icons">bar_chart</i>
+                        <i class="material-icons">privacy_tip</i>
                         <span class="title">{{trans('messages.blocker')}}</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ Route::currentRouteNamed('translation') ? 'active' : '' }}">
+                    <a class="nav-link" href="/translations">
+                        <i class="material-icons">language</i>
+                        <span class="title">{{trans('messages.translations')}}</span>
                     </a>
                 </li>
 

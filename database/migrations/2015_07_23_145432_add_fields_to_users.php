@@ -14,16 +14,8 @@ class AddFieldsToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('birthday');
-            $table->text('bio');
-            $table->string('gender');
-            $table->string('mobile_no');
-            $table->string('country');
-            $table->string('timezone');
-            $table->string('reset_password_code');
-            $table->dateTime('reset_requested_on');
-            $table->tinyInteger('activated');
-            $table->string('activation_code');
-            $table->dateTime('activated_at');
+            $table->string('avatar');
+
         });
     }
 

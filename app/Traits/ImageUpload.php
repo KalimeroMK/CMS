@@ -2,10 +2,9 @@
 
 namespace App\Traits;
 
-use Exception;
 use File;
-use Htmldom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
 trait ImageUpload
@@ -20,7 +19,7 @@ trait ImageUpload
         if ($request->hasFile('featured_image')) {
 
             $image = $request->file('featured_image');
-            $imageName = str_random(15) . '.' . $image->getClientOriginalExtension();
+            $imageName = Str::random(15) . '.' . $image->getClientOriginalExtension();
             $paths = $this->makePaths();
             File::makeDirectory($paths->original, $mode = 0755, true, true);
             File::makeDirectory($paths->thumbnail, $mode = 0755, true, true);

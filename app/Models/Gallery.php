@@ -34,5 +34,15 @@ class Gallery extends Model
     use ClearsResponseCache;
 
     protected $table = 'image_gallery';
+    protected $fillable = ['post_id', 'image'];
+
+    public function getGalleryUrlAttribute($value)
+    {
+        if (!empty($this->image)) {
+            return $galleryUrl = asset('/uploads/images/gallery/' . $this->image);
+        } else {
+            return "no image";
+        }
+    }
 
 }

@@ -20,8 +20,7 @@
     "spatie/laravel-responsecache": "^6.6",
     "kalimeromk/update-htmldom": "dev-master",
     "kalimeromk/update-thujohn-rss": "dev-master",
-    "spatie/laravel-analytics": "^3.7",
-    "spatie/laravel-permission": "^3.13",
+    "kalimeromk/laravel-translation-manager": "0.5.x-dev",
     "laravel/helpers": "^1.1",
     "laravelcollective/html": "^6.0",
     "ext-curl": "*",
@@ -32,6 +31,8 @@
     "ext-libxml": "*",
     "fruitcake/laravel-cors": "^2.0",
     "orangehill/iseed": "^2.6",
+    "spatie/laravel-analytics": "^3.7",
+    "spatie/laravel-permission": "^3.13",
     "spatie/laravel-feed": "^2.6",
     "spatie/laravel-backup": "^6.10",
     "spatie/laravel-sitemap": "^5.7",
@@ -40,7 +41,6 @@
     "jeremykenedy/laravel-logger": "^3.6",
     "jeremykenedy/laravel-blocker": "^2.5",
     "laravel/slack-notification-channel": "^2.0",
-    "kalimeromk/laravel-translation-manager": "0.5.x-dev",
     "unisharp/laravel-filemanager": "^2.1"
   },
   "require-dev": {

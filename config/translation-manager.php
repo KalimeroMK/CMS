@@ -13,7 +13,7 @@ return [
 
     'route' => [
         'prefix' => 'translations',
-        'middleware' => 'web',
+        'middleware' => 'web', 'auth', '2fa', 'activity', 'checkblocked',
     ],
     /**
      * Enable deletion of translations

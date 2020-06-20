@@ -11,10 +11,12 @@
              ])
         }}
     </div>
-    <div class="col-4">
-        <label for="category" class="col-4 control-label">{{trans('messages.category')}}</label>
-        <div class="col-sm-8">
-            <select class="js-example-basic-multiple" name="category[]" multiple="multiple">
+    <div class="form-group col-4">
+
+        <label for="tags" class="col-sm-3 control-label">{{trans('messages.category')}}</label>
+
+        <div class="form-group">
+            <select class="form-control js-example-basic-multiple" id="category" name="category[]" multiple="multiple">
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">@for ($i = 0; $i < $category->depth; $i++)
                             - @endfor {{ $category->title }}</option>
@@ -80,6 +82,8 @@
             </select>
         </div>
     </div>
+    <label for="files">Select files:</label>
+    <input type="file" id="files" name="image_gallery" multiple><br><br>
     <div class="form-group col-8">
         <label for="status" class="control-label">{{trans('messages.status')}}</label>
 
