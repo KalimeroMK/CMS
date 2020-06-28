@@ -7,12 +7,10 @@ function displayArrayRecursive($json)
 {
     if ($json) {
         foreach ($json as $key => $value) {
-
             if (is_array($value)) {
                 displayArrayRecursive($value);
             } else {
                 echo $key . '--' . $value . '<br>';
-
             }
         }
     }

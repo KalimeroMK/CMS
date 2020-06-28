@@ -14,14 +14,13 @@ use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-
 class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      */
-    function __construct()
+    public function __construct()
     {
         $this->middleware('permission:role-list');
         $this->middleware('permission:role-create', ['only' => ['create', 'store']]);

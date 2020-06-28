@@ -1,22 +1,22 @@
 <?php
 /**
  * Full-Text RSS console commands for Robo task runner.
- * 
- * Intended to be run on a clean install of Full-Text RSS 
+ *
+ * Intended to be run on a clean install of Full-Text RSS
  * running on an Ubuntu instance initialised with our server
  * initialisation script.
- * 
- * Note: Full-Text RSS is a web service, not a command-line tool. 
- * These are simply convenience methods to help work with 
+ *
+ * Note: Full-Text RSS is a web service, not a command-line tool.
+ * These are simply convenience methods to help work with
  * Full-Text RSS from the command line. You will require a working
  * Full-Text RSS instance for these to work.
- * 
+ *
  * Quick start:
  * 1. Edit robo.yml and change URL to where you installed Full-Text RSS
  *    (keep localhost if you're running on same server)
  * 2. Install Robo (see http://robo.li)
  * 3. Run: "robo init" or "php robo.phar init" (depending on how you installed Robo)
- * 
+ *
  * You can safely delete this file if do not intend to use these
  * convenience methods.
  *
@@ -24,7 +24,8 @@
  */
 class RoboFile extends \Robo\Tasks
 {
-    public function extract($url) {
+    public function extract($url)
+    {
         $ftr = $this->get_ftr_url().'/extract.php';
         $ftr .= '?'.http_build_query(['url'=>$url]);
         $json = file_get_contents($ftr);
@@ -33,7 +34,8 @@ class RoboFile extends \Robo\Tasks
         }
     }
 
-    public function title($url) {
+    public function title($url)
+    {
         $ftr = $this->get_ftr_url().'/extract.php';
         $ftr .= '?'.http_build_query(['url'=>$url]);
         $json = file_get_contents($ftr);
@@ -42,7 +44,8 @@ class RoboFile extends \Robo\Tasks
         }
     }
 
-    public function html($url) {
+    public function html($url)
+    {
         $ftr = $this->get_ftr_url().'/extract.php';
         $ftr .= '?'.http_build_query(['url'=>$url]);
         $json = file_get_contents($ftr);
@@ -51,7 +54,8 @@ class RoboFile extends \Robo\Tasks
         }
     }
 
-    public function text($url) {
+    public function text($url)
+    {
         $ftr = $this->get_ftr_url().'/extract.php';
         $ftr .= '?'.http_build_query(['url'=>$url, 'content'=>'text', 'links'=>'remove']);
         $json = file_get_contents($ftr);
@@ -62,16 +66,20 @@ class RoboFile extends \Robo\Tasks
         }
     }
 
-    public function cleanCache() {
+    public function cleanCache()
+    {
         $cache_cleanup_file = $this->getOrCreateCacheCleanupFile();
-        if (!$cache_cleanup_file) exit;
+        if (!$cache_cleanup_file) {
+            exit;
+        }
         $url = $this->get_ftr_url().'/'.$cache_cleanup_file;
         $this->say('Requesting '.$url.'...');
         file_get_contents($url);
         $this->say('Done!');
     }
 
-    public function updateSiteConfigFiles() {
+    public function updateSiteConfigFiles()
+    {
         $admin_hash = $this->get_admin_hash();
         if (!$admin_hash) {
             $this->say('Admin credentials not found. Run init.');
@@ -85,14 +93,15 @@ class RoboFile extends \Robo\Tasks
         $html = file_get_contents($url);
         if (strpos($html, 'All done!') !== false) {
             $this->say('Updated!');
-        } elseif(strpos($html, 'Your site config files are up to date!') !== false) {
+        } elseif (strpos($html, 'Your site config files are up to date!') !== false) {
             $this->say('Already up to date');
         } else {
             $this->say('Something went wrong');
         }
     }
 
-    public function init() {
+    public function init()
+    {
         $admin_hash = $this->get_admin_hash();
         if (!$admin_hash) {
             if (file_exists('custom_config.php')) {
@@ -127,7 +136,8 @@ class RoboFile extends \Robo\Tasks
         $this->enableSiteConfigUpdates();
     }
 
-    public function enableCaching() {
+    public function enableCaching()
+    {
         // check admin permissions
         $this->require_admin();
         $this->require_custom_config();
@@ -158,7 +168,8 @@ class RoboFile extends \Robo\Tasks
         $this->updateCronCacheCleanup();
     }
 
-    public function enableSiteConfigUpdates() {
+    public function enableSiteConfigUpdates()
+    {
         $cron_file = '/etc/cron.hourly/ff-ftr-siteconfig-update';
         // check admin permissions
         $this->require_admin();
@@ -182,7 +193,8 @@ class RoboFile extends \Robo\Tasks
         $this->say("Cron file: $cron_file");
     }
 
-    public function updateCronCacheCleanup() {
+    public function updateCronCacheCleanup()
+    {
         include 'config.php';
         if (file_exists('custom_config.php')) {
             include 'custom_config.php';
@@ -215,17 +227,22 @@ class RoboFile extends \Robo\Tasks
     /*** HELPER METHODS ***/
     /**********************/
 
-    private function get_ftr_url() {
+    private function get_ftr_url()
+    {
         return \Robo\Robo::Config()->get('RoboFile.full-text-rss-url');
     }
 
-    private function get_admin_hash() {
+    private function get_admin_hash()
+    {
         include 'config.php';
-        if (!isset($options->admin_credentials) || $options->admin_credentials['username'] == '' || $options->admin_credentials['password'] == '') return false;
+        if (!isset($options->admin_credentials) || $options->admin_credentials['username'] == '' || $options->admin_credentials['password'] == '') {
+            return false;
+        }
         return sha1($options->admin_credentials['username'].'+'.$options->admin_credentials['password']);
     }
 
-    private function require_admin() {
+    private function require_admin()
+    {
         $admin_hash = $this->get_admin_hash();
         if (!$admin_hash) {
             $this->say('Run "robo init" to set up admin password');
@@ -233,28 +250,32 @@ class RoboFile extends \Robo\Tasks
         }
     }
 
-    private function require_custom_config() {
+    private function require_custom_config()
+    {
         if (!file_exists('custom_config.php')) {
             $this->say('No custom_config.php file found. Run "robo init" first or "cp config.php custom_config.php".');
             exit;
         }
     }
 
-    private function get_config_lines() {
+    private function get_config_lines()
+    {
         if (!file_exists('config.php')) {
             return false;
         }
         return file('config.php', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     }
 
-    private function get_custom_config_lines() {
+    private function get_custom_config_lines()
+    {
         if (!file_exists('custom_config.php')) {
             return false;
         }
         return file('custom_config.php', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     }
 
-    private function getOrCreateCacheCleanupFile() {
+    private function getOrCreateCacheCleanupFile()
+    {
         $cache_cleanup_file = glob('cleancache_*.php');
         if (count($cache_cleanup_file) > 0) {
             return $cache_cleanup_file[0];
@@ -268,7 +289,8 @@ class RoboFile extends \Robo\Tasks
         }
     }
 
-    private function config_contains($line, $file='custom_config.php') {
+    private function config_contains($line, $file='custom_config.php')
+    {
         if ($file=='config.php') {
             $lines = $this->get_config_lines();
         } else {

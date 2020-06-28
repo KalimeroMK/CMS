@@ -15,7 +15,6 @@ class AddFieldsToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('birthday');
             $table->string('avatar');
-
         });
     }
 

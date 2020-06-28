@@ -5,7 +5,6 @@ namespace App\Http\Requests\Rules;
 use App\Http\Requests\CanAuthorise;
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class Update extends FormRequest
 {
     use CanAuthorise;

@@ -194,7 +194,9 @@ if (!defined('_FF_FTR_INDEX')) {
                     <label class="control-label" for="key">Access key</label>
                     <div class="controls">
                         <input type="text" id="key" name="key"
-                               class="input-medium" <?php if ($options->key_required) echo 'required'; ?>
+                               class="input-medium" <?php if ($options->key_required) {
+    echo 'required';
+} ?>
                                title="Access Key"
                                data-content="<?php echo ($options->key_required) ? 'An access key is required to generate a feed' : 'If you have an access key, enter it here.'; ?>"/>
                     </div>

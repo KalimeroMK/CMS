@@ -20,7 +20,7 @@ class UserController extends Controller
     /**
      * UserController constructor.
      */
-    function __construct()
+    public function __construct()
     {
         $this->middleware('permission:user-list');
         $this->middleware('permission:user-create', ['only' => ['create', 'store']]);

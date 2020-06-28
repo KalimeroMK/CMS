@@ -80,7 +80,6 @@ class GalleryController extends Controller
         unlink($image);
         $gallery->delete();
         return redirect()->back();
-
     }
 
     /**

@@ -173,7 +173,10 @@ class UTF8Utils
         \xEF\xBF[\xBE\xBF] # U+FFFE and U+FFFF
       |
         [\xF0-\xF4][\x8F-\xBF]\xBF[\xBE\xBF] # U+nFFFE and U+nFFFF (1 <= n <= 10_{16})
-      )/x', $data, $matches);
+      )/x',
+            $data,
+            $matches
+        );
         for ($i = 0; $i < $count; ++$i) {
             $errors[] = 'invalid-codepoint';
         }

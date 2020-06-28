@@ -5,7 +5,6 @@ namespace App\Http\Requests\Post;
 use App\Http\Requests\CanAuthorise;
 use Illuminate\Foundation\Http\FormRequest;
 
-
 /**
  * @property mixed title
  * @property mixed tags

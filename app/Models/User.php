@@ -15,7 +15,6 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
-
 /**
  * App\Models\User
  *
@@ -85,7 +84,6 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends Authenticatable
 {
-
     use HasRoles;
 
     use ClearsResponseCache;
@@ -209,5 +207,4 @@ class User extends Authenticatable
     {
         return $this->hasOne(LoginSecurity::class);
     }
-
 }

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-
 /**
  * App\Models\PostTag
  *
@@ -35,6 +34,4 @@ class PostTag extends Model
 
     protected $table = 'post_tag';
     protected $fillable = ['post_id', 'tag_id'];
-
-
 }

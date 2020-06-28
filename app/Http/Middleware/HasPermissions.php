@@ -19,7 +19,6 @@ class HasPermissions
      */
     public function handle($request, Closure $next, $permission)
     {
-
         if (Auth::check()) {
             if (!User::hasPermission($permission)) {
                 Session::flash('error_msg', trans('messages.do_not_have_permissions'));

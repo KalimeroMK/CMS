@@ -1,19 +1,22 @@
 <?php
-class ApiCest 
+class ApiCest
 {
     //private $base = 'http://ftr-tests.fivefilters.org/v1/';
 
-    private function getBaseURL() {
+    private function getBaseURL()
+    {
         $config = \Codeception\Configuration::config();
         $apiSettings = \Codeception\Configuration::suiteSettings('api', $config);
         return $apiSettings['modules']['enabled'][0]['REST']['url'];
     }
 
-    private function getTestHTMLURL() {
+    private function getTestHTMLURL()
+    {
         return $this->getBaseURL().'/tests/_data';
     }
 
-    private function checkBasicXML(ApiTester $I) {
+    private function checkBasicXML(ApiTester $I)
+    {
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsXml();
         $I->seeXmlResponseMatchesXpath('//rss/channel/title');
@@ -22,7 +25,8 @@ class ApiCest
         $I->seeResponseContains('C’était le procès à ne pas perdre');
     }
 
-    private function checkBasicJSON(ApiTester $I) {
+    private function checkBasicJSON(ApiTester $I)
+    {
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseJsonMatchesXpath('//rss/channel/title');
@@ -59,7 +63,8 @@ class ApiCest
     }
     */
 
-    public function inputHTML(ApiTester $I) {
+    public function inputHTML(ApiTester $I)
+    {
         $I->sendPOST('/extract.php', [
             'inputhtml'=>'<html><head><title>Example</title><body><article itemprop="articleBody"><p>Test</p></article></body></html>',
             'url'=>'chomsky.info/articles/20131105.htm',

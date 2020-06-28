@@ -2,13 +2,10 @@
 
 namespace App\Libraries;
 
-
 class SpinText
 {
-
     public function do_spin($title, $post)
     {
-
         $opt = [];//get_option('wp_auto_spin',array());
 
 
@@ -77,8 +74,6 @@ class SpinText
             $capped = $matches_cap[0];
             sort($capped);
             $capped = array_reverse($capped);
-
-
         }
 
 
@@ -110,15 +105,12 @@ class SpinText
             }
 
             $curly_quote = array_merge($curly_quote, $single_curly_quote, $single_curly_quote_and, $single_curly_quote_and_num, $curly_quote_regular);
-
-
         }
 
 
         $exword_founds = array(); // ini
 
         foreach ($execlude as $exword) {
-
             if (preg_match('/\b' . preg_quote(trim($exword), '/') . '\b/u', $article)) {
                 $exword_founds[] = trim($exword);
             }
@@ -221,8 +213,6 @@ class SpinText
                         //fix hivens like one-way
                         $article = str_replace('-' . $md, '-' . $word, $article);
                         $article = str_replace($md . '-', $word . '-', $article);
-
-
                     }
 
 
@@ -232,7 +222,6 @@ class SpinText
                     //echo ' uword:'.$uword;
 
                     if (preg_match('/\b' . $uword . '\b/u', $article)) {
-
                         $restruct = array($word);
                         $restruct = array_merge($restruct, $synonyms);
                         $restruct = array_unique($restruct);
@@ -243,14 +232,9 @@ class SpinText
                         $founds[md5($uword)] = $this->auto_spinner_upper_case(str_replace(array("\n", "\r"), '', $restruct));
 
                         $article = preg_replace('/\b' . $uword . '\b/u', md5($uword), $article);
-
                     }
-
-
                 }
             }
-
-
         }//foreach line of the synonyms file
 
 
@@ -268,7 +252,6 @@ class SpinText
                 $article = str_replace('(' . str_repeat('*', $i) . ')', $exword, $article);
                 $i++;
             }
-
         }
 
 
@@ -288,14 +271,10 @@ class SpinText
 
         //now article contains the synonyms on the form {test|test2}
         return $this->update_post($article);
-
-
     }
 
-    function auto_spinner_mb_ucfirst($string)
+    public function auto_spinner_mb_ucfirst($string)
     {
-
-
         if (function_exists('mb_strtoupper')) {
             $encoding = "utf8";
             $firstChar = mb_substr($string, 0, 1, $encoding);
@@ -306,9 +285,8 @@ class SpinText
         }
     }
 
-    function auto_spinner_upper_case($line)
+    public function auto_spinner_upper_case($line)
     {
-
         $w_arr = explode('|', $line);
 
         for ($i = 0; $i < count($w_arr); $i++) {
@@ -318,13 +296,10 @@ class SpinText
         $line = implode('|', $w_arr);
 
         return $line;
-
-
     }
 
-    function update_post($article)
+    public function update_post($article)
     {
-
         $spinned = $article;
 
         //synonyms
@@ -355,19 +330,15 @@ class SpinText
         $spintaxed_cnt = $spintaxed_arr[1];
 
         return ['title' => $spintaxed_ttl, 'description' => $spintaxed_cnt];
-
     }
-
 }
 
 class Spintax
 {
-
     public $editor_form;
 
-    function spin($string, $view = false)
+    public function spin($string, $view = false)
     {
-
         $opt = [];//get_option('wp_auto_spin',array());
 
 
@@ -391,13 +362,9 @@ class Spintax
                         //if content spinningactive
 
                         if (!in_array('OPT_AUTO_SPIN_DEACTIVE_CNT', $opt)) {
-
                             $randSyn = $out[rand(1, count($out) - 1)];
-
                         } else {
-
                             $randSyn = $out[0];
-
                         }
 
                         $output2[$z] = '<span  synonyms="' . $synonyms . '" class="synonym">' . $randSyn . '</span>';
@@ -419,13 +386,11 @@ class Spintax
         //$this->editor_form = $res2;
 
         return $res;
-
     }
 
 
-    function bracketArray($str, $view = false)
+    public function bracketArray($str, $view = false)
     {
-
         preg_match_all('/{(.*?)}/s', $str, $matches);
         $sets = $matches [0];
         foreach ($sets as $set) {
@@ -444,14 +409,14 @@ class Spintax
         return $_string;
     }
 
-    function printArray($array)
+    public function printArray($array)
     {
         echo '<pre>';
         print_r($array);
         echo '</pre>';
     }
 
-    function cleanArray($array)
+    public function cleanArray($array)
     {
         for ($i = 0; $i < count($array); $i++) {
             if ($array[$i] != "") {

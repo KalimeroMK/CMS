@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 
 class ErrorHandler extends Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -15,7 +14,6 @@ class ErrorHandler extends Controller
 
     public function handle($e)
     {
-
         switch ($e->getStatusCode()) {
 
             case '403':
@@ -34,7 +32,5 @@ class ErrorHandler extends Controller
                 return $this->show500();
                 break;
         }
-
     }
-
 }

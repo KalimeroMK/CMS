@@ -18,7 +18,6 @@ class CreateImageGalleryTable extends Migration
             $table->string('image');
             $table->timestamps();
         });
-
     }
 
     /**

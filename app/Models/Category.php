@@ -13,7 +13,6 @@ use Kalnoy\Nestedset\Collection;
 use Kalnoy\Nestedset\NodeTrait;
 use Kalnoy\Nestedset\QueryBuilder;
 
-
 /**
  * App\Models\Category
  *
@@ -85,8 +84,9 @@ class Category extends Model
     {
         $categories = self::get()->toTree();
         $lists = '<li class="list-unstyled">';
-        foreach ($categories as $category)
+        foreach ($categories as $category) {
             $lists .= self::renderNodeHP($category);
+        }
         $lists .= "</li>";
         return $lists;
     }
@@ -100,8 +100,9 @@ class Category extends Model
         $list = '<li class="dropdown-item"><a class="nav-link" href="/categories/' . $node->slug . '">' . $node->title . '</a>';
         if ($node->children()->count() > 0) {
             $list .= '<ul class="dropdown-menu">';
-            foreach ($node->children as $child)
+            foreach ($node->children as $child) {
                 $list .= self::renderNodeHP($child);
+            }
             $list .= "</ul>";
         }
         $list .= "</li>";
@@ -124,5 +125,4 @@ class Category extends Model
     {
         return $this->belongsToMany(Post::class);
     }
-
 }

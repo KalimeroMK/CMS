@@ -114,5 +114,4 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         $user->assignRole($role3);
     }
-
 }

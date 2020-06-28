@@ -42,9 +42,19 @@ class StatisticController extends Controller
             ]
         );
 
-        return view('admin.statistics.index',
-            compact('totalVisitors', 'analyticsData',
-                'mostVisitedPages', 'referrs', 'userTypes', 'devices', 'browsers', 'visitsPerCountry'));
+        return view(
+            'admin.statistics.index',
+            compact(
+                'totalVisitors',
+                'analyticsData',
+                'mostVisitedPages',
+                'referrs',
+                'userTypes',
+                'devices',
+                'browsers',
+                'visitsPerCountry'
+            )
+        );
     }
 
     /**
@@ -68,7 +78,6 @@ class StatisticController extends Controller
      */
     public function getVisitsPerCountry()
     {
-
         $visitsPerCountry = Analytics::performQuery(
             Period::years(1),
             'ga:sessions',
@@ -79,6 +88,4 @@ class StatisticController extends Controller
         );
         return $visitsPerCountry->rows;
     }
-
-
 }

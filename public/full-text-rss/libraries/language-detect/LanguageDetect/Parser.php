@@ -270,8 +270,8 @@ class Text_LanguageDetect_Parser extends Text_LanguageDetect
                     || ($char > 'Z' && $char < 'a'))
                     && $char != "'"
                 ) {  // does not skip the apostrophe
-                                            // since it's included in the language
-                                            // models
+                    // since it's included in the language
+                    // models
 
                     $skipped_count++;
                     continue;
@@ -292,7 +292,9 @@ class Text_LanguageDetect_Parser extends Text_LanguageDetect
         if ($this->_compile_unicode) {
             foreach ($unicode_chars as $utf8_char => $count) {
                 $search_result = $this->_unicode_block_name(
-                    $this->_utf8char2unicode($utf8_char), $blocks, $block_count
+                    $this->_utf8char2unicode($utf8_char),
+                    $blocks,
+                    $block_count
                 );
 
                 if ($search_result != -1) {

@@ -6,5 +6,4 @@ use Barryvdh\TranslationManager\Controller;
 
 class TranslationController extends Controller
 {
-    
 }

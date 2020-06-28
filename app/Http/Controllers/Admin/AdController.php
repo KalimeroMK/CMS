@@ -18,7 +18,7 @@ class AdController extends Controller
     /**
      * AdController constructor.
      */
-    function __construct()
+    public function __construct()
     {
         $this->middleware('permission:ad-list');
         $this->middleware('permission:ad-create', ['only' => ['create', 'store']]);
@@ -58,7 +58,6 @@ class AdController extends Controller
         $ad = Ad::create($request->all());
         Session::flash('success_msg', trans('messages.ads_created_success'));
         return redirect()->route('ads.edit', $ad);
-
     }
 
     /**

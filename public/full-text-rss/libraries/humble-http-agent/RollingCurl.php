@@ -11,9 +11,10 @@ Modified by Keyvan Minoukadeh for the Five Filters project: http://fivefilters.o
 /**
  * Class that represent a single curl request
  */
-class RollingCurlRequest {
+class RollingCurlRequest
+{
     public $url = false;
-	public $url_original = false; // used for tracking redirects
+    public $url_original = false; // used for tracking redirects
     public $method = 'GET';
     public $post_data = null;
     public $headers = null;
@@ -27,26 +28,29 @@ class RollingCurlRequest {
      * @param  $options
      * @return void
      */
-    function __construct($url, $method = "GET", $post_data = null, $headers = null, $options = null) {
+    public function __construct($url, $method = "GET", $post_data = null, $headers = null, $options = null)
+    {
         $this->url = $url;
-		$this->url_original = $url;
+        $this->url_original = $url;
         $this->method = $method;
         $this->post_data = $post_data;
         $this->headers = $headers;
         $this->options = $options;
     }
-	
+    
     /**
      * @param string $url
      * @return void
      */
-    public function set_original_url($url) {
-		$this->url_original = $url;
-	}
+    public function set_original_url($url)
+    {
+        $this->url_original = $url;
+    }
     /**
      * @return void
      */
-    public function __destruct() {
+    public function __destruct()
+    {
         unset($this->url, $this->url_original, $this->method, $this->post_data, $this->headers, $this->options);
     }
 }
@@ -54,7 +58,8 @@ class RollingCurlRequest {
 /**
  * RollingCurl custom exception
  */
-class RollingCurlException extends Exception {
+class RollingCurlException extends Exception
+{
 }
 
 /**
@@ -62,7 +67,8 @@ class RollingCurlException extends Exception {
  *
  * @throws RollingCurlException
  */
-class RollingCurl implements Countable {
+class RollingCurl implements Countable
+{
     /**
      * @var int
      *
@@ -133,7 +139,8 @@ class RollingCurl implements Countable {
      *
      * @return void
      */
-    function __construct($callback = null) {
+    public function __construct($callback = null)
+    {
         $this->callback = $callback;
     }
 
@@ -141,7 +148,8 @@ class RollingCurl implements Countable {
      * @param string $name
      * @return mixed
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         return (isset($this->{$name})) ? $this->{$name} : null;
     }
 
@@ -150,7 +158,8 @@ class RollingCurl implements Countable {
      * @param mixed $value
      * @return bool
      */
-    public function __set($name, $value) {
+    public function __set($name, $value)
+    {
         // append the base options & headers
         if ($name == "options" || $name == "headers") {
             $this->{$name} = $value + $this->{$name};
@@ -165,17 +174,19 @@ class RollingCurl implements Countable {
      *
      * @return int
      */
-    public function count() {
+    public function count()
+    {
         return count($this->requests);
-    }	
-	
+    }
+    
     /**
      * Add a request to the request queue
      *
      * @param Request $request
      * @return bool
      */
-    public function add($request) {
+    public function add($request)
+    {
         $this->requests[] = $request;
         return true;
     }
@@ -190,7 +201,8 @@ class RollingCurl implements Countable {
      * @param  $options
      * @return bool
      */
-    public function request($url, $method = "GET", $post_data = null, $headers = null, $options = null) {
+    public function request($url, $method = "GET", $post_data = null, $headers = null, $options = null)
+    {
         $this->requests[] = new RollingCurlRequest($url, $method, $post_data, $headers, $options);
         return true;
     }
@@ -203,7 +215,8 @@ class RollingCurl implements Countable {
      * @param  $options
      * @return bool
      */
-    public function get($url, $headers = null, $options = null) {
+    public function get($url, $headers = null, $options = null)
+    {
         return $this->request($url, "GET", null, $headers, $options);
     }
 
@@ -216,7 +229,8 @@ class RollingCurl implements Countable {
      * @param  $options
      * @return bool
      */
-    public function post($url, $post_data = null, $headers = null, $options = null) {
+    public function post($url, $post_data = null, $headers = null, $options = null)
+    {
         return $this->request($url, "POST", $post_data, $headers, $options);
     }
 
@@ -226,7 +240,8 @@ class RollingCurl implements Countable {
      * @param int $window_size Max number of simultaneous connections
      * @return string|bool
      */
-    public function execute($window_size = null) {
+    public function execute($window_size = null)
+    {
         // rolling curl window must always be greater than 1
         if (sizeof($this->requests) == 1) {
             return $this->single_curl();
@@ -242,7 +257,8 @@ class RollingCurl implements Countable {
      * @access private
      * @return string
      */
-    private function single_curl() {
+    private function single_curl()
+    {
         $ch = curl_init();
         $request = array_shift($this->requests);
         $options = $this->get_options($request);
@@ -256,9 +272,9 @@ class RollingCurl implements Countable {
             if (is_callable($this->callback)) {
                 call_user_func($callback, $output, $info, $request);
             }
-        }
-        else
+        } else {
             return $output;
+        }
         return true;
     }
 
@@ -270,13 +286,16 @@ class RollingCurl implements Countable {
      * @param int $window_size Max number of simultaneous connections
      * @return bool
      */
-    private function rolling_curl($window_size = null) {
-        if ($window_size)
+    private function rolling_curl($window_size = null)
+    {
+        if ($window_size) {
             $this->window_size = $window_size;
+        }
 
         // make sure the rolling window isn't greater than the # of urls
-        if (sizeof($this->requests) < $this->window_size)
+        if (sizeof($this->requests) < $this->window_size) {
             $this->window_size = sizeof($this->requests);
+        }
 
         if ($this->window_size < 2) {
             throw new RollingCurlException("Window size must be greater than 1");
@@ -300,8 +319,9 @@ class RollingCurl implements Countable {
 
         do {
             while (($execrun = curl_multi_exec($master, $running)) == CURLM_CALL_MULTI_PERFORM) ;
-            if ($execrun != CURLM_OK)
+            if ($execrun != CURLM_OK) {
                 break;
+            }
             // a request was just completed -- find out which one
             while ($done = curl_multi_info_read($master)) {
 
@@ -333,14 +353,14 @@ class RollingCurl implements Countable {
 
                 // remove the curl handle that just completed
                 curl_multi_remove_handle($master, $done['handle']);
-
             }
 
             // Block for data in / output; error handling is done by curl_multi_exec
             //if ($running) curl_multi_select($master, $this->timeout);
-			// removing timeout as it causes problems on Windows with PHP 5.3.5 and Curl 7.20.0
-			if ($running) curl_multi_select($master);
-
+            // removing timeout as it causes problems on Windows with PHP 5.3.5 and Curl 7.20.0
+            if ($running) {
+                curl_multi_select($master);
+            }
         } while ($running);
         curl_multi_close($master);
         return true;
@@ -354,22 +374,23 @@ class RollingCurl implements Countable {
      * @param Request $request
      * @return array
      */
-    private function get_options($request) {
+    private function get_options($request)
+    {
         // options for this entire curl object
         $options = $this->__get('options');
-		// We're managing reirects in PHP - allows us to intervene and rewrite/block URLs
-		// before the next request goes out.
-		$options[CURLOPT_FOLLOWLOCATION] = 0;
+        // We're managing reirects in PHP - allows us to intervene and rewrite/block URLs
+        // before the next request goes out.
+        $options[CURLOPT_FOLLOWLOCATION] = 0;
         $options[CURLOPT_MAXREDIRS] = 0;
         //if (ini_get('safe_mode') == 'Off' || !ini_get('safe_mode')) {
         //    $options[CURLOPT_FOLLOWLOCATION] = 1;
         //    $options[CURLOPT_MAXREDIRS] = 5;
         //}
         $headers = $this->__get('headers');
-		// append custom headers for this specific request
-		if ($request->headers) {
-			$headers = $headers + $request->headers;
-		}
+        // append custom headers for this specific request
+        if ($request->headers) {
+            $headers = $headers + $request->headers;
+        }
 
         // append custom options for this specific request
         if ($request->options) {
@@ -382,13 +403,13 @@ class RollingCurl implements Countable {
         if ($headers) {
             $options[CURLOPT_HTTPHEADER] = $headers;
         }
-		// return response headers
-		$options[CURLOPT_HEADER] = 1;
-		
-		// send HEAD request?
-		if ($request->method == 'HEAD') {
-			$options[CURLOPT_NOBODY] = 1;
-		}
+        // return response headers
+        $options[CURLOPT_HEADER] = 1;
+        
+        // send HEAD request?
+        if ($request->method == 'HEAD') {
+            $options[CURLOPT_NOBODY] = 1;
+        }
 
         return $options;
     }
@@ -396,7 +417,8 @@ class RollingCurl implements Countable {
     /**
      * @return void
      */
-    public function __destruct() {
+    public function __destruct()
+    {
         unset($this->window_size, $this->callback, $this->options, $this->headers, $this->requests);
     }
 }

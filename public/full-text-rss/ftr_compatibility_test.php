@@ -11,7 +11,7 @@ to it at www.example.com/ftr_compatibility_test.php
 If things don't look right, have a look at our hosting suggestions:
 http://help.fivefilters.org/customer/portal/articles/1143210-hosting
 
-Note: This compatibility test has been borrowed (and slightly adapted) from the one supplied by 
+Note: This compatibility test has been borrowed (and slightly adapted) from the one supplied by
 SimplePie.org. We have kept most of their checks intact as we use SimplePie in our application.
 http://github.com/simplepie/simplepie/tree/master/compatibility_test/
 */
@@ -36,14 +36,14 @@ $idn_ok = function_exists('idn_to_ascii');
 $dom_ok = extension_loaded('DOM');
 
 if (extension_loaded('xmlreader')) {
-	$xml_ok = true;
+    $xml_ok = true;
 } elseif (extension_loaded('xml')) {
-	$parser_check = xml_parser_create();
-	xml_parse_into_struct($parser_check, '<foo>&amp;</foo>', $values);
-	xml_parser_free($parser_check);
-	$xml_ok = isset($values[0]['value']);
+    $parser_check = xml_parser_create();
+    xml_parse_into_struct($parser_check, '<foo>&amp;</foo>', $values);
+    xml_parser_free($parser_check);
+    $xml_ok = isset($values[0]['value']);
 } else {
-	$xml_ok = false;
+    $xml_ok = false;
 }
 
 header('Content-type: text/html; charset=UTF-8');
@@ -348,7 +348,7 @@ div.chunk {
 				<p><em class="success">Your webhost has its act together!</em></p>
 				<p>You can download the latest version of <?php echo $app_name; ?> from <a href="http://fivefilters.org/content-only/#download">FiveFilters.org</a>.</p>
 				<p><strong>Note</strong>: Passing this test does not guarantee that <?php echo $app_name; ?> will run on your webhost &mdash; it only ensures that the basic requirements have been addressed. If you experience any problems, please let us know.</p>
-			<?php } else if ($php_ok && $xml_ok && $pcre_ok && $mbstring_ok && $allow_url_fopen_ok && $filter_ok) { ?>
+			<?php } elseif ($php_ok && $xml_ok && $pcre_ok && $mbstring_ok && $allow_url_fopen_ok && $filter_ok) { ?>
 				<h3>Bottom Line: Yes, you can!</h3>
 				<p><em>For most feeds, it'll run with no problems.</em> There are certain languages that you might have a hard time with though.</p>
 				<p>You can download the latest version of <?php echo $app_name; ?> from <a href="http://fivefilters.org/content-only/#download">FiveFilters.org</a>.</p>
@@ -364,62 +364,64 @@ div.chunk {
 
 			<h4>IDN support</h4>
 			<p>When treating an <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">internationalized domain name (IDN)</a> Full-Text RSS will try to make use of PHP's <code>idn_to_ascii</code> function to convert the domain to ASCII. If this function does not exist, you might have trouble retrieving article content from internationalized domains.</p>
-			<p class="highlight"><strong>idn_to_ascii</strong> is <?php if (!$idn_ok) echo '<strong>not</strong>'; ?> available on this server.</p>
+			<p class="highlight"><strong>idn_to_ascii</strong> is <?php if (!$idn_ok) {
+    echo '<strong>not</strong>';
+} ?> available on this server.</p>
 
 			<h4>HTTP module</h4>
 			<p>Full-Text RSS can make use of PHP's HTTP extension or <code>curl_multi</code> to make parallel HTTP requests when processing feeds. If neither are available, it will make sequential requests using <code>file_get_contents</code>.</p>
-			<?php 
-			$http_type = 'file_get_contents';
-			if (extension_loaded('http') && class_exists('http\Client\Request')) {
-				$http_type = 'HTTP extension';
-			} elseif ($curl_ok && function_exists('curl_multi_init')) {
-				$http_type = 'curl_multi';
-			}
-			?>
+			<?php
+            $http_type = 'file_get_contents';
+            if (extension_loaded('http') && class_exists('http\Client\Request')) {
+                $http_type = 'HTTP extension';
+            } elseif ($curl_ok && function_exists('curl_multi_init')) {
+                $http_type = 'curl_multi';
+            }
+            ?>
 			<p class="highlight"><strong><?php echo $http_type; ?></strong> will be used on this server.</p>
 			
 			<h4>Alternative PHP Cache (APC/APCu)</h4>
 			<p>Full-Text RSS can make use of APC's memory cache to store site config files (when requested for the first time). This is not required, but if available it may improve performance slightly by reducing disk access.</p>
 			<?php
-			if (function_exists('apc_add')) {
-				echo '<p class="highlight"><strong>APC is available</strong> on this server.</p>';
-			} else {
-				echo '<p class="highlight">APC is not available on this server.</p>';
-			}
-			?>
+            if (function_exists('apc_add')) {
+                echo '<p class="highlight"><strong>APC is available</strong> on this server.</p>';
+            } else {
+                echo '<p class="highlight">APC is not available on this server.</p>';
+            }
+            ?>
 			
 			<!--
 			<h4>HTML parser</h4>
 			<p><?php echo $app_name; ?> uses HTML5-PHP (an HTML5 parser written in PHP).</p>
 			<?php
-			if ($gumbo_ok) {
-				echo '<p class="highlight"><strong>Gumbo PHP</strong> will be used on this server.</p>';
-			} else {
-				echo '<p class="highlight">HTML5-PHP will be used for parsing.</p>';
-			}
-			?>
+            if ($gumbo_ok) {
+                echo '<p class="highlight"><strong>Gumbo PHP</strong> will be used on this server.</p>';
+            } else {
+                echo '<p class="highlight">HTML5-PHP will be used for parsing.</p>';
+            }
+            ?>
 			-->
 
 <!--
 			<h4>Language detection</h4>
 			<p>Full-Text RSS can detect the language of each article processed. This occurs using <a href="http://pear.php.net/package/Text_LanguageDetect">Text_LanguageDetect</a> or <a href="https://github.com/lstrojny/php-cld">PHP-CLD</a> (if available).</p>
 			<?php
-			if (extension_loaded('cld') && (version_compare(PHP_VERSION, '5.3.0') >= 0)) {
-				echo '<p class="highlight"><strong>PHP-CLD</strong> will be used on this server.</p>';
-			} else {
-				echo '<p class="highlight"><strong>Text_LanguageDetect</strong> will be used on this server.</p>';
-			}
-			?>
+            if (extension_loaded('cld') && (version_compare(PHP_VERSION, '5.3.0') >= 0)) {
+                echo '<p class="highlight"><strong>PHP-CLD</strong> will be used on this server.</p>';
+            } else {
+                echo '<p class="highlight"><strong>Text_LanguageDetect</strong> will be used on this server.</p>';
+            }
+            ?>
 -->
 			<h4>Automatic site config updates</h4>
 			<p>Full-Text RSS can be configured to update its site config files (which determine how content should be extracted for certain sites) by downloading the latest set from our GitHub repository. This functionaility is not required, and can be done manually. To configure this to occur automatically, you will need zip support enabled in PHP - we make use of the ZipArchive class.</p>
 			<?php
-			if (!class_exists('ZipArchive')) {
-				echo '<p class="highlight">ZipArchive is not available on this server. To update the site config files you will need to do it manually by downloading the latest set and uploading it to your server.</p>';
-			} else {
-				echo '<p class="highlight"><strong>ZipArchive is available</strong> on this server.</p>';
-			}
-			?>			
+            if (!class_exists('ZipArchive')) {
+                echo '<p class="highlight">ZipArchive is not available on this server. To update the site config files you will need to do it manually by downloading the latest set and uploading it to your server.</p>';
+            } else {
+                echo '<p class="highlight"><strong>ZipArchive is available</strong> on this server.</p>';
+            }
+            ?>			
 		</div>
 		
 		<div class="chunk">

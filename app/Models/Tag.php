@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-
 /**
  * App\Models\Tag
  *
@@ -34,7 +33,6 @@ use Illuminate\Support\Carbon;
  */
 class Tag extends Model
 {
-
     use ClearsResponseCache;
 
     protected $table = 'tags';

@@ -24,6 +24,5 @@ class Update extends FormRequest
             'title' => 'required|string|max:255',
             'parent_id' => 'not_in:' . $this->route('category')->id,
         ];
-
     }
 }

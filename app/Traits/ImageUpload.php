@@ -15,9 +15,7 @@ trait ImageUpload
      */
     public function verifyAndStoreImage(Request $request)
     {
-
         if ($request->hasFile('featured_image')) {
-
             $image = $request->file('featured_image');
             $imageName = Str::random(15) . '.' . $image->getClientOriginalExtension();
             $paths = $this->makePaths();
@@ -51,5 +49,4 @@ trait ImageUpload
         $medium = public_path() . '/uploads/images/posts/medium/';
         return (object)compact('original', 'thumbnail', 'medium');
     }
-
 }

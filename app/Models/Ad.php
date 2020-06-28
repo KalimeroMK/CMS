@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-
 /**
  * App\Models\Ad
  *
@@ -29,11 +28,8 @@ use Illuminate\Support\Carbon;
  */
 class Ad extends Model
 {
-
     use ClearsResponseCache;
 
     protected $fillable = ['code', 'position'];
     protected $table = 'ads';
-
-
 }

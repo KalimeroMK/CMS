@@ -47,7 +47,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->map2faRoutes();
 
         $this->mapWebRoutes();
-
     }
 
     /**
@@ -73,7 +72,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware(['web', 'auth', '2fa', 'activity', 'checkblocked'])
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
-
     }
 
     /**
@@ -85,7 +83,6 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace . '\Admin')
             ->prefix('2fa')
             ->group(base_path('routes/2fa.php'));
-
     }
 
     /**
@@ -101,6 +98,4 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
     }
-
-
 }

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-
 /**
  * App\Models\Setting
  *
@@ -70,5 +69,4 @@ class Setting extends Model
     use ClearsResponseCache;
 
     protected $table = 'settings';
-
 }

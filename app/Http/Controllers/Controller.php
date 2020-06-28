@@ -25,7 +25,6 @@ class Controller extends BaseController
      */
     public function __construct()
     {
-
         $tree = Category::getList();
         $tag = Tag::get();
         $slider_post = Post::orderBy('id', 'desc')->where('status', '1')->paginate(15);
@@ -39,7 +38,6 @@ class Controller extends BaseController
             'popular_post' => $popular_post,
             'slider_post' => $slider_post
         ]);
-
     }
 
     /**
@@ -81,5 +79,4 @@ class Controller extends BaseController
     {
         return response(view('errors.503'));
     }
-    
 }

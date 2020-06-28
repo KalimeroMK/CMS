@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*
 HTTP/1.0 200 OK
 {
-    "title": "Blowing Smoke with Boxing's Big Voice",	
+    "title": "Blowing Smoke with Boxing's Big Voice",
     "content" <div><p>Content here</p><p>More content</p></div>",
     "author": "Rafi Kohan",
     "excerpt": "Short extract from the beginning of the article.",
@@ -62,7 +62,7 @@ if (isset($_POST['xss']) && $_POST['xss'] === '0') {
 } elseif (isset($_GET['xss']) && $_GET['xss'] === '0') {
     $_GET['xss'] = '0';
 } else {
-	$_POST['xss'] = '1';
+    $_POST['xss'] = '1';
 }
 
 require 'makefulltextfeed.php';

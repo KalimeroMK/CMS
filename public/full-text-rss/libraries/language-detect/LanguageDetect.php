@@ -293,7 +293,6 @@ class Text_LanguageDetect
                     }
                 }
             }
-
         } else {
             // deleting all except the given languages
             if (!is_array($omit_list)) {
@@ -347,7 +346,6 @@ class Text_LanguageDetect
 
         if (is_string($lang)) {
             return isset($this->_lang_db[strtolower($lang)]);
-
         } elseif (is_array($lang)) {
             foreach ($lang as $test_lang) {
                 if (!isset($this->_lang_db[strtolower($test_lang)])) {
@@ -355,7 +353,6 @@ class Text_LanguageDetect
                 }
             }
             return true;
-
         } else {
             throw new Text_LanguageDetect_Exception(
                 'Unsupported parameter type passed to languageExists()',
@@ -395,7 +392,6 @@ class Text_LanguageDetect
                 $this->_max_score = 0;
             }
         }
-
     }
 
     /**
@@ -539,7 +535,6 @@ class Text_LanguageDetect
         if ($a_value == $b_value) {
             // if the values are the same, break ties using the key
             return strcmp($a_key, $b_key);
-
         } else {
             // if not, just sort normally
             if ($a_value > $b_value) {
@@ -703,7 +698,6 @@ class Text_LanguageDetect
 
             foreach ($present_blocks as $blockname) {
                 if (isset($this->_unicode_map[$blockname])) {
-
                     $possible_langs = array_merge(
                         $possible_langs,
                         array_keys($this->_unicode_map[$blockname])
@@ -724,9 +718,8 @@ class Text_LanguageDetect
                 array_unique($possible_langs)
             );
 
-            // needs to intersect it with the keys of _lang_db in case
+        // needs to intersect it with the keys of _lang_db in case
             // languages have been omitted
-
         } else {
             // or just try 'em all
             $possible_langs = array_keys($this->_lang_db);
@@ -842,12 +835,9 @@ class Text_LanguageDetect
             if ($this->_perl_compatible) {
                 $arr['confidence'] = (current($scores) - $arr['similarity'])
                     / $this->_max_score;
-
             } else {
                 $arr['confidence'] = $arr['similarity'] - current($scores);
-
             }
-
         } else {
             $arr['confidence'] = null;
         }
@@ -908,7 +898,6 @@ class Text_LanguageDetect
                 );
             }
             $unicode = $this->_utf8char2unicode($unicode);
-
         } elseif (!is_int($unicode)) {
             throw new Text_LanguageDetect_Exception(
                 'Input must be of type string or int.',
@@ -969,11 +958,9 @@ class Text_LanguageDetect
             if ($unicode < $blocks[$mid][0]) {
                 // if it's lower than the lower bound
                 $high = $mid - 1;
-
             } elseif ($unicode > $blocks[$mid][1]) {
                 // if it's higher than the upper bound
                 $low = $mid + 1;
-
             } else {
                 // found it
                 return $blocks[$mid];
@@ -1053,7 +1040,6 @@ class Text_LanguageDetect
                         $this->_lang_db[$lang2]
                     )
                 );
-
             } else {
                 // compare just $lang1 to all languages
                 $return_arr = array();
@@ -1069,8 +1055,6 @@ class Text_LanguageDetect
 
                 return $return_arr;
             }
-
-
         } else {
             // compare all languages to each other
             $return_arr = array();
@@ -1078,12 +1062,10 @@ class Text_LanguageDetect
                 foreach (array_keys($this->_lang_db) as $lang2) {
                     // skip comparing languages to themselves
                     if ($lang1 != $lang2) {
-
                         if (isset($return_arr[$lang2][$lang1])) {
                             // don't re-calculate what's already been done
                             $return_arr[$lang1][$lang2]
                                 = $return_arr[$lang2][$lang1];
-
                         } else {
                             // calculate
                             $return_arr[$lang1][$lang2]
@@ -1093,7 +1075,6 @@ class Text_LanguageDetect
                                         $this->_lang_db[$lang2]
                                     )
                                 );
-
                         }
                     }
                 }
@@ -1525,7 +1506,6 @@ class Text_LanguageDetect
             }
 
             return $char;
-
         } elseif ($ord >> 5 == 6) { // two-byte char
             // multi-byte chars
             $nextchar = $str[$counter++]; // get next byte
@@ -1547,7 +1527,6 @@ class Text_LanguageDetect
                     ) {
                         $nextchar = chr($nextord + 32);
                     }
-
                 } elseif ($ord == 208) {
                     // lower case cyrillic alphabet
                     $nextord = ord($nextchar);
@@ -1555,7 +1534,6 @@ class Text_LanguageDetect
                     if ($nextord >= 144 && $nextord <= 159) {
                         // lower case
                         $nextchar = chr($nextord + 32);
-
                     } elseif ($nextord >= 160 && $nextord <= 175) {
                         // if Er - Ya
                         // lower case
@@ -1571,12 +1549,10 @@ class Text_LanguageDetect
 
             // tag on next 2 bytes
             return $char . $str[$counter++] . $str[$counter++];
-
         } elseif ($ord >> 3 == 30) { // four-byte char
 
             // tag on next 3 bytes
             return $char . $str[$counter++] . $str[$counter++] . $str[$counter++];
-
         } else {
             // error?
         }

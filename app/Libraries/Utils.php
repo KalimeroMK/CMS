@@ -18,7 +18,7 @@ class Utils
      * @param $type
      * @return mixed|string
      */
-    static function getSettingsValue($category, $key, $type)
+    public static function getSettingsValue($category, $key, $type)
     {
         $setting = Setting::where('category', $category)->where('column_key', $key)->first();
 
@@ -58,7 +58,6 @@ class Utils
      */
     public static function generateResetCode()
     {
-
         $code = Crypt::encrypt(str_random(12));
 
         if (DB::table('users')->where("reset_password_code", $code)->count() > 0) {
@@ -75,7 +74,6 @@ class Utils
      */
     public static function imageUpload($file, $folder = null)
     {
-
         $timestamp = uniqid();
         $ext = $file->guessClientExtension();
         $name = $timestamp . "_file." . $ext;
@@ -86,10 +84,7 @@ class Utils
             if ($file->move(public_path() . '/uploads/', $name)) {
                 return URL::to('/uploads/' . $name);
             }
-
         } else {
-
-
             if (!File::exists(public_path() . '/uploads/' . $folder)) {
                 File::makeDirectory(public_path() . '/uploads/' . $folder);
             }
@@ -101,7 +96,6 @@ class Utils
         }
 
         return false;
-
     }
 
     /**
@@ -110,37 +104,40 @@ class Utils
      * @param $value
      * @param $type
      */
-    static function setOrCreateSettings($category, $key, $value, $type)
+    public static function setOrCreateSettings($category, $key, $value, $type)
     {
         if (sizeof(Setting::where('category', $category)->where('column_key', $key)->get()) > 0) {
-
             $setting = Setting::where('category', $category)->where('column_key', $key)->first();
 
-            if ($type == config('constants.TYPE_TEXT'))
+            if ($type == config('constants.TYPE_TEXT')) {
                 $setting->value_txt = $value;
+            }
 
-            if ($type == config('constants.TYPE_STRING'))
+            if ($type == config('constants.TYPE_STRING')) {
                 $setting->value_string = $value;
+            }
 
-            if ($type == config('constants.TYPE_CHECK'))
+            if ($type == config('constants.TYPE_CHECK')) {
                 $setting->value_check = $value;
+            }
 
             $setting->save();
-
         } else {
-
             $settings = new Setting();
             $settings->category = $category;
             $settings->column_key = $key;
 
-            if ($type == config('constants.TYPE_TEXT'))
+            if ($type == config('constants.TYPE_TEXT')) {
                 $settings->value_txt = $value;
+            }
 
-            if ($type == config('constants.TYPE_STRING'))
+            if ($type == config('constants.TYPE_STRING')) {
                 $settings->value_string = $value;
+            }
 
-            if ($type == config('constants.TYPE_CHECK'))
+            if ($type == config('constants.TYPE_CHECK')) {
                 $settings->value_check = $value;
+            }
 
             $settings->save();
         }
@@ -150,9 +147,8 @@ class Utils
      * @param $key
      * @return array|StdClass
      */
-    static function getSettings($key)
+    public static function getSettings($key)
     {
-
         if ($key == config('constants.CATEGORY_CUSTOM_CSS')) {
             //Custom CSS Tab
             $settings_custom_css = new StdClass();
@@ -254,7 +250,7 @@ class Utils
      * @param $col_key
      * @return mixed|string
      */
-    static function findOrTxt($cat, $col_key)
+    public static function findOrTxt($cat, $col_key)
     {
         return DB::table('settings')->where('category', $cat)->where('column_key', $col_key)->count() > 0 ? Setting::where('category', $cat)->where('column_key', $col_key)->first()->value_txt : '';
     }
@@ -264,7 +260,7 @@ class Utils
      * @param $col_key
      * @return mixed|string
      */
-    static function findOrString($cat, $col_key)
+    public static function findOrString($cat, $col_key)
     {
         return DB::table('settings')->where('category', $cat)->where('column_key', $col_key)->count() > 0 ? Setting::where('category', $cat)->where('column_key', $col_key)->first()->value_string : '';
     }
@@ -274,7 +270,7 @@ class Utils
      * @param $col_key
      * @return int|mixed
      */
-    static function findOrCheck($cat, $col_key)
+    public static function findOrCheck($cat, $col_key)
     {
         return DB::table('settings')->where('category', $cat)->where('column_key', $col_key)->count() > 0 ? Setting::where('category', $cat)->where('column_key', $col_key)->first()->value_check : 0;
     }
@@ -284,7 +280,7 @@ class Utils
      * @param $arg
      * @param string $lvl
      */
-    static function logs($str, $arg, $lvl = 'info')
+    public static function logs($str, $arg, $lvl = 'info')
     {
         Log::$lvl($str . ' :: ' . print_r($arg, true));
     }
@@ -293,7 +289,7 @@ class Utils
      * @param $arg
      * @param string $lvl
      */
-    static function log($arg, $lvl = 'info')
+    public static function log($arg, $lvl = 'info')
     {
         Log::$lvl(print_r($arg, true));
     }
@@ -304,7 +300,7 @@ class Utils
      * @return false|string
      */
 
-    static function prettyDate($date, $time = true)
+    public static function prettyDate($date, $time = true)
     {
         $format = $time ? "F jS, Y" : "F jS, Y";
         return date($format, strtotime($date));
@@ -315,9 +311,8 @@ class Utils
      * @param int $strength
      * @return string
      */
-    static function generateRandom($length = 9, $strength = 4)
+    public static function generateRandom($length = 9, $strength = 4)
     {
-
         $vowels = 'aeiouy';
         $consonants = 'bcdfghjklmnpqrstvwxz';
         if ($strength & 1) {
@@ -351,10 +346,8 @@ class Utils
      * @param $v
      * @return string
      */
-    static function messages($v)
+    public static function messages($v)
     {
         return implode('', $v->messages()->all('<li style="margin-left:10px;">:message</li>'));
     }
-
-
 }

@@ -20,7 +20,7 @@ class PostController extends Controller
     /**
      * PostController constructor.
      */
-    function __construct()
+    public function __construct()
     {
         $this->middleware('permission:post-list');
         $this->middleware('permission:post-create', ['only' => ['create', 'store']]);
@@ -57,7 +57,6 @@ class PostController extends Controller
      */
     public function store(Store $request)
     {
-
         $post = Post::create($request->except('featured_image') + [
                 'featured_image' => $this->verifyAndStoreImage($request)
             ]);

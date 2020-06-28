@@ -14,14 +14,13 @@ use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Session;
 
-
 class CategoryController extends Controller
 {
 
     /**
      * CategoryController constructor.
      */
-    function __construct()
+    public function __construct()
     {
         $this->middleware('permission:categories-list');
         $this->middleware('permission:categories-create', ['only' => ['create', 'store']]);

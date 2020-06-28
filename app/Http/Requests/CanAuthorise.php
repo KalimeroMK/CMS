@@ -3,7 +3,6 @@
 
 namespace App\Http\Requests;
 
-
 trait CanAuthorise
 {
     /**

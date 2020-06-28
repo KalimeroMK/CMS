@@ -1,8 +1,8 @@
 <?php
 ob_start();
-function tpl_header($title='Full-Text RSS Admin Area') {
-global $admin_page;
-?>
+function tpl_header($title='Full-Text RSS Admin Area')
+{
+    global $admin_page; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -38,9 +38,15 @@ global $admin_page;
       <div class="container">
 	  <a class="brand" href="../">Full-Text RSS</a>
 		<ul class="nav">
-		  <li <?php if (@$admin_page == 'update') echo 'class="active"'; ?>><a href="update.php">Update patterns</a></li>
-		  <li <?php if (@$admin_page == 'edit-pattern') echo 'class="active"'; ?>><a href="edit-pattern.php">Edit patterns</a></li>
-		  <li <?php if (@$admin_page == 'apc') echo 'class="active"'; ?>><a href="apc.php?OB=2">APC</a></li>		  
+		  <li <?php if (@$admin_page == 'update') {
+        echo 'class="active"';
+    } ?>><a href="update.php">Update patterns</a></li>
+		  <li <?php if (@$admin_page == 'edit-pattern') {
+        echo 'class="active"';
+    } ?>><a href="edit-pattern.php">Edit patterns</a></li>
+		  <li <?php if (@$admin_page == 'apc') {
+        echo 'class="active"';
+    } ?>><a href="apc.php?OB=2">APC</a></li>		  
 		  <li><a href="index.php?logout">Logout</a></li>
 		</ul>
       </div>
@@ -50,8 +56,9 @@ global $admin_page;
 <?php
 }
 
-function tpl_footer() {
-?>
+function tpl_footer()
+{
+    ?>
 
   </div> <!-- close container -->
   </body>

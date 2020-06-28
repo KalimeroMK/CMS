@@ -18,7 +18,7 @@ class TagController extends Controller
     /**
      * TagController constructor.
      */
-    function __construct()
+    public function __construct()
     {
         $this->middleware('permission:tags-list');
         $this->middleware('permission:tags-create', ['only' => ['create', 'store']]);
@@ -71,5 +71,4 @@ class TagController extends Controller
         Session::flash('success_msg', trans('messages.tag_deleted_success'));
         return redirect()->back();
     }
-
 }

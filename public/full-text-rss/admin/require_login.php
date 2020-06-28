@@ -29,13 +29,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 session_start();
 require_once(dirname(dirname(__FILE__)).'/config.php');
 
-if (isset($_GET['logout'])) $_SESSION['auth'] = 0;
+if (isset($_GET['logout'])) {
+    $_SESSION['auth'] = 0;
+}
 
 if (!isset($_SESSION['auth']) || $_SESSION['auth'] != 1) {
-	if (isset($admin_page)) {
-		header('Location: login.php?redirect='.$admin_page);
-	} else {
-		header('Location: login.php');
-	}
-	exit;
+    if (isset($admin_page)) {
+        header('Location: login.php?redirect='.$admin_page);
+    } else {
+        header('Location: login.php');
+    }
+    exit;
 }

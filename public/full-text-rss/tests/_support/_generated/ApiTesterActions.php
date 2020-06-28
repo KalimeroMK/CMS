@@ -31,7 +31,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::haveHttpHeader()
      */
-    public function haveHttpHeader($name, $value) {
+    public function haveHttpHeader($name, $value)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('haveHttpHeader', func_get_args()));
     }
 
@@ -58,7 +59,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::deleteHeader()
      */
-    public function deleteHeader($name) {
+    public function deleteHeader($name)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('deleteHeader', func_get_args()));
     }
 
@@ -76,7 +78,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeHttpHeader()
      */
-    public function canSeeHttpHeader($name, $value = null) {
+    public function canSeeHttpHeader($name, $value = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeHttpHeader', func_get_args()));
     }
     /**
@@ -91,7 +94,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeHttpHeader()
      */
-    public function seeHttpHeader($name, $value = null) {
+    public function seeHttpHeader($name, $value = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeHttpHeader', func_get_args()));
     }
 
@@ -109,7 +113,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeHttpHeader()
      */
-    public function cantSeeHttpHeader($name, $value = null) {
+    public function cantSeeHttpHeader($name, $value = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeHttpHeader', func_get_args()));
     }
     /**
@@ -124,7 +129,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::dontSeeHttpHeader()
      */
-    public function dontSeeHttpHeader($name, $value = null) {
+    public function dontSeeHttpHeader($name, $value = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeHttpHeader', func_get_args()));
     }
 
@@ -148,7 +154,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeHttpHeaderOnce()
      */
-    public function canSeeHttpHeaderOnce($name) {
+    public function canSeeHttpHeaderOnce($name)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeHttpHeaderOnce', func_get_args()));
     }
     /**
@@ -169,7 +176,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeHttpHeaderOnce()
      */
-    public function seeHttpHeaderOnce($name) {
+    public function seeHttpHeaderOnce($name)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeHttpHeaderOnce', func_get_args()));
     }
 
@@ -187,7 +195,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::grabHttpHeader()
      */
-    public function grabHttpHeader($name, $first = null) {
+    public function grabHttpHeader($name, $first = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('grabHttpHeader', func_get_args()));
     }
 
@@ -203,7 +212,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::amHttpAuthenticated()
      */
-    public function amHttpAuthenticated($username, $password) {
+    public function amHttpAuthenticated($username, $password)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Condition('amHttpAuthenticated', func_get_args()));
     }
 
@@ -219,7 +229,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::amDigestAuthenticated()
      */
-    public function amDigestAuthenticated($username, $password) {
+    public function amDigestAuthenticated($username, $password)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Condition('amDigestAuthenticated', func_get_args()));
     }
 
@@ -234,7 +245,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::amBearerAuthenticated()
      */
-    public function amBearerAuthenticated($accessToken) {
+    public function amBearerAuthenticated($accessToken)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Condition('amBearerAuthenticated', func_get_args()));
     }
 
@@ -260,7 +272,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::amNTLMAuthenticated()
      */
-    public function amNTLMAuthenticated($username, $password) {
+    public function amNTLMAuthenticated($username, $password)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Condition('amNTLMAuthenticated', func_get_args()));
     }
 
@@ -292,7 +305,8 @@ trait ApiTesterActions
      * @throws ModuleException
      * @see \Codeception\Module\REST::amAWSAuthenticated()
      */
-    public function amAWSAuthenticated($additionalAWSConfig = null) {
+    public function amAWSAuthenticated($additionalAWSConfig = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Condition('amAWSAuthenticated', func_get_args()));
     }
 
@@ -333,7 +347,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendPOST()
      */
-    public function sendPOST($url, $params = null, $files = null) {
+    public function sendPOST($url, $params = null, $files = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendPOST', func_get_args()));
     }
 
@@ -349,7 +364,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendHEAD()
      */
-    public function sendHEAD($url, $params = null) {
+    public function sendHEAD($url, $params = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendHEAD', func_get_args()));
     }
 
@@ -365,7 +381,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendOPTIONS()
      */
-    public function sendOPTIONS($url, $params = null) {
+    public function sendOPTIONS($url, $params = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendOPTIONS', func_get_args()));
     }
 
@@ -381,7 +398,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendGET()
      */
-    public function sendGET($url, $params = null) {
+    public function sendGET($url, $params = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendGET', func_get_args()));
     }
 
@@ -398,7 +416,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendPUT()
      */
-    public function sendPUT($url, $params = null, $files = null) {
+    public function sendPUT($url, $params = null, $files = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendPUT', func_get_args()));
     }
 
@@ -415,7 +434,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendPATCH()
      */
-    public function sendPATCH($url, $params = null, $files = null) {
+    public function sendPATCH($url, $params = null, $files = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendPATCH', func_get_args()));
     }
 
@@ -432,7 +452,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendDELETE()
      */
-    public function sendDELETE($url, $params = null, $files = null) {
+    public function sendDELETE($url, $params = null, $files = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendDELETE', func_get_args()));
     }
 
@@ -452,7 +473,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendLINK()
      */
-    public function sendLINK($url, $linkEntries) {
+    public function sendLINK($url, $linkEntries)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendLINK', func_get_args()));
     }
 
@@ -470,7 +492,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::sendUNLINK()
      */
-    public function sendUNLINK($url, $linkEntries) {
+    public function sendUNLINK($url, $linkEntries)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('sendUNLINK', func_get_args()));
     }
 
@@ -485,7 +508,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseIsJson()
      */
-    public function canSeeResponseIsJson() {
+    public function canSeeResponseIsJson()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseIsJson', func_get_args()));
     }
     /**
@@ -497,7 +521,8 @@ trait ApiTesterActions
      * @part json
      * @see \Codeception\Module\REST::seeResponseIsJson()
      */
-    public function seeResponseIsJson() {
+    public function seeResponseIsJson()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseIsJson', func_get_args()));
     }
 
@@ -513,7 +538,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseContains()
      */
-    public function canSeeResponseContains($text) {
+    public function canSeeResponseContains($text)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseContains', func_get_args()));
     }
     /**
@@ -526,7 +552,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeResponseContains()
      */
-    public function seeResponseContains($text) {
+    public function seeResponseContains($text)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseContains', func_get_args()));
     }
 
@@ -542,7 +569,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeResponseContains()
      */
-    public function cantSeeResponseContains($text) {
+    public function cantSeeResponseContains($text)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeResponseContains', func_get_args()));
     }
     /**
@@ -555,7 +583,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::dontSeeResponseContains()
      */
-    public function dontSeeResponseContains($text) {
+    public function dontSeeResponseContains($text)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeResponseContains', func_get_args()));
     }
 
@@ -588,7 +617,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseContainsJson()
      */
-    public function canSeeResponseContainsJson($json = null) {
+    public function canSeeResponseContainsJson($json = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseContainsJson', func_get_args()));
     }
     /**
@@ -618,7 +648,8 @@ trait ApiTesterActions
      * @part json
      * @see \Codeception\Module\REST::seeResponseContainsJson()
      */
-    public function seeResponseContainsJson($json = null) {
+    public function seeResponseContainsJson($json = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseContainsJson', func_get_args()));
     }
 
@@ -643,7 +674,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::grabResponse()
      */
-    public function grabResponse() {
+    public function grabResponse()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('grabResponse', func_get_args()));
     }
 
@@ -675,7 +707,8 @@ trait ApiTesterActions
      * @part json
      * @see \Codeception\Module\REST::grabDataFromResponseByJsonPath()
      */
-    public function grabDataFromResponseByJsonPath($jsonPath) {
+    public function grabDataFromResponseByJsonPath($jsonPath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('grabDataFromResponseByJsonPath', func_get_args()));
     }
 
@@ -725,7 +758,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseJsonMatchesXpath()
      */
-    public function canSeeResponseJsonMatchesXpath($xpath) {
+    public function canSeeResponseJsonMatchesXpath($xpath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseJsonMatchesXpath', func_get_args()));
     }
     /**
@@ -772,7 +806,8 @@ trait ApiTesterActions
      * @version 2.0.9
      * @see \Codeception\Module\REST::seeResponseJsonMatchesXpath()
      */
-    public function seeResponseJsonMatchesXpath($xpath) {
+    public function seeResponseJsonMatchesXpath($xpath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseJsonMatchesXpath', func_get_args()));
     }
 
@@ -787,7 +822,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeResponseJsonMatchesXpath()
      */
-    public function cantSeeResponseJsonMatchesXpath($xpath) {
+    public function cantSeeResponseJsonMatchesXpath($xpath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeResponseJsonMatchesXpath', func_get_args()));
     }
     /**
@@ -799,7 +835,8 @@ trait ApiTesterActions
      * @part json
      * @see \Codeception\Module\REST::dontSeeResponseJsonMatchesXpath()
      */
-    public function dontSeeResponseJsonMatchesXpath($xpath) {
+    public function dontSeeResponseJsonMatchesXpath($xpath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeResponseJsonMatchesXpath', func_get_args()));
     }
 
@@ -853,7 +890,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseJsonMatchesJsonPath()
      */
-    public function canSeeResponseJsonMatchesJsonPath($jsonPath) {
+    public function canSeeResponseJsonMatchesJsonPath($jsonPath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseJsonMatchesJsonPath', func_get_args()));
     }
     /**
@@ -904,7 +942,8 @@ trait ApiTesterActions
      * @version 2.0.9
      * @see \Codeception\Module\REST::seeResponseJsonMatchesJsonPath()
      */
-    public function seeResponseJsonMatchesJsonPath($jsonPath) {
+    public function seeResponseJsonMatchesJsonPath($jsonPath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseJsonMatchesJsonPath', func_get_args()));
     }
 
@@ -919,7 +958,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeResponseJsonMatchesJsonPath()
      */
-    public function cantSeeResponseJsonMatchesJsonPath($jsonPath) {
+    public function cantSeeResponseJsonMatchesJsonPath($jsonPath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeResponseJsonMatchesJsonPath', func_get_args()));
     }
     /**
@@ -931,7 +971,8 @@ trait ApiTesterActions
      * @part json
      * @see \Codeception\Module\REST::dontSeeResponseJsonMatchesJsonPath()
      */
-    public function dontSeeResponseJsonMatchesJsonPath($jsonPath) {
+    public function dontSeeResponseJsonMatchesJsonPath($jsonPath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeResponseJsonMatchesJsonPath', func_get_args()));
     }
 
@@ -946,7 +987,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeResponseContainsJson()
      */
-    public function cantSeeResponseContainsJson($json = null) {
+    public function cantSeeResponseContainsJson($json = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeResponseContainsJson', func_get_args()));
     }
     /**
@@ -958,7 +1000,8 @@ trait ApiTesterActions
      * @param array $json
      * @see \Codeception\Module\REST::dontSeeResponseContainsJson()
      */
-    public function dontSeeResponseContainsJson($json = null) {
+    public function dontSeeResponseContainsJson($json = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeResponseContainsJson', func_get_args()));
     }
 
@@ -1047,7 +1090,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseMatchesJsonType()
      */
-    public function canSeeResponseMatchesJsonType($jsonType, $jsonPath = null) {
+    public function canSeeResponseMatchesJsonType($jsonType, $jsonPath = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseMatchesJsonType', func_get_args()));
     }
     /**
@@ -1133,7 +1177,8 @@ trait ApiTesterActions
      * @param string $jsonPath
      * @see \Codeception\Module\REST::seeResponseMatchesJsonType()
      */
-    public function seeResponseMatchesJsonType($jsonType, $jsonPath = null) {
+    public function seeResponseMatchesJsonType($jsonType, $jsonPath = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseMatchesJsonType', func_get_args()));
     }
 
@@ -1151,7 +1196,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeResponseMatchesJsonType()
      */
-    public function cantSeeResponseMatchesJsonType($jsonType, $jsonPath = null) {
+    public function cantSeeResponseMatchesJsonType($jsonType, $jsonPath = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeResponseMatchesJsonType', func_get_args()));
     }
     /**
@@ -1166,7 +1212,8 @@ trait ApiTesterActions
      * @version 2.1.3
      * @see \Codeception\Module\REST::dontSeeResponseMatchesJsonType()
      */
-    public function dontSeeResponseMatchesJsonType($jsonType, $jsonPath = null) {
+    public function dontSeeResponseMatchesJsonType($jsonType, $jsonPath = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeResponseMatchesJsonType', func_get_args()));
     }
 
@@ -1182,7 +1229,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseEquals()
      */
-    public function canSeeResponseEquals($expected) {
+    public function canSeeResponseEquals($expected)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseEquals', func_get_args()));
     }
     /**
@@ -1195,7 +1243,8 @@ trait ApiTesterActions
      * @param $response
      * @see \Codeception\Module\REST::seeResponseEquals()
      */
-    public function seeResponseEquals($expected) {
+    public function seeResponseEquals($expected)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseEquals', func_get_args()));
     }
 
@@ -1219,7 +1268,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseCodeIs()
      */
-    public function canSeeResponseCodeIs($code) {
+    public function canSeeResponseCodeIs($code)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseCodeIs', func_get_args()));
     }
     /**
@@ -1240,7 +1290,8 @@ trait ApiTesterActions
      * @param $code
      * @see \Codeception\Module\REST::seeResponseCodeIs()
      */
-    public function seeResponseCodeIs($code) {
+    public function seeResponseCodeIs($code)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseCodeIs', func_get_args()));
     }
 
@@ -1264,7 +1315,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeResponseCodeIs()
      */
-    public function cantSeeResponseCodeIs($code) {
+    public function cantSeeResponseCodeIs($code)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeResponseCodeIs', func_get_args()));
     }
     /**
@@ -1285,7 +1337,8 @@ trait ApiTesterActions
      * @param $code
      * @see \Codeception\Module\REST::dontSeeResponseCodeIs()
      */
-    public function dontSeeResponseCodeIs($code) {
+    public function dontSeeResponseCodeIs($code)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeResponseCodeIs', func_get_args()));
     }
 
@@ -1300,7 +1353,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseCodeIsSuccessful()
      */
-    public function canSeeResponseCodeIsSuccessful() {
+    public function canSeeResponseCodeIsSuccessful()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseCodeIsSuccessful', func_get_args()));
     }
     /**
@@ -1312,7 +1366,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeResponseCodeIsSuccessful()
      */
-    public function seeResponseCodeIsSuccessful() {
+    public function seeResponseCodeIsSuccessful()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseCodeIsSuccessful', func_get_args()));
     }
 
@@ -1327,7 +1382,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseCodeIsRedirection()
      */
-    public function canSeeResponseCodeIsRedirection() {
+    public function canSeeResponseCodeIsRedirection()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseCodeIsRedirection', func_get_args()));
     }
     /**
@@ -1339,7 +1395,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeResponseCodeIsRedirection()
      */
-    public function seeResponseCodeIsRedirection() {
+    public function seeResponseCodeIsRedirection()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseCodeIsRedirection', func_get_args()));
     }
 
@@ -1354,7 +1411,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseCodeIsClientError()
      */
-    public function canSeeResponseCodeIsClientError() {
+    public function canSeeResponseCodeIsClientError()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseCodeIsClientError', func_get_args()));
     }
     /**
@@ -1366,7 +1424,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeResponseCodeIsClientError()
      */
-    public function seeResponseCodeIsClientError() {
+    public function seeResponseCodeIsClientError()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseCodeIsClientError', func_get_args()));
     }
 
@@ -1381,7 +1440,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseCodeIsServerError()
      */
-    public function canSeeResponseCodeIsServerError() {
+    public function canSeeResponseCodeIsServerError()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseCodeIsServerError', func_get_args()));
     }
     /**
@@ -1393,7 +1453,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeResponseCodeIsServerError()
      */
-    public function seeResponseCodeIsServerError() {
+    public function seeResponseCodeIsServerError()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseCodeIsServerError', func_get_args()));
     }
 
@@ -1408,7 +1469,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeResponseIsXml()
      */
-    public function canSeeResponseIsXml() {
+    public function canSeeResponseIsXml()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseIsXml', func_get_args()));
     }
     /**
@@ -1420,7 +1482,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeResponseIsXml()
      */
-    public function seeResponseIsXml() {
+    public function seeResponseIsXml()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeResponseIsXml', func_get_args()));
     }
 
@@ -1439,7 +1502,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeXmlResponseMatchesXpath()
      */
-    public function canSeeXmlResponseMatchesXpath($xpath) {
+    public function canSeeXmlResponseMatchesXpath($xpath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeXmlResponseMatchesXpath', func_get_args()));
     }
     /**
@@ -1455,7 +1519,8 @@ trait ApiTesterActions
      * @param $xpath
      * @see \Codeception\Module\REST::seeXmlResponseMatchesXpath()
      */
-    public function seeXmlResponseMatchesXpath($xpath) {
+    public function seeXmlResponseMatchesXpath($xpath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeXmlResponseMatchesXpath', func_get_args()));
     }
 
@@ -1474,7 +1539,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeXmlResponseMatchesXpath()
      */
-    public function cantSeeXmlResponseMatchesXpath($xpath) {
+    public function cantSeeXmlResponseMatchesXpath($xpath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeXmlResponseMatchesXpath', func_get_args()));
     }
     /**
@@ -1490,7 +1556,8 @@ trait ApiTesterActions
      * @param $xpath
      * @see \Codeception\Module\REST::dontSeeXmlResponseMatchesXpath()
      */
-    public function dontSeeXmlResponseMatchesXpath($xpath) {
+    public function dontSeeXmlResponseMatchesXpath($xpath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeXmlResponseMatchesXpath', func_get_args()));
     }
 
@@ -1506,7 +1573,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::grabTextContentFromXmlElement()
      */
-    public function grabTextContentFromXmlElement($cssOrXPath) {
+    public function grabTextContentFromXmlElement($cssOrXPath)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('grabTextContentFromXmlElement', func_get_args()));
     }
 
@@ -1523,7 +1591,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::grabAttributeFromXmlElement()
      */
-    public function grabAttributeFromXmlElement($cssOrXPath, $attribute) {
+    public function grabAttributeFromXmlElement($cssOrXPath, $attribute)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('grabAttributeFromXmlElement', func_get_args()));
     }
 
@@ -1541,7 +1610,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeXmlResponseEquals()
      */
-    public function canSeeXmlResponseEquals($xml) {
+    public function canSeeXmlResponseEquals($xml)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeXmlResponseEquals', func_get_args()));
     }
     /**
@@ -1556,7 +1626,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeXmlResponseEquals()
      */
-    public function seeXmlResponseEquals($xml) {
+    public function seeXmlResponseEquals($xml)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeXmlResponseEquals', func_get_args()));
     }
 
@@ -1574,7 +1645,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeXmlResponseEquals()
      */
-    public function cantSeeXmlResponseEquals($xml) {
+    public function cantSeeXmlResponseEquals($xml)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeXmlResponseEquals', func_get_args()));
     }
     /**
@@ -1589,7 +1661,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::dontSeeXmlResponseEquals()
      */
-    public function dontSeeXmlResponseEquals($xml) {
+    public function dontSeeXmlResponseEquals($xml)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeXmlResponseEquals', func_get_args()));
     }
 
@@ -1614,7 +1687,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeXmlResponseIncludes()
      */
-    public function canSeeXmlResponseIncludes($xml) {
+    public function canSeeXmlResponseIncludes($xml)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeXmlResponseIncludes', func_get_args()));
     }
     /**
@@ -1636,7 +1710,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeXmlResponseIncludes()
      */
-    public function seeXmlResponseIncludes($xml) {
+    public function seeXmlResponseIncludes($xml)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeXmlResponseIncludes', func_get_args()));
     }
 
@@ -1653,7 +1728,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeXmlResponseIncludes()
      */
-    public function cantSeeXmlResponseIncludes($xml) {
+    public function cantSeeXmlResponseIncludes($xml)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeXmlResponseIncludes', func_get_args()));
     }
     /**
@@ -1667,7 +1743,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::dontSeeXmlResponseIncludes()
      */
-    public function dontSeeXmlResponseIncludes($xml) {
+    public function dontSeeXmlResponseIncludes($xml)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeXmlResponseIncludes', func_get_args()));
     }
 
@@ -1711,7 +1788,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::seeBinaryResponseEquals()
      */
-    public function canSeeBinaryResponseEquals($hash, $algo = null) {
+    public function canSeeBinaryResponseEquals($hash, $algo = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('seeBinaryResponseEquals', func_get_args()));
     }
     /**
@@ -1752,7 +1830,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::seeBinaryResponseEquals()
      */
-    public function seeBinaryResponseEquals($hash, $algo = null) {
+    public function seeBinaryResponseEquals($hash, $algo = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('seeBinaryResponseEquals', func_get_args()));
     }
 
@@ -1776,7 +1855,8 @@ trait ApiTesterActions
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\REST::dontSeeBinaryResponseEquals()
      */
-    public function cantSeeBinaryResponseEquals($hash, $algo = null) {
+    public function cantSeeBinaryResponseEquals($hash, $algo = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeBinaryResponseEquals', func_get_args()));
     }
     /**
@@ -1797,7 +1877,8 @@ trait ApiTesterActions
      * @part xml
      * @see \Codeception\Module\REST::dontSeeBinaryResponseEquals()
      */
-    public function dontSeeBinaryResponseEquals($hash, $algo = null) {
+    public function dontSeeBinaryResponseEquals($hash, $algo = null)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Assertion('dontSeeBinaryResponseEquals', func_get_args()));
     }
 
@@ -1812,7 +1893,8 @@ trait ApiTesterActions
      * @deprecated
      * @see \Codeception\Module\REST::grabDataFromJsonResponse()
      */
-    public function grabDataFromJsonResponse($path) {
+    public function grabDataFromJsonResponse($path)
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('grabDataFromJsonResponse', func_get_args()));
     }
 
@@ -1831,7 +1913,8 @@ trait ApiTesterActions
      * @part json
      * @see \Codeception\Module\REST::stopFollowingRedirects()
      */
-    public function stopFollowingRedirects() {
+    public function stopFollowingRedirects()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('stopFollowingRedirects', func_get_args()));
     }
 
@@ -1850,7 +1933,8 @@ trait ApiTesterActions
      * @part json
      * @see \Codeception\Module\REST::startFollowingRedirects()
      */
-    public function startFollowingRedirects() {
+    public function startFollowingRedirects()
+    {
         return $this->getScenario()->runStep(new \Codeception\Step\Action('startFollowingRedirects', func_get_args()));
     }
 }

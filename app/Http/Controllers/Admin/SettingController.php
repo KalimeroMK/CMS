@@ -19,7 +19,7 @@ class SettingController extends Controller
     /**
      * SettingController constructor.
      */
-    function __construct()
+    public function __construct()
     {
         $this->middleware('permission:settings-list');
         $this->middleware('permission:settings-create', ['only' => ['create', 'store']]);
@@ -80,6 +80,5 @@ class SettingController extends Controller
             ]);
         Session::flash('success_msg', trans('messages.settings_updated_success'));
         return response()->json($setting);
-
     }
 }

@@ -12,7 +12,6 @@ use Sabre\Xml\Reader;
 
 class Parser
 {
-
     public $reader;
 
     /**
@@ -37,15 +36,11 @@ class Parser
         $optimized_feeds = [];
 
         if ($feeds['name'] == "{}rss") {
-
             $loopers = $feeds['value'];
 
             foreach ($loopers as $l) {
-
                 if ($l['name'] == "{}channel") {
-
                     foreach ($l['value'] as $loop) {
-
                         if ($loop['name'] == "{}title") {
                             $optimized_feeds['channel']['title'] = $loop['value'];
                         }
@@ -83,7 +78,6 @@ class Parser
                         }
 
                         if ($loop['name'] == "{}item") {
-
                             $values = $loop['value'];
 
                             $renderType = config('constants.RENDER_TYPE_IMAGE');
@@ -99,8 +93,6 @@ class Parser
 
 
                             foreach ($values as $value) {
-
-
                                 if ($value['name'] == '{}title') {
                                     $title = $value['value'];
                                 }
@@ -111,54 +103,47 @@ class Parser
 
 
                                 if ($value['name'] == '{}enclosure') {
-
-
                                     if (!empty($value['attributes']['url']) && !empty($value['attributes']['type']) && in_array($value['attributes']['type'], array('image/jpeg', "image/png", "image"))) {
                                         $featuredImage = $value['attributes']['url'];
                                         dd($featuredImage);
                                         if (!empty($value['attributes']['size']) && $value['attributes']['size'] == 'l' && !in_array('forum', $value['attributes'])) {
                                             $featuredImageL = $value['attributes']['url'];
-
                                         }
 
                                         $renderType = config('constants.RENDER_TYPE_IMAGE');
                                     }
 
-                                    if (!empty($featuredImageL)) $featuredImage = $featuredImageL;
-
+                                    if (!empty($featuredImageL)) {
+                                        $featuredImage = $featuredImageL;
+                                    }
                                 }
 
                                 if ($value['name'] == '{http://search.yahoo.com/mrss/}content') {
-
                                     if (!empty($value['attributes']['url']) && !empty($value['attributes']['type']) && in_array($value['attributes']['type'], array('image/jpeg', "image/png", "image"))) {
                                         $featuredImage = $value['attributes']['url'];
                                         $renderType = config('constants.RENDER_TYPE_IMAGE');
                                     }
 
-                                    if (!empty($featuredImageL)) $featuredImage = $featuredImageL;
-
+                                    if (!empty($featuredImageL)) {
+                                        $featuredImage = $featuredImageL;
+                                    }
                                 }
 
                                 if ($value['name'] == '{}link') {
-
                                     if (isset($value['value']) && strlen($value['value']) > 0) {
-
                                         $url = $value['value'];
 
                                         //Load any url:
                                         $info = Embed::make($url)->parseUrl();
 
                                         if ($info) {
-
                                             $link = $url;
                                             $renderType = config('constants.RENDER_TYPE_VIDEO');
                                             $videoEmbedCode = $info->getHtml();
-
                                         } else {
                                             $renderType = config('constants.RENDER_TYPE_TEXT');
                                             $link = $url;
                                         }
-
                                     }
                                 }
 
@@ -184,8 +169,6 @@ class Parser
                                         $renderType = config('constants.RENDER_TYPE_IMAGE');
                                     }
                                 }
-
-
                             }
 
                             $optimized_feeds['channel']['item'][] = ['categories' => $categories, 'render_type' => $renderType, 'featured_image' => $featuredImage, 'video_embed_code' => $videoEmbedCode, 'title' => $title, 'link' => $link, 'description' => $description, 'pubDate' => $pubDate];
@@ -199,7 +182,6 @@ class Parser
             $loopers = $feeds['value'];
 
             foreach ($loopers as $loop) {
-
                 if ($loop['name'] == "{http://www.w3.org/2005/Atom}title") {
                     $optimized_feeds['channel']['title'] = $loop['value'];
                 }
@@ -237,7 +219,6 @@ class Parser
                 }
 
                 if ($loop['name'] == "{http://www.w3.org/2005/Atom}entry") {
-
                     $values = $loop['value'];
 
                     $categories = [];
@@ -250,7 +231,6 @@ class Parser
                     $renderType = config('constants.RENDER_TYPE_IMAGE');
 
                     foreach ($values as $value) {
-
                         if ($value['name'] == '{http://www.w3.org/2005/Atom}title') {
                             $title = $value['value'];
                         }
@@ -262,9 +242,7 @@ class Parser
                         }
 
                         if ($value['name'] == '{http://www.w3.org/2005/Atom}link') {
-
                             if (isset($value['attributes']['href']) && strlen($value['attributes']['href']) > 0) {
-
                                 $url = $value['attributes']['href'];
 
                                 $info = Embed::make($url)->parseUrl();
@@ -277,9 +255,7 @@ class Parser
                                     $renderType = config('constants.RENDER_TYPE_TEXT');
                                     $link = $url;
                                 }
-
                             }
-
                         }
 
                         if ($value['name'] == '{http://www.w3.org/2005/Atom}published') {
@@ -291,35 +267,26 @@ class Parser
                         }
 
                         if ($value['name'] == '{http://www.w3.org/2005/Atom}content') {
-
                             if (strlen($description) <= 0) {
                                 $description = $value['value'];
                             }
-
                         }
 
                         if ($value['name'] == '{http://search.yahoo.com/mrss/}group') {
-
                             $more_values = $value['value'];
 
                             foreach ($more_values as $v) {
-
                                 if ($v['name'] == '{http://search.yahoo.com/mrss/}title') {
                                     $title = $v['value'];
                                 }
 
                                 if ($v['name'] == '{http://search.yahoo.com/mrss/}thumbnail') {
-
                                     if (!empty($v['attributes']['url'])) {
                                         $featuredImage = $v['attributes']['url'];
                                     }
-
                                 }
-
                             }
-
                         }
-
                     }
 
 
@@ -338,10 +305,13 @@ class Parser
      */
     public static function fetchFull($url, $description)
     {
+        if (is_null($url)) {
+            return $description;
+        }
 
-        if (is_null($url)) return $description;
-
-        if (strlen($url) <= 0) return $description;
+        if (strlen($url) <= 0) {
+            return $description;
+        }
 
         $request = 'https://ogledalo.mk/full-text-rss/makefulltextfeed.php?format=json&url=' . $url;
         $ch = curl_init();
@@ -351,10 +321,14 @@ class Parser
         $result = curl_exec($ch);
         curl_close($ch);
 
-        if (!$result) return $description;
+        if (!$result) {
+            return $description;
+        }
         $json = json_decode($result);
 
-        if (!$json) return $description;
+        if (!$json) {
+            return $description;
+        }
         $item = $json->rss->channel->item;
         foreach ($item as $items) {
             $post = new Post();
@@ -372,14 +346,14 @@ class Parser
      */
     public static function setImgAndRenderType($description, $video_embed_code, $featured_image)
     {
-
         $render_type = config('constants.RENDER_TYPE_VIDEO');
 
         //If no featured image but we have description then pull image from description
-        if (strlen($featured_image) <= 0 && !is_null($description) && strlen($description) > 0)
+        if (strlen($featured_image) <= 0 && !is_null($description) && strlen($description) > 0) {
             $find_img = imageUpload::getImageWithSizeGreaterThan($description);
-        else
+        } else {
             $find_img = $featured_image;
+        }
 
         //No Video Embed set it to IMAGE POST
         if (strlen($video_embed_code) <= 0) {
@@ -428,10 +402,10 @@ class Parser
     {
         $spin_text = new SpinText();
 
-        if (strlen($description) > 0)
+        if (strlen($description) > 0) {
             return $spin_text->do_spin($title, $description);
-        else
+        } else {
             return ['title' => $title, 'description' => $description];
+        }
     }
-
 }

@@ -1,18 +1,18 @@
 <?php
 /**
  * Cookie Jar
- * 
- * PHP class for handling cookies, as defined by the Netscape spec: 
+ *
+ * PHP class for handling cookies, as defined by the Netscape spec:
  * <http://curl.haxx.se/rfc/cookie_spec.html>
  *
  * This class should be used to handle cookies (storing cookies from HTTP response messages, and
- * sending out cookies in HTTP request messages). This has been adapted for FiveFilters.org 
+ * sending out cookies in HTTP request messages). This has been adapted for FiveFilters.org
  * from the original version used in HTTP Navigator. See http://www.keyvan.net/code/http-navigator/
- * 
+ *
  * This class is mainly based on Cookies.pm <http://search.cpan.org/author/GAAS/libwww-perl-5.65/
  * lib/HTTP/Cookies.pm> from the libwww-perl collection <http://www.linpro.no/lwp/>.
  * Unlike Cookies.pm, this class only supports the Netscape cookie spec, not RFC 2965.
- * 
+ *
  * @version 0.5
  * @date 2011-03-15
  * @see http://php.net/HttpRequestPool
@@ -36,26 +36,30 @@ class CookieJar
     * @access private
     */
     public $cookies = array();
-	public $debug = false;
+    public $debug = false;
 
     /**
     * Constructor
     */
-    function __construct() {
+    public function __construct()
+    {
     }
 
-	protected function debug($msg, $file=null, $line=null) {
-		if ($this->debug) {
-			$mem = round(memory_get_usage()/1024, 2);
-			$memPeak = round(memory_get_peak_usage()/1024, 2);
-			echo '* ',$msg;
-			if (isset($file, $line)) echo " ($file line $line)";
-			echo ' - mem used: ',$mem," (peak: $memPeak)\n";	
-			ob_flush();
-			flush();
-		}
-	}	
-	
+    protected function debug($msg, $file=null, $line=null)
+    {
+        if ($this->debug) {
+            $mem = round(memory_get_usage()/1024, 2);
+            $memPeak = round(memory_get_peak_usage()/1024, 2);
+            echo '* ',$msg;
+            if (isset($file, $line)) {
+                echo " ($file line $line)";
+            }
+            echo ' - mem used: ',$mem," (peak: $memPeak)\n";
+            ob_flush();
+            flush();
+        }
+    }
+    
     /**
     * Get matching cookies
     *
@@ -68,23 +72,27 @@ class CookieJar
     */
     public function getMatchingCookies($url)
     {
-		if (($parts = @parse_url($url)) && isset($parts['scheme'], $parts['host'], $parts['path'])) {
-			$param['domain'] = $parts['host'];
-			$param['path'] = $parts['path'];
-			$param['secure'] = (strtolower($parts['scheme']) == 'https');
-			unset($parts);
-		} else {
-			return false;
-		}
+        if (($parts = @parse_url($url)) && isset($parts['scheme'], $parts['host'], $parts['path'])) {
+            $param['domain'] = $parts['host'];
+            $param['path'] = $parts['path'];
+            $param['secure'] = (strtolower($parts['scheme']) == 'https');
+            unset($parts);
+        } else {
+            return false;
+        }
         // RFC 2965 notes:
         //  If multiple cookies satisfy the criteria above, they are ordered in
         //  the Cookie header such that those with more specific Path attributes
         //  precede those with less specific.  Ordering with respect to other
         //  attributes (e.g., Domain) is unspecified.
         $domain = $param['domain'];
-        if (strpos($domain, '.') === false) $domain .= '.local';
+        if (strpos($domain, '.') === false) {
+            $domain .= '.local';
+        }
         $request_path = $param['path'];
-        if ($request_path == '') $request_path = '/';
+        if ($request_path == '') {
+            $request_path = '/';
+        }
         $request_secure = $param['secure'];
         $now = time();
         $matched_cookies = array();
@@ -104,14 +112,20 @@ class CookieJar
             usort($paths, array($this, '_cmp_length'));
             foreach ($paths as $path) {
                 // continue to next cookie if request path does not path-match cookie path
-                if (!$this->_path_match($request_path, $path)) continue;
+                if (!$this->_path_match($request_path, $path)) {
+                    continue;
+                }
                 // loop through cookie names
                 $this->debug('     path match found: '.$path);
                 foreach ($cookies[$path] as $name => $values) {
                     // if this cookie is secure but request isn't, continue to next cookie
-                    if ($values[1] && !$request_secure) continue;
+                    if ($values[1] && !$request_secure) {
+                        continue;
+                    }
                     // if cookie is not a session cookie and has expired, continue to next cookie
-                    if (is_int($values[2]) && ($values[2] < $now)) continue;
+                    if (is_int($values[2]) && ($values[2] < $now)) {
+                        continue;
+                    }
                     // cookie matches request
                     $this->debug('      cookie match: '.$name.'='.$values[0]);
                     $matched_cookies[] = $name.'='.$values[0];
@@ -136,13 +150,21 @@ class CookieJar
     */
     public function storeCookies($url, $set_cookies)
     {
-        if (count($set_cookies) == 0) return;
-		$param = @parse_url($url);
-		if (!is_array($param) || !isset($param['host'])) return;
+        if (count($set_cookies) == 0) {
+            return;
+        }
+        $param = @parse_url($url);
+        if (!is_array($param) || !isset($param['host'])) {
+            return;
+        }
         $request_host = $param['host'];
-        if (strpos($request_host, '.') === false) $request_host .= '.local';
+        if (strpos($request_host, '.') === false) {
+            $request_host .= '.local';
+        }
         $request_path = @$param['path'];
-        if ($request_path == '') $request_path = '/';
+        if ($request_path == '') {
+            $request_path = '/';
+        }
         //
         // loop through set-cookie headers
         //
@@ -157,9 +179,13 @@ class CookieJar
                 if (count($key_val) != 2) {
                     // if the first param isn't a name=value pair, continue to the next set-cookie
                     // header
-                    if ($x == 0) continue 2;
+                    if ($x == 0) {
+                        continue 2;
+                    }
                     // check for secure flag
-                    if (strtolower(trim($key_val[0])) == 'secure') $tmp_cookie['secure'] = true;
+                    if (strtolower(trim($key_val[0])) == 'secure') {
+                        $tmp_cookie['secure'] = true;
+                    }
                     // continue to next param
                     continue;
                 }
@@ -191,7 +217,9 @@ class CookieJar
                     $this->debug(' - domain "'.$domain.'" appears to be an ip address');
                     continue;
                 }
-                if (substr($domain, 0, 1) != '.') $domain = ".$domain";
+                if (substr($domain, 0, 1) != '.') {
+                    $domain = ".$domain";
+                }
                 if (!$this->_domain_match($request_host, $domain)) {
                     $this->debug(' - request host "'.$request_host.'" does not domain-match "'.$domain.'"');
                     continue;
@@ -211,7 +239,9 @@ class CookieJar
             } else {
                 $path = $request_path;
                 $path = substr($path, 0, strrpos($path, '/'));
-                if ($path == '') $path = '/';
+                if ($path == '') {
+                    $path = '/';
+                }
             }
             // check if secure
             $secure = (isset($tmp_cookie['secure'])) ? true : false;
@@ -227,16 +257,17 @@ class CookieJar
             $this->set_cookie($domain, $path, $tmp_cookie['name'], $tmp_cookie['value'], $secure, $expires);
         }
     }
-	
-	// return array of set-cookie values extracted from HTTP response headers (string $h)
-	public static function extractCookies($h) {
+    
+    // return array of set-cookie values extracted from HTTP response headers (string $h)
+    public static function extractCookies($h)
+    {
         $x = 0;
         $lines = 0;
         $headers = array();
         $last_match = false;
-		$h = explode("\n", $h);
+        $h = explode("\n", $h);
         foreach ($h as $line) {
-			$line = rtrim($line);
+            $line = rtrim($line);
             $lines++;
 
             $trimmed_line = trim($line);
@@ -275,7 +306,7 @@ class CookieJar
             }
         }
         return $headers;
-	}
+    }
 
     /**
     * Set Cookie
@@ -287,17 +318,27 @@ class CookieJar
     * @param int $expires expiry time (null if session cookie, <= 0 will delete cookie)
     * @return void
     */
-    function set_cookie($domain, $path, $name, $value, $secure=false, $expires=null)
+    public function set_cookie($domain, $path, $name, $value, $secure=false, $expires=null)
     {
-        if ($domain == '') return;
-        if ($path == '') return;
-        if ($name == '') return;
-        // check if cookie needs to go
-        if (isset($expires) && ($expires <= 0)) {
-            if (isset($this->cookies[$domain][$path][$name])) unset($this->cookies[$domain][$path][$name]);
+        if ($domain == '') {
             return;
         }
-        if ($value == '') return;
+        if ($path == '') {
+            return;
+        }
+        if ($name == '') {
+            return;
+        }
+        // check if cookie needs to go
+        if (isset($expires) && ($expires <= 0)) {
+            if (isset($this->cookies[$domain][$path][$name])) {
+                unset($this->cookies[$domain][$path][$name]);
+            }
+            return;
+        }
+        if ($value == '') {
+            return;
+        }
         $this->cookies[$domain][$path][$name] = array($value, $secure, $expires);
         return;
     }
@@ -309,16 +350,22 @@ class CookieJar
     * @param string $name
     * @return void
     */
-    function clear($domain=null, $path=null, $name=null)
+    public function clear($domain=null, $path=null, $name=null)
     {
         if (!isset($domain)) {
             $this->cookies = array();
         } elseif (!isset($path)) {
-            if (isset($this->cookies[$domain])) unset($this->cookies[$domain]);
+            if (isset($this->cookies[$domain])) {
+                unset($this->cookies[$domain]);
+            }
         } elseif (!isset($name)) {
-            if (isset($this->cookies[$domain][$path])) unset($this->cookies[$domain][$path]);
+            if (isset($this->cookies[$domain][$path])) {
+                unset($this->cookies[$domain][$path]);
+            }
         } elseif (isset($name)) {
-            if (isset($this->cookies[$domain][$path][$name])) unset($this->cookies[$domain][$path][$name]);
+            if (isset($this->cookies[$domain][$path][$name])) {
+                unset($this->cookies[$domain][$path][$name]);
+            }
         }
     }
 
@@ -327,10 +374,13 @@ class CookieJar
     * @access private
     * @return int
     */
-    function _cmp_length($a, $b)
+    public function _cmp_length($a, $b)
     {
-        $la = strlen($a); $lb = strlen($b);
-        if ($la == $lb) return 0;
+        $la = strlen($a);
+        $lb = strlen($b);
+        if ($la == $lb) {
+            return 0;
+        }
         return ($la > $lb) ? -1 : 1;
     }
 
@@ -340,17 +390,21 @@ class CookieJar
     * @return string
     * @access private
     */
-    function _reduce_domain($domain)
+    public function _reduce_domain($domain)
     {
-        if ($domain == '') return '';
-        if (substr($domain, 0, 1) == '.') return substr($domain, 1);
+        if ($domain == '') {
+            return '';
+        }
+        if (substr($domain, 0, 1) == '.') {
+            return substr($domain, 1);
+        }
         return substr($domain, strpos($domain, '.'));
     }
 
     /**
     * Path match - check if path1 path-matches path2
     *
-    * From RFC 2965: 
+    * From RFC 2965:
     *   <i>For two strings that represent paths, P1 and P2, P1 path-matches P2
     *   if P2 is a prefix of P1 (including the case where P1 and P2 string-
     *   compare equal).  Thus, the string /tec/waldo path-matches /tec.</i>
@@ -359,7 +413,7 @@ class CookieJar
     * @return bool
     * @access private
     */
-    function _path_match($path1, $path2)
+    public function _path_match($path1, $path2)
     {
         return (substr($path1, 0, strlen($path2)) == $path2);
     }
@@ -367,7 +421,7 @@ class CookieJar
     /**
     * Domain match - check if domain1 domain-matches domain2
     *
-    * A few extracts from RFC 2965: 
+    * A few extracts from RFC 2965:
     *  -  A Set-Cookie2 from request-host y.x.foo.com for Domain=.foo.com
     *     would be rejected, because H is y.x and contains a dot.
     *
@@ -389,12 +443,14 @@ class CookieJar
     * @return bool
     * @access private
     */
-    function _domain_match($domain1, $domain2)
+    public function _domain_match($domain1, $domain2)
     {
         $domain1 = strtolower($domain1);
         $domain2 = strtolower($domain2);
         while (strpos($domain1, '.') !== false) {
-            if ($domain1 == $domain2) return true;
+            if ($domain1 == $domain2) {
+                return true;
+            }
             $domain1 = $this->_reduce_domain($domain1);
             continue;
         }

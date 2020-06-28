@@ -31,41 +31,50 @@ ini_set("display_errors", 1);
 @set_time_limit(120);
 
 // check file name
-if (basename(__FILE__) == 'cleancache.php') die('cleancache.php must be renamed');
+if (basename(__FILE__) == 'cleancache.php') {
+    die('cleancache.php must be renamed');
+}
 
 // set include path
 set_include_path(realpath(dirname(__FILE__).'/libraries').PATH_SEPARATOR.get_include_path());
 
 // Autoloading of classes allows us to include files only when they're
 // needed. If we've got a cached copy, for example, only Zend_Cache is loaded.
-function __autoload($class_name) {
-	static $mapping = array(
-		'Zend_Cache' => 'Zend/Cache.php'
-	);
-	if (isset($mapping[$class_name])) {
-		//echo "Loading $class_name\n<br />";
-		require_once $mapping[$class_name];
-		return true;
-	} else {
-		return false;
-	}
+function __autoload($class_name)
+{
+    static $mapping = array(
+        'Zend_Cache' => 'Zend/Cache.php'
+    );
+    if (isset($mapping[$class_name])) {
+        //echo "Loading $class_name\n<br />";
+        require_once $mapping[$class_name];
+        return true;
+    } else {
+        return false;
+    }
 }
 require_once dirname(__FILE__).'/config.php';
-if (!$options->caching) die('Caching is disabled');
+if (!$options->caching) {
+    die('Caching is disabled');
+}
 
 // clean APC cache
 if ($options->apc && function_exists('apc_delete')) {
-	$_apc_data = apc_cache_info('user');
-	foreach ($_apc_data['cache_list'] as $_apc_item) {
-		//var_dump($_apc_item); exit;
-		// APCu keys incompatible with original APC keys, apparently fixed in newer versions, but not in 4.0.4
-		// So let's look for those keys and fix here (ctime -> creation_time, key -> info).
-		if (isset($_apc_item['ctime'])) $_apc_item['creation_time'] = $_apc_item['ctime'];
-		if (isset($_apc_item['key'])) $_apc_item['info'] = $_apc_item['key'];
-		if ($_apc_item['ttl'] > 0 && ($_apc_item['ttl'] + $_apc_item['creation_time'] < time())) {
-			apc_delete($_apc_item['info']);
-		}
-	}
+    $_apc_data = apc_cache_info('user');
+    foreach ($_apc_data['cache_list'] as $_apc_item) {
+        //var_dump($_apc_item); exit;
+        // APCu keys incompatible with original APC keys, apparently fixed in newer versions, but not in 4.0.4
+        // So let's look for those keys and fix here (ctime -> creation_time, key -> info).
+        if (isset($_apc_item['ctime'])) {
+            $_apc_item['creation_time'] = $_apc_item['ctime'];
+        }
+        if (isset($_apc_item['key'])) {
+            $_apc_item['info'] = $_apc_item['key'];
+        }
+        if ($_apc_item['ttl'] > 0 && ($_apc_item['ttl'] + $_apc_item['creation_time'] < time())) {
+            apc_delete($_apc_item['info']);
+        }
+    }
 }
 
 // clean rss (non-key) cache
@@ -77,35 +86,35 @@ $frontendOptions = array(
    'ignore_user_abort' => false
 );
 $backendOptions = array(
-	'cache_dir' => $options->cache_dir.'/rss/',
-	'file_locking' => false,
-	'read_control' => true,
-	'read_control_type' => 'strlen',
-	'hashed_directory_level' => $options->cache_directory_level,
-	'hashed_directory_perm' => 0777,
-	'cache_file_perm' => 0664,
-	'file_name_prefix' => 'ff'
+    'cache_dir' => $options->cache_dir.'/rss/',
+    'file_locking' => false,
+    'read_control' => true,
+    'read_control_type' => 'strlen',
+    'hashed_directory_level' => $options->cache_directory_level,
+    'hashed_directory_perm' => 0777,
+    'cache_file_perm' => 0664,
+    'file_name_prefix' => 'ff'
 );
 $cache = Zend_Cache::factory('Core', 'File', $frontendOptions, $backendOptions);
 $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
 
 // clean rss (key) cache
 $frontendOptions = array(
-	'lifetime' => $options->cache_time*60,
-	'automatic_serialization' => false,
-	'write_control' => false,
-	'automatic_cleaning_factor' => 0,
-	'ignore_user_abort' => false
+    'lifetime' => $options->cache_time*60,
+    'automatic_serialization' => false,
+    'write_control' => false,
+    'automatic_cleaning_factor' => 0,
+    'ignore_user_abort' => false
 );
 $backendOptions = array(
-	'cache_dir' => $options->cache_dir.'/rss-with-key/',
-	'file_locking' => false,
-	'read_control' => true,
-	'read_control_type' => 'strlen',
-	'hashed_directory_level' => $options->cache_directory_level,
-	'hashed_directory_perm' => 0777,
-	'cache_file_perm' => 0664,
-	'file_name_prefix' => 'ff'
+    'cache_dir' => $options->cache_dir.'/rss-with-key/',
+    'file_locking' => false,
+    'read_control' => true,
+    'read_control_type' => 'strlen',
+    'hashed_directory_level' => $options->cache_directory_level,
+    'hashed_directory_perm' => 0777,
+    'cache_file_perm' => 0664,
+    'file_name_prefix' => 'ff'
 );
 $cache = Zend_Cache::factory('Core', 'File', $frontendOptions, $backendOptions);
 $cache->clean(Zend_Cache::CLEANING_MODE_OLD);

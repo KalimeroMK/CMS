@@ -336,12 +336,12 @@ class Html2Text
 
     protected function convert()
     {
-       $origEncoding = mb_internal_encoding();
-       mb_internal_encoding(self::ENCODING);
+        $origEncoding = mb_internal_encoding();
+        mb_internal_encoding(self::ENCODING);
 
-       $this->doConvert();
+        $this->doConvert();
 
-       mb_internal_encoding($origEncoding);
+        mb_internal_encoding($origEncoding);
     }
 
     protected function doConvert()
@@ -512,7 +512,9 @@ class Html2Text
 
                         // Set text width
                         $pWidth = $this->options['width'];
-                        if ($this->options['width'] > 0) $this->options['width'] -= 2;
+                        if ($this->options['width'] > 0) {
+                            $this->options['width'] -= 2;
+                        }
                         // Convert blockquote content
                         $body = trim($body);
                         $this->converter($body);

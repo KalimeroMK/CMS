@@ -1495,7 +1495,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Foundation\Application $instance */
             $instance->offsetUnset($key);
         }
-
     }
 
     /**
@@ -1649,7 +1648,6 @@ namespace Illuminate\Support\Facades {
             /** @var \App\Console\Kernel $instance */
             $instance->setArtisan($artisan);
         }
-
     }
 
     /**
@@ -2306,7 +2304,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Auth\SessionGuard::hasMacro($name);
         }
-
     }
 
     /**
@@ -2697,7 +2694,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
             return $instance->compileEchos($value);
         }
-
     }
 
     /**
@@ -2951,7 +2947,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
             return $instance->hasDispatchedAfterResponse($command);
         }
-
     }
 
     /**
@@ -3607,7 +3602,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Cache\FileStore $instance */
             return $instance->getPrefix();
         }
-
     }
 
     /**
@@ -3764,7 +3758,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Config\Repository $instance */
             $instance->offsetUnset($key);
         }
-
     }
 
     /**
@@ -3953,7 +3946,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Cookie\CookieJar::hasMacro($name);
         }
-
     }
 
     /**
@@ -4058,7 +4050,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Encryption\Encrypter $instance */
             return $instance->getKey();
         }
-
     }
 
     /**
@@ -5095,7 +5086,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->transactionLevel();
         }
-
     }
 
     /**
@@ -5401,7 +5391,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Support\Testing\Fakes\EventFake $instance */
             return $instance->hasDispatched($event);
         }
-
     }
 
     /**
@@ -5997,7 +5986,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Filesystem\Filesystem::hasMacro($name);
         }
-
     }
 
     /**
@@ -6154,7 +6142,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Hashing\HashManager $instance */
             return $instance->getDrivers();
         }
-
     }
 
     /**
@@ -6461,7 +6448,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Translation\Translator::hasMacro($name);
         }
-
     }
 
     /**
@@ -6713,7 +6699,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Log\LogManager $instance */
             $instance->log($level, $message, $context);
         }
-
     }
 
     /**
@@ -7032,7 +7017,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
             return $instance->failures();
         }
-
     }
 
     /**
@@ -7082,7 +7066,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Auth\Passwords\PasswordBrokerManager $instance */
             $instance->setDefaultDriver($name);
         }
-
     }
 
     /**
@@ -7584,7 +7567,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Queue\SyncQueue $instance */
             $instance->setContainer($container);
         }
-
     }
 
     /**
@@ -7857,7 +7839,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Routing\Redirector::hasMacro($name);
         }
-
     }
 
     /**
@@ -10022,7 +10003,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Http\Request::hasValidSignature($absolute);
         }
-
     }
 
     /**
@@ -10290,7 +10270,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Routing\ResponseFactory::hasMacro($name);
         }
-
     }
 
     /**
@@ -11247,7 +11226,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Routing\Router::emailVerification();
         }
-
     }
 
     /**
@@ -11561,7 +11539,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->blueprintResolver($resolver);
         }
-
     }
 
     /**
@@ -12217,7 +12194,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Session\Store $instance */
             $instance->setRequestOnHandler($request);
         }
-
     }
 
     /**
@@ -12858,7 +12834,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
             return $instance->getDriver();
         }
-
     }
 
     /**
@@ -13371,7 +13346,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Routing\UrlGenerator::hasMacro($name);
         }
-
     }
 
     /**
@@ -13523,7 +13497,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Validation\Factory $instance */
             $instance->setPresenceVerifier($presenceVerifier);
         }
-
     }
 
     /**
@@ -14401,7 +14374,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\View\Factory $instance */
             return $instance->renderTranslation();
         }
-
     }
 
     /**
@@ -16566,7 +16538,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Http\Request::hasValidSignature($absolute);
         }
-
     }
 
 }
@@ -16579,7 +16550,6 @@ namespace Illuminate\Foundation {
      */
     class Inspiring
     {
-
     }
 
 }
@@ -16592,7 +16562,6 @@ namespace Yangqi\Htmldom {
      */
     class Htmldom
     {
-
     }
 
 }
@@ -16619,7 +16588,6 @@ namespace Cohensive\Embed\Facades {
             /** @var \Cohensive\Embed\Factory $instance */
             return $instance->make($url, $options);
         }
-
     }
 
 }
@@ -17057,7 +17025,6 @@ namespace Collective\Html {
             /** @var \Collective\Html\HtmlBuilder $instance */
             return $instance->componentCall($method, $parameters);
         }
-
     }
 
     /**
@@ -17816,7 +17783,6 @@ namespace Collective\Html {
             /** @var \Collective\Html\FormBuilder $instance */
             return $instance->componentCall($method, $parameters);
         }
-
     }
 
 }
@@ -18423,7 +18389,6 @@ namespace Barryvdh\Debugbar {
             /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
             return $instance->offsetUnset($key);
         }
-
     }
 
 }
@@ -18493,7 +18458,6 @@ namespace Intervention\Image\Facades {
             /** @var \Intervention\Image\ImageManager $instance */
             return $instance->cache($callback, $lifetime, $returnObj);
         }
-
     }
 
 }
@@ -18510,7 +18474,6 @@ namespace Laravelium\Feed {
      */
     class Feed
     {
-
     }
 
 }
@@ -18668,7 +18631,6 @@ namespace Spatie\Analytics {
         {
             return \Spatie\Analytics\Analytics::hasMacro($name);
         }
-
     }
 
 }
@@ -18761,7 +18723,6 @@ namespace Spatie\ResponseCache\Facades {
             /** @var \Spatie\ResponseCache\ResponseCache $instance */
             return $instance->forget($uris, $tags);
         }
-
     }
 
 }
@@ -18941,7 +18902,6 @@ namespace Orangehill\Iseed\Facades {
             /** @var \Orangehill\Iseed\Iseed $instance */
             return $instance->updateDatabaseSeederRunMethod($className);
         }
-
     }
 
 }
@@ -21989,7 +21949,3 @@ namespace {
     }
 
 }
-
-
-
-

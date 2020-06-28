@@ -19,7 +19,6 @@ class MakeTagsTable extends Migration
             $table->integer('views');
             $table->timestamps();
         });
-
     }
 
     /**

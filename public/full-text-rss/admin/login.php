@@ -28,9 +28,13 @@ if ($name || $pass) {
 <html>
 <head><title>Login</title></head>
 <body>
-<?php if ($invalid_login) echo '<p><strong>Invalid login, please try again.</strong> If you can\'t remember your admin credentials, open your <tt>custom_config.php</tt> and you\'ll find them in there.</p>'; ?>
+<?php if ($invalid_login) {
+    echo '<p><strong>Invalid login, please try again.</strong> If you can\'t remember your admin credentials, open your <tt>custom_config.php</tt> and you\'ll find them in there.</p>';
+} ?>
 <form method="post" action="login.php">
-    <?php if (isset($_GET['redirect'])) echo '<input type="hidden" name="redirect" value="' . htmlspecialchars($_GET['redirect']) . '" />'; ?>
+    <?php if (isset($_GET['redirect'])) {
+    echo '<input type="hidden" name="redirect" value="' . htmlspecialchars($_GET['redirect']) . '" />';
+} ?>
     <label>Username: <input type="text" name="username" value="<?php echo @$_POST['username']; ?>"/></label>
     <label>Password: <input type="password" name="pass"/></label>
     <input type="submit" name="submit" value="Log In"/>

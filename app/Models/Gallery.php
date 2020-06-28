@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-
 /**
  * App\Models\Gallery
  *
@@ -44,5 +43,4 @@ class Gallery extends Model
             return "no image";
         }
     }
-
 }

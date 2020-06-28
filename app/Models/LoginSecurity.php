@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoginSecurity extends Model
 {
-
     use ClearsResponseCache;
 
     protected $fillable = [
