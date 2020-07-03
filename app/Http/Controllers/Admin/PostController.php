@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Traits\ImageUpload;
+use App\Traits\SlugCreate;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -29,6 +30,7 @@ class PostController extends Controller
     }
 
     use ImageUpload;
+    use SlugCreate;
 
     /**
      * @return Factory|View
@@ -58,7 +60,9 @@ class PostController extends Controller
     public function store(Store $request)
     {
         $post = Post::create($request->except('featured_image') + [
-                'featured_image' => $this->verifyAndStoreImage($request)
+                'featured_image' => $this->verifyAndStoreImage($request),
+                'slug' => $this->createSlug($request)
+
             ]);
         $post->tags()->attach($request->tags);
         $post->categories()->attach($request->category);
@@ -85,11 +89,11 @@ class PostController extends Controller
      */
     public function update(Update $request, Post $post)
     {
-        if (!empty($request->featured_image)) {
-            $request->featured_image = $this->verifyAndStoreImage($request);
-        }
+        $post->update($request->except('featured_image') + [
+                'featured_image' => $this->verifyAndStoreImage($request),
+                'slug' => $this->createSlug($request)
 
-        $post->fill($request->all())->save();
+            ]);
         $post->tags()->sync($request->tags, true);
         $post->categories()->sync($request->category, true);
 
