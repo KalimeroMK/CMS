@@ -82,8 +82,6 @@
             </select>
         </div>
     </div>
-    <label for="files">Select files:</label>
-    <input type="file" id="files" name="image_gallery" multiple><br><br>
     <div class="form-group col-8">
         <label for="status" class="control-label">{{trans('messages.status')}}</label>
 
@@ -128,6 +126,8 @@
     <!-- select2 -->
     <script type="text/javascript">
         $('#tags').select2().val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
+        $('#category').select2().val({!! json_encode($post->categories()->allRelatedIds()) !!}).trigger('change');
+
     </script>
 @endsection
 @section('style')
