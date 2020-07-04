@@ -45,7 +45,7 @@ class GalleryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Store $request
-     * @return void
+     * @return RedirectResponse
      */
     public function store(Store $request)
     {
@@ -63,7 +63,7 @@ class GalleryController extends Controller
             }
         }
 
-        return;
+        return redirect()->back();
     }
 
     /**
