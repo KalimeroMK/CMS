@@ -89,11 +89,16 @@ class PostController extends Controller
      */
     public function update(Update $request, Post $post)
     {
-        $post->update($request->except('featured_image') + [
-                'featured_image' => $this->verifyAndStoreImage($request),
-                'slug' => $this->createSlug($request)
-
-            ]);
+        if ($request->hasFile('featured_image')) {
+            $post->update($request->except('featured_image') + [
+                    'featured_image' => $this->verifyAndStoreImage($request),
+                    'slug' => $this->createSlug($request)
+                ]);
+        } else {
+            $post->update($request->except('featured_image') + [
+                    'slug' => $this->createSlug($request)
+                ]);
+        }
         $post->tags()->sync($request->tags, true);
         $post->categories()->sync($request->category, true);
 
