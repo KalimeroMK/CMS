@@ -63,6 +63,7 @@ return array(
     'Spatie\\Feed\\' => array($vendorDir . '/spatie/laravel-feed/src'),
     'Spatie\\DbDumper\\' => array($vendorDir . '/spatie/db-dumper/src'),
     'Spatie\\Crawler\\' => array($vendorDir . '/spatie/crawler/src'),
+    'Spatie\\CookieConsent\\' => array($vendorDir . '/spatie/laravel-cookie-consent/src'),
     'Spatie\\Browsershot\\' => array($vendorDir . '/spatie/browsershot/src'),
     'Spatie\\Backup\\' => array($vendorDir . '/spatie/laravel-backup/src'),
     'Spatie\\Analytics\\' => array($vendorDir . '/spatie/laravel-analytics/src'),

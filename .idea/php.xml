@@ -163,6 +163,7 @@
       <path value="$PROJECT_DIR$/vendor/stichoza/google-translate-php" />
       <path value="$PROJECT_DIR$/vendor/kalimeromk/laravel-translation-manager" />
       <path value="$PROJECT_DIR$/vendor/unisharp/laravel-filemanager" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-cookie-consent" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

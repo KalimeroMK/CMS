@@ -10,7 +10,10 @@
 <head>
     <meta charset="utf-8"/>
     <title>Ogledalo Web Admin</title>
-    @include('feed::links')
+@include('feed::links')
+<!--move this line code to front end blade -->
+@include('cookieConsent::admin.layouts.master')
+<!--end cookie-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>

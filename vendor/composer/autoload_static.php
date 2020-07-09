@@ -125,6 +125,7 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
             'Spatie\\Feed\\' => 12,
             'Spatie\\DbDumper\\' => 16,
             'Spatie\\Crawler\\' => 15,
+            'Spatie\\CookieConsent\\' => 21,
             'Spatie\\Browsershot\\' => 19,
             'Spatie\\Backup\\' => 14,
             'Spatie\\Analytics\\' => 17,
@@ -478,6 +479,10 @@ class ComposerStaticInit44f791da0f43b02f325b4b4a8255ead0
         'Spatie\\Crawler\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/crawler/src',
+        ),
+        'Spatie\\CookieConsent\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-cookie-consent/src',
         ),
         'Spatie\\Browsershot\\' => 
         array (
