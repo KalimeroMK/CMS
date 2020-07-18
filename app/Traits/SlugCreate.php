@@ -11,7 +11,7 @@ trait SlugCreate
 {
     public function createSlug(Request $request)
     {
-        return Str::slug($request->title, '_');
+        return Str::slug($request->title, '-');
     }
 
 }
