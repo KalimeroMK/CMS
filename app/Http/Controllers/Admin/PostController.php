@@ -57,7 +57,7 @@ class PostController extends Controller
      * @param Store $request
      * @return RedirectResponse
      */
-    public function store(Store $request)
+    public function store(Store $request): RedirectResponse
     {
         $post = Post::create($request->except('featured_image') + [
                 'featured_image' => $this->verifyAndStoreImage($request),
@@ -84,10 +84,10 @@ class PostController extends Controller
 
     /**
      * @param Update $request
-     * @param Post $post
+     * @param Post   $post
      * @return RedirectResponse
      */
-    public function update(Update $request, Post $post)
+    public function update(Update $request, Post $post): RedirectResponse
     {
         if ($request->hasFile('featured_image')) {
             $post->update($request->except('featured_image') + [
@@ -112,7 +112,7 @@ class PostController extends Controller
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
         $post->delete();
         Session::flash('success_msg', trans('messages.post_deleted_success'));

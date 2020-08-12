@@ -11,10 +11,10 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Gallery
  *
- * @property int $id
- * @property int $post_id
- * @property string $image
- * @property int $priority
+ * @property int         $id
+ * @property int         $post_id
+ * @property string      $image
+ * @property int         $priority
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static Builder|Gallery newModelQuery()
@@ -38,9 +38,8 @@ class Gallery extends Model
     public function getGalleryUrlAttribute($value)
     {
         if (!empty($this->image)) {
-            return $galleryUrl = asset('/uploads/images/gallery/' . $this->image);
-        } else {
-            return "no image";
+            return asset('/uploads/images/gallery/' . $this->image);
         }
+        return "no image";
     }
 }

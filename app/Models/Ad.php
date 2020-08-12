@@ -11,9 +11,9 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Ad
  *
- * @property int $id
- * @property string $code
- * @property string $position
+ * @property int         $id
+ * @property string      $code
+ * @property string      $position
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static Builder|Ad newModelQuery()

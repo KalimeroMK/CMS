@@ -13,7 +13,7 @@ trait ImageUpload
      * @param Request $request
      * @return string
      */
-    public function verifyAndStoreImage(Request $request)
+    public function verifyAndStoreImage(Request $request): ?string
     {
         if ($request->hasFile('featured_image')) {
             $image = $request->file('featured_image');

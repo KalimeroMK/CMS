@@ -23,6 +23,7 @@ class LoginSecurityController extends Controller
 
     /**
      * Show 2FA Setting form
+     *
      * @param Request $request
      * @return Application|Factory|View
      */
@@ -42,17 +43,18 @@ class LoginSecurityController extends Controller
             $secret_key = $user->loginSecurity->google2fa_secret;
         }
 
-        $data = array(
+        $data = [
             'user' => $user,
             'secret' => $secret_key,
             'google2fa_url' => $google2fa_url
-        );
+        ];
 
         return view('auth.2fa_settings')->with('data', $data);
     }
 
     /**
      * Generate 2FA secret key
+     *
      * @param Request $request
      * @return Application|RedirectResponse|Redirector
      * @throws IncompatibleWithGoogleAuthenticatorException
@@ -66,7 +68,7 @@ class LoginSecurityController extends Controller
         $google2fa = (new Google2FA());
 
         // Add the secret key to the registration data
-        $login_security = LoginSecurity::firstOrNew(array('user_id' => $user->id));
+        $login_security = LoginSecurity::firstOrNew(['user_id' => $user->id]);
         $login_security->user_id = $user->id;
         $login_security->google2fa_enable = 0;
         $login_security->google2fa_secret = $google2fa->generateSecretKey();
@@ -77,6 +79,7 @@ class LoginSecurityController extends Controller
 
     /**
      * Enable 2FA
+     *
      * @param Request $request
      * @return Application|RedirectResponse|Redirector
      * @throws IncompatibleWithGoogleAuthenticatorException
@@ -102,6 +105,7 @@ class LoginSecurityController extends Controller
 
     /**
      * Disable 2FA
+     *
      * @param Request $request
      * @return Application|RedirectResponse|Redirector
      */
@@ -109,7 +113,8 @@ class LoginSecurityController extends Controller
     {
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error", "Your password does not matches with your account password. Please try again.");
+            return redirect()->back()->with("error",
+                "Your password does not matches with your account password. Please try again.");
         }
 
         $validatedData = $request->validate([

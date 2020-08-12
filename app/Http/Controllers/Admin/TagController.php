@@ -39,7 +39,7 @@ class TagController extends Controller
     }
 
     /**
-     * @return Application|Factory|View\
+     * @return Application|Factory
      */
     public function create()
     {
@@ -51,7 +51,7 @@ class TagController extends Controller
      * @param Store $request
      * @return string
      */
-    public function store(Store $request)
+    public function store(Store $request): string
     {
         $request['slug'] = Str::slug($request->input('title'));
         Tag::create($request->all());
@@ -64,7 +64,7 @@ class TagController extends Controller
      * @throws Exception
      */
 
-    public function destroy(Tag $tag)
+    public function destroy(Tag $tag): string
     {
         $tag->posts()->detach();
         $tag->delete();

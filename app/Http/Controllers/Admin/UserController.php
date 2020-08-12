@@ -8,6 +8,7 @@ use App\Http\Requests\Post\Store;
 use App\Http\Requests\User\Update;
 use App\Models\User;
 use DB;
+use Exception;
 use Hash;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -61,7 +62,7 @@ class UserController extends Controller
      *
      * @return RedirectResponse
      */
-    public function store(Store $request)
+    public function store(Store $request): RedirectResponse
     {
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -102,18 +103,18 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param User $user
+     * @param User   $user
      * @param Update $request
      *
      * @return RedirectResponse
      */
-    public function update(User $user, Update $request)
+    public function update(User $user, Update $request): RedirectResponse
     {
         $input = $request->all();
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
-            $input = array_except($input, array('password'));
+            $input = array_except($input, ['password']);
         }
 
         $user->update($input);
@@ -132,9 +133,9 @@ class UserController extends Controller
      * @param User $user
      *
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
         $user->delete();
         return redirect()->route('users.index')

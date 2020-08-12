@@ -6,17 +6,17 @@ use Spatie\ResponseCache\Facades\ResponseCache;
 
 trait ClearsResponseCache
 {
-    public static function bootClearsResponseCache()
+    public static function bootClearsResponseCache(): void
     {
-        self::created(function () {
+        self::created(static function () {
             ResponseCache::clear();
         });
 
-        self::updated(function () {
+        self::updated(static function () {
             ResponseCache::clear();
         });
 
-        self::deleted(function () {
+        self::deleted(static function () {
             ResponseCache::clear();
         });
     }

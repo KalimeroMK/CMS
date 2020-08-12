@@ -49,7 +49,7 @@ class SettingController extends Controller
      * @param Store $request
      * @return string
      */
-    public function store(Store $request)
+    public function store(Store $request): string
     {
         $setting = Setting::create($request->except('image') + [
                 'featured_image' => $this->verifyAndStoreImage($request)
@@ -63,17 +63,17 @@ class SettingController extends Controller
      * @param Setting $setting
      * @return string
      */
-    public function edit(Setting $setting)
+    public function edit(Setting $setting): string
     {
         return route('settings.index', $setting);
     }
 
     /**
-     * @param Update $request
+     * @param Update  $request
      * @param Setting $setting
      * @return JsonResponse
      */
-    public function update(Update $request, Setting $setting)
+    public function update(Update $request, Setting $setting): JsonResponse
     {
         $setting->update($request->except('image') + [
                 'featured_image' => $this->verifyAndStoreImage($request)

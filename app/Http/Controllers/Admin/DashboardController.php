@@ -12,13 +12,6 @@ use Illuminate\View\View;
 class DashboardController extends Controller
 {
     /**
-     * CronController constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * @return Factory|View
      */
     public function index()

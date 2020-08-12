@@ -19,7 +19,7 @@ class Store extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
 //            'image' => 'mimes:jpeg,jpg,png,gif|required|max:30000' // max 10000kb

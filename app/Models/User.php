@@ -18,38 +18,38 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * App\Models\User
  *
- * @property int $id
- * @property string $name
- * @property string $slug
- * @property string $email
- * @property string $password
- * @property string|null $remember_token
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string $avatar
- * @property string $birthday
- * @property string $bio
- * @property string $gender
- * @property string $mobile_no
- * @property string $country
- * @property string $timezone
- * @property string $reset_password_code
- * @property string $reset_requested_on
- * @property int $activated
- * @property string $activation_code
- * @property string $activated_at
- * @property string $fb_url
- * @property string $fb_page_url
- * @property string $website_url
- * @property string $twitter_url
- * @property string $google_plus_url
- * @property-read Post $ProductList
- * @property-read Collection|Post[] $author
- * @property-read int|null $author_count
+ * @property int                          $id
+ * @property string                       $name
+ * @property string                       $slug
+ * @property string                       $email
+ * @property string                       $password
+ * @property string|null                  $remember_token
+ * @property Carbon|null                  $created_at
+ * @property Carbon|null                  $updated_at
+ * @property string                       $avatar
+ * @property string                       $birthday
+ * @property string                       $bio
+ * @property string                       $gender
+ * @property string                       $mobile_no
+ * @property string                       $country
+ * @property string                       $timezone
+ * @property string                       $reset_password_code
+ * @property string                       $reset_requested_on
+ * @property int                          $activated
+ * @property string                       $activation_code
+ * @property string                       $activated_at
+ * @property string                       $fb_url
+ * @property string                       $fb_page_url
+ * @property string                       $website_url
+ * @property string                       $twitter_url
+ * @property string                       $google_plus_url
+ * @property-read Post                    $ProductList
+ * @property-read Collection|Post[]       $author
+ * @property-read int|null                $author_count
  * @property-read Collection|Permission[] $permissions
- * @property-read int|null $permissions_count
- * @property-read Collection|Role[] $roles
- * @property-read int|null $roles_count
+ * @property-read int|null                $permissions_count
+ * @property-read Collection|Role[]       $roles
+ * @property-read int|null                $roles_count
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User permission($permissions)
@@ -187,7 +187,7 @@ class User extends Authenticatable
     /**
      * @return HasMany
      */
-    public function author()
+    public function author(): HasMany
     {
         return $this->hasMany(Post::class, 'author_id');
     }
@@ -195,7 +195,7 @@ class User extends Authenticatable
     /**
      * @return BelongsTo
      */
-    public function ProductList()
+    public function ProductList(): BelongsTo
     {
         return $this->belongsTo(Post::class, 'id', 'author_id')->orderBy('updated_at', 'desc');
     }
@@ -203,7 +203,7 @@ class User extends Authenticatable
     /**
      * @return HasOne
      */
-    public function loginSecurity()
+    public function loginSecurity(): HasOne
     {
         return $this->hasOne(LoginSecurity::class);
     }

@@ -47,7 +47,7 @@ class GalleryController extends Controller
      * @param Store $request
      * @return RedirectResponse
      */
-    public function store(Store $request)
+    public function store(Store $request): RedirectResponse
     {
         $post_id = $request['post_id'];
         if ($request->hasfile('image')) {
@@ -67,22 +67,6 @@ class GalleryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param Gallery $gallery
-     * @return RedirectResponse
-     * @throws Exception
-     */
-    public function destroy(Gallery $gallery)
-    {
-//         Delete images
-        $image = public_path() . '/uploads/images/gallery/' . $gallery->image;
-        unlink($image);
-        $gallery->delete();
-        return redirect()->back();
-    }
-
-    /**
      * Make paths for storing images.
      *
      * @return object
@@ -91,5 +75,21 @@ class GalleryController extends Controller
     {
         $original = public_path() . '/uploads/images/gallery/';
         return (object)compact('original');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Gallery $gallery
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function destroy(Gallery $gallery): RedirectResponse
+    {
+//         Delete images
+        $image = public_path() . '/uploads/images/gallery/' . $gallery->image;
+        unlink($image);
+        $gallery->delete();
+        return redirect()->back();
     }
 }

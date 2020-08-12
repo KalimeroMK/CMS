@@ -11,10 +11,10 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\PostTag
  *
- * @property int $id
- * @property int|null $post_id
- * @property int|null $tag_id
- * @property int $views
+ * @property int         $id
+ * @property int|null    $post_id
+ * @property int|null    $tag_id
+ * @property int         $views
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static Builder|PostTag newModelQuery()

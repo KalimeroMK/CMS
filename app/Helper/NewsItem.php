@@ -11,7 +11,7 @@ use Spatie\Feed\Feedable;
 class NewsItem extends Post implements Feedable
 {
     /**
-     * @return array|
+     * @return array|\Spatie\Feed\FeedItem
      */
     public function toFeedItem()
     {
@@ -27,8 +27,8 @@ class NewsItem extends Post implements Feedable
     /**
      * @return Collection
      */
-    public static function getFeedItems()
+    public static function getFeedItems(): Collection
     {
-        return NewsItem::orderBy('created_at', 'desc')->limit(50)->get();
+        return self::orderBy('created_at', 'desc')->limit(50)->get();
     }
 }

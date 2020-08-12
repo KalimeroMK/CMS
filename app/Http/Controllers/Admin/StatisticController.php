@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Analytics;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Support\Facades\Date;
 use Illuminate\View\View;
-use Session;
 use Spatie\Analytics\Period;
 
 class StatisticController extends Controller
@@ -18,8 +16,6 @@ class StatisticController extends Controller
      */
     public function index()
     {
-        $session = Session::all();
-        $now = Date::now();
 
         $totalVisitors = Analytics::fetchTotalVisitorsAndPageViews(Period::months(1));
         $mostVisitedPages = Analytics::fetchMostVisitedPages(Period::months(1), 10);
@@ -70,7 +66,7 @@ class StatisticController extends Controller
             ]
         );
 
-        return $devices->rows;
+        return $devices;
     }
 
     /**
@@ -78,7 +74,7 @@ class StatisticController extends Controller
      */
     public function getVisitsPerCountry()
     {
-        $visitsPerCountry = Analytics::performQuery(
+        return Analytics::performQuery(
             Period::years(1),
             'ga:sessions',
             [
@@ -86,6 +82,5 @@ class StatisticController extends Controller
                 'dimensions' => 'ga:country'
             ]
         );
-        return $visitsPerCountry->rows;
     }
 }
