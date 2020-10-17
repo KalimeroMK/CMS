@@ -14,7 +14,8 @@ class Store extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
+    public function rules()
+    : array
     {
         return [
             'name' => 'required|unique:roles,name',

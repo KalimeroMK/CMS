@@ -12,15 +12,20 @@ class SpinText
         $article = stripslashes($title) . '**9999**' . stripslashes($post);
 
         //match links
-        $htmlurls = array();
+        $htmlurls = [];
 
         if (!in_array('OPT_AUTO_SPIN_LINKS', $opt)) {
-            preg_match_all("/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*?)<\/a>/s", $article, $matches, PREG_PATTERN_ORDER);
+            preg_match_all(
+                "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*?)<\/a>/s",
+                $article,
+                $matches,
+                PREG_PATTERN_ORDER
+            );
             $htmlurls = $matches[0];
         }
 
         //execlude urls pasted OPT_AUTO_SPIN_URL_EX
-        $urls_txt = array();
+        $urls_txt = [];
         if (in_array('OPT_AUTO_SPIN_URL_EX', $opt)) {
             //ececluding the capped words
             preg_match_all('/https?:\/\/[^<\s]+/', $article, $matches_urls_txt);
@@ -67,7 +72,7 @@ class SpinText
         }
 
         //execlude capital letters
-        $capped = array();
+        $capped = [];
         if (in_array('OPT_AUTO_SPIN_CAP_EX', $opt)) {
             //ececluding the capped words
             preg_match_all('{\b[A-Z][a-z]+\b}', $article, $matches_cap);
@@ -78,9 +83,8 @@ class SpinText
 
 
         //execlude curly quotes
-        $curly_quote = array();
+        $curly_quote = [];
         if (in_array('OPT_AUTO_SPIN_CURLY_EX', $opt)) {
-
             //double smart qoute
             preg_match_all('{�.*?�}', $article, $matches_curly_txt);
             $curly_quote = $matches_curly_txt[0];
@@ -98,17 +102,23 @@ class SpinText
             $single_curly_quote_and_num = $matches_curly_txt_s_and_num[0];
 
             //regular duouble quotes
-            $curly_quote_regular = array();
+            $curly_quote_regular = [];
             if (in_array('OPT_AUTO_SPIN_CURLY_EX_R', $opt)) {
                 preg_match_all('{".*?"}', $article, $matches_curly_txt_regular);
                 $curly_quote_regular = $matches_curly_txt_regular[0];
             }
 
-            $curly_quote = array_merge($curly_quote, $single_curly_quote, $single_curly_quote_and, $single_curly_quote_and_num, $curly_quote_regular);
+            $curly_quote = array_merge(
+                $curly_quote,
+                $single_curly_quote,
+                $single_curly_quote_and,
+                $single_curly_quote_and_num,
+                $curly_quote_regular
+            );
         }
 
 
-        $exword_founds = array(); // ini
+        $exword_founds = []; // ini
 
         foreach ($execlude as $exword) {
             if (preg_match('/\b' . preg_quote(trim($exword), '/') . '\b/u', $article)) {
@@ -118,7 +128,17 @@ class SpinText
 
 
         // merge shortcodes to html which should be replaced
-        $htmlfounds = array_merge($nospin, $js, $htmlurls, $curly_quote, $htmlfounds, $urls_txt, $shortcodes, $nospin_nums, $capped);
+        $htmlfounds = array_merge(
+            $nospin,
+            $js,
+            $htmlurls,
+            $curly_quote,
+            $htmlfounds,
+            $urls_txt,
+            $shortcodes,
+            $nospin_nums,
+            $capped
+        );
 
         $htmlfounds = array_filter(array_unique($htmlfounds));
 
@@ -134,7 +154,11 @@ class SpinText
         //replacing execluded words
         foreach ($exword_founds as $exword) {
             if (trim($exword) != '') {
-                $article = preg_replace('/\b' . preg_quote(trim($exword), '/') . '\b/u', '(' . str_repeat('*', $i) . ')', $article);
+                $article = preg_replace(
+                    '/\b' . preg_quote(trim($exword), '/') . '\b/u',
+                    '(' . str_repeat('*', $i) . ')',
+                    $article
+                );
                 $i++;
             }
         }
@@ -169,7 +193,6 @@ class SpinText
 
         //checking all words for existance
         foreach ($file as $line) {
-
             //echo 'line:'.$line;
 
             //each synonym word
@@ -180,7 +203,7 @@ class SpinText
             if (in_array('OPT_AUTO_SPIN_ACTIVE_SHUFFLE', $autospin)) {
                 $synonyms2 = $synonyms;
             } else {
-                $synonyms2 = array($synonyms[0]);
+                $synonyms2 = [$synonyms[0]];
             }
 
 
@@ -189,23 +212,21 @@ class SpinText
 
                 $word = str_replace('/', '\/', $word);
                 if (trim($word) != '' & !in_array(strtolower($word), $execlude)) {
-
                     //echo $word.' ';
 
                     //echo '..'.$word;
                     if (preg_match('/\b' . $word . '\b/u', $article)) {
-
                         //replace the word with it's hash str_replace(array("\n", "\r"), '',$line)and add it to the array for restoring to prevent duplicate
 
                         //restructure line to make the original word as the first word
-                        $restruct = array($word);
+                        $restruct = [$word];
                         $restruct = array_merge($restruct, $synonyms);
                         $restruct = array_unique($restruct);
                         //$restruct=array_reverse($restruct);
                         $restruct = implode('|', $restruct);
 
 
-                        $founds[md5($word)] = str_replace(array("\n", "\r"), '', $restruct);
+                        $founds[md5($word)] = str_replace(["\n", "\r"], '', $restruct);
 
                         $md = md5($word);
                         $article = preg_replace('/\b' . $word . '\b/u', $md, $article);
@@ -222,14 +243,14 @@ class SpinText
                     //echo ' uword:'.$uword;
 
                     if (preg_match('/\b' . $uword . '\b/u', $article)) {
-                        $restruct = array($word);
+                        $restruct = [$word];
                         $restruct = array_merge($restruct, $synonyms);
                         $restruct = array_unique($restruct);
                         //$restruct=array_reverse($restruct);
                         $restruct = implode('|', $restruct);
 
 
-                        $founds[md5($uword)] = $this->auto_spinner_upper_case(str_replace(array("\n", "\r"), '', $restruct));
+                        $founds[md5($uword)] = $this->auto_spinner_upper_case(str_replace(["\n", "\r"], '', $restruct));
 
                         $article = preg_replace('/\b' . $uword . '\b/u', md5($uword), $article);
                     }
@@ -264,7 +285,7 @@ class SpinText
 
 
         //deleting spin and nospin shortcodes
-        $article = str_replace(array('[nospin]', '[/nospin]'), '', $article);
+        $article = str_replace(['[nospin]', '[/nospin]'], '', $article);
 
         $this->article = $article;
 

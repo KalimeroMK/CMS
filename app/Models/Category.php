@@ -16,20 +16,20 @@ use Kalnoy\Nestedset\QueryBuilder;
 /**
  * App\Models\Category
  *
- * @property int                                                  $id
- * @property string                                               $title
- * @property string                                               $slug
- * @property int|null                                             $publish
- * @property int|null                                             $parent_id
- * @property int|null                                             $_lft
- * @property int|null                                             $_rgt
- * @property Carbon|null                                          $created_at
- * @property Carbon|null                                          $updated_at
- * @property-read Collection|Category[]                           $children
- * @property-read int|null                                        $children_count
- * @property-read Category|null                                   $parent
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property int|null $publish
+ * @property int|null $parent_id
+ * @property int|null $_lft
+ * @property int|null $_rgt
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Category[] $children
+ * @property-read int|null $children_count
+ * @property-read Category|null $parent
  * @property-read \Illuminate\Database\Eloquent\Collection|Post[] $post
- * @property-read int|null                                        $post_count
+ * @property-read int|null $post_count
  * @method static Collection|static[] all($columns = ['*'])
  * @method static Builder|Category d()
  * @method static Collection|static[] get($columns = ['*'])
@@ -46,12 +46,12 @@ use Kalnoy\Nestedset\QueryBuilder;
  * @method static Builder|Category whereTitle($value)
  * @method static Builder|Category whereUpdatedAt($value)
  * @mixin Eloquent
- * @property-read Collection|Category[]                           $categories
- * @property-read int|null                                        $categories_count
- * @property-read Collection|Category[]                           $childrenCategories
- * @property-read int|null                                        $children_categories_count
+ * @property-read Collection|Category[] $categories
+ * @property-read int|null $categories_count
+ * @property-read Collection|Category[] $childrenCategories
+ * @property-read int|null $children_categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection|Post[] $posts
- * @property-read int|null                                        $posts_count
+ * @property-read int|null $posts_count
  */
 class Category extends Model
 {
@@ -64,7 +64,8 @@ class Category extends Model
     /**
      * @return string
      */
-    public static function getTree(): string
+    public static function getTree()
+    : string
     {
         $categories = self::get()->toTree();
         $traverse = function ($categories, $prefix = '') use (&$traverse, &$allCats) {
@@ -80,7 +81,8 @@ class Category extends Model
     /**
      * @return string
      */
-    public static function getList(): string
+    public static function getList()
+    : string
     {
         $categories = self::get()->toTree();
         $lists = '<li class="list-unstyled">';
@@ -95,8 +97,8 @@ class Category extends Model
      * @param $node
      * @return string
      */
-    public static function renderNodeHP($node): string
-    {
+    public static function renderNodeHP($node)
+    : string {
         $list = '<li class="dropdown-item"><a class="nav-link" href="/categories/' . $node->slug . '">' . $node->title . '</a>';
         if ($node->children()->count() > 0) {
             $list .= '<ul class="dropdown-menu">';
@@ -113,7 +115,8 @@ class Category extends Model
     /**
      * @return HasMany
      */
-    public function post(): HasMany
+    public function post()
+    : HasMany
     {
         return $this->hasMany(Post::class, 'category_id');
     }
@@ -121,7 +124,8 @@ class Category extends Model
     /**
      * @return BelongsToMany
      */
-    public function posts(): BelongsToMany
+    public function posts()
+    : BelongsToMany
     {
         return $this->belongsToMany(Post::class);
     }

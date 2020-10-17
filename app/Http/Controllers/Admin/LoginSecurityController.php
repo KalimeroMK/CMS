@@ -113,13 +113,17 @@ class LoginSecurityController extends Controller
     {
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error",
-                "Your password does not matches with your account password. Please try again.");
+            return redirect()->back()->with(
+                "error",
+                "Your password does not matches with your account password. Please try again."
+            );
         }
 
-        $validatedData = $request->validate([
-            'current-password' => 'required',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'current-password' => 'required',
+            ]
+        );
         $user = Auth::user();
         $user->loginSecurity->google2fa_enable = 0;
         $user->loginSecurity->save();

@@ -16,7 +16,6 @@ class StatisticController extends Controller
      */
     public function index()
     {
-
         $totalVisitors = Analytics::fetchTotalVisitorsAndPageViews(Period::months(1));
         $mostVisitedPages = Analytics::fetchMostVisitedPages(Period::months(1), 10);
         $referrs = Analytics::fetchTopReferrers(Period::years(1));

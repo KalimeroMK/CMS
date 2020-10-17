@@ -62,8 +62,8 @@ class UserController extends Controller
      *
      * @return RedirectResponse
      */
-    public function store(Store $request): RedirectResponse
-    {
+    public function store(Store $request)
+    : RedirectResponse {
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
@@ -103,13 +103,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param User   $user
+     * @param User $user
      * @param Update $request
      *
      * @return RedirectResponse
      */
-    public function update(User $user, Update $request): RedirectResponse
-    {
+    public function update(User $user, Update $request)
+    : RedirectResponse {
         $input = $request->all();
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
@@ -135,8 +135,8 @@ class UserController extends Controller
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(User $user): RedirectResponse
-    {
+    public function destroy(User $user)
+    : RedirectResponse {
         $user->delete();
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');

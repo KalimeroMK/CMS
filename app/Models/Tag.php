@@ -13,14 +13,14 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Tag
  *
- * @property int                    $id
- * @property string                 $title
- * @property string                 $slug
- * @property int                    $views
- * @property Carbon|null            $created_at
- * @property Carbon|null            $updated_at
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property int $views
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property-read Collection|Post[] $posts
- * @property-read int|null          $posts_count
+ * @property-read int|null $posts_count
  * @method static Builder|Tag newModelQuery()
  * @method static Builder|Tag newQuery()
  * @method static Builder|Tag query()
@@ -39,7 +39,8 @@ class Tag extends Model
     protected $table = 'tags';
     protected $fillable = ['title', 'slug', 'views'];
 
-    public function posts(): BelongsToMany
+    public function posts()
+    : BelongsToMany
     {
         return $this->belongsToMany(Post::class);
     }

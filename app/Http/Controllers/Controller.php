@@ -28,17 +28,21 @@ class Controller extends BaseController
         $tree = Category::getList();
         $tag = Tag::get();
         $slider_post = Post::orderBy('id', 'desc')->where('status', '1')->paginate(15);
-        $popular_post = Post::orderBy('views', 'desc')->where('status',
-            config('constants.STATUS_PUBLISHED'))->take(5)->get();
+        $popular_post = Post::orderBy('views', 'desc')->where(
+            'status',
+            config('constants.STATUS_PUBLISHED')
+        )->take(5)->get();
         $ads = Ad::all();
 
-        View::share([
-            'tree' => $tree,
-            'ads' => $ads,
-            'tag' => $tag,
-            'popular_post' => $popular_post,
-            'slider_post' => $slider_post
-        ]);
+        View::share(
+            [
+                'tree' => $tree,
+                'ads' => $ads,
+                'tag' => $tag,
+                'popular_post' => $popular_post,
+                'slider_post' => $slider_post
+            ]
+        );
     }
 
     /**

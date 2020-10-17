@@ -14,7 +14,8 @@ class Update extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
+    public function rules()
+    : array
     {
         return [
             'code' => 'required',

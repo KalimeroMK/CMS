@@ -60,8 +60,8 @@ class CategoryController extends Controller
      * @param Store $request
      * @return RedirectResponse
      */
-    public function store(Store $request): RedirectResponse
-    {
+    public function store(Store $request)
+    : RedirectResponse {
         $title = $request->title;
         $parent_id = $request->parent_id;
         $slug = Str::slug($request->title, '_');
@@ -90,12 +90,12 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Update   $request
+     * @param Update $request
      * @param Category $category
      * @return RedirectResponse
      */
-    public function update(Update $request, Category $category): RedirectResponse
-    {
+    public function update(Update $request, Category $category)
+    : RedirectResponse {
         if ($request->has('parent_id')) {
             $category->update($request->all());
             Session::flash('flash_message', 'Category successfully created!');

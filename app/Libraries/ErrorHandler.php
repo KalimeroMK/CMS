@@ -15,7 +15,6 @@ class ErrorHandler extends Controller
     public function handle($e)
     {
         switch ($e->getStatusCode()) {
-
             case '403':
                 return $this->show403();
                 break;

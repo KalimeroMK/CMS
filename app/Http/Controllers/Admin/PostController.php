@@ -57,13 +57,14 @@ class PostController extends Controller
      * @param Store $request
      * @return RedirectResponse
      */
-    public function store(Store $request): RedirectResponse
-    {
-        $post = Post::create($request->except('featured_image') + [
+    public function store(Store $request)
+    : RedirectResponse {
+        $post = Post::create(
+            $request->except('featured_image') + [
                 'featured_image' => $this->verifyAndStoreImage($request),
                 'slug' => $this->createSlug($request)
-
-            ]);
+            ]
+        );
         $post->tags()->attach($request->tags);
         $post->categories()->attach($request->category);
 
@@ -84,20 +85,24 @@ class PostController extends Controller
 
     /**
      * @param Update $request
-     * @param Post   $post
+     * @param Post $post
      * @return RedirectResponse
      */
-    public function update(Update $request, Post $post): RedirectResponse
-    {
+    public function update(Update $request, Post $post)
+    : RedirectResponse {
         if ($request->hasFile('featured_image')) {
-            $post->update($request->except('featured_image') + [
+            $post->update(
+                $request->except('featured_image') + [
                     'featured_image' => $this->verifyAndStoreImage($request),
                     'slug' => $this->createSlug($request)
-                ]);
+                ]
+            );
         } else {
-            $post->update($request->except('featured_image') + [
+            $post->update(
+                $request->except('featured_image') + [
                     'slug' => $this->createSlug($request)
-                ]);
+                ]
+            );
         }
         $post->tags()->sync($request->tags, true);
         $post->categories()->sync($request->category, true);
@@ -112,8 +117,8 @@ class PostController extends Controller
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(Post $post): RedirectResponse
-    {
+    public function destroy(Post $post)
+    : RedirectResponse {
         $post->delete();
         Session::flash('success_msg', trans('messages.post_deleted_success'));
         return redirect()->route('posts.index');

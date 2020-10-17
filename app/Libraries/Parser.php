@@ -25,7 +25,7 @@ class Parser
 
         $str = file_get_contents($url);
 
-        $str = str_ireplace(array('ndash;', 'nbsp;'), array('-', ' '), $str);
+        $str = str_ireplace(['ndash;', 'nbsp;'], ['-', ' '], $str);
 
         $str = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $str);
 
@@ -103,10 +103,16 @@ class Parser
 
 
                                 if ($value['name'] == '{}enclosure') {
-                                    if (!empty($value['attributes']['url']) && !empty($value['attributes']['type']) && in_array($value['attributes']['type'], array('image/jpeg', "image/png", "image"))) {
+                                    if (!empty($value['attributes']['url']) && !empty($value['attributes']['type']) && in_array(
+                                            $value['attributes']['type'],
+                                            ['image/jpeg', "image/png", "image"]
+                                        )) {
                                         $featuredImage = $value['attributes']['url'];
                                         dd($featuredImage);
-                                        if (!empty($value['attributes']['size']) && $value['attributes']['size'] == 'l' && !in_array('forum', $value['attributes'])) {
+                                        if (!empty($value['attributes']['size']) && $value['attributes']['size'] == 'l' && !in_array(
+                                                'forum',
+                                                $value['attributes']
+                                            )) {
                                             $featuredImageL = $value['attributes']['url'];
                                         }
 
@@ -119,7 +125,10 @@ class Parser
                                 }
 
                                 if ($value['name'] == '{http://search.yahoo.com/mrss/}content') {
-                                    if (!empty($value['attributes']['url']) && !empty($value['attributes']['type']) && in_array($value['attributes']['type'], array('image/jpeg', "image/png", "image"))) {
+                                    if (!empty($value['attributes']['url']) && !empty($value['attributes']['type']) && in_array(
+                                            $value['attributes']['type'],
+                                            ['image/jpeg', "image/png", "image"]
+                                        )) {
                                         $featuredImage = $value['attributes']['url'];
                                         $renderType = config('constants.RENDER_TYPE_IMAGE');
                                     }
@@ -164,14 +173,25 @@ class Parser
                                 }
 
                                 if ($value['name'] == '{http://search.yahoo.com/mrss/}thumbnail') {
-                                    if (!empty($value['attributes']['url']) && strlen($value['attributes']['url']) > 0) {
+                                    if (!empty($value['attributes']['url']) && strlen(
+                                            $value['attributes']['url']
+                                        ) > 0) {
                                         $featuredImage = $value['attributes']['url'];
                                         $renderType = config('constants.RENDER_TYPE_IMAGE');
                                     }
                                 }
                             }
 
-                            $optimized_feeds['channel']['item'][] = ['categories' => $categories, 'render_type' => $renderType, 'featured_image' => $featuredImage, 'video_embed_code' => $videoEmbedCode, 'title' => $title, 'link' => $link, 'description' => $description, 'pubDate' => $pubDate];
+                            $optimized_feeds['channel']['item'][] = [
+                                'categories' => $categories,
+                                'render_type' => $renderType,
+                                'featured_image' => $featuredImage,
+                                'video_embed_code' => $videoEmbedCode,
+                                'title' => $title,
+                                'link' => $link,
+                                'description' => $description,
+                                'pubDate' => $pubDate
+                            ];
                         }
                     }
                 }
@@ -290,7 +310,16 @@ class Parser
                     }
 
 
-                    $optimized_feeds['channel']['item'][] = ['categories' => $categories, 'render_type' => $renderType, 'featured_image' => $featuredImage, 'video_embed_code' => $videoEmbedCode, 'title' => $title, 'link' => $link, 'description' => $description, 'pubDate' => $pubDate];
+                    $optimized_feeds['channel']['item'][] = [
+                        'categories' => $categories,
+                        'render_type' => $renderType,
+                        'featured_image' => $featuredImage,
+                        'video_embed_code' => $videoEmbedCode,
+                        'title' => $title,
+                        'link' => $link,
+                        'description' => $description,
+                        'pubDate' => $pubDate
+                    ];
                 }
             }
         }

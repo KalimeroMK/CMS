@@ -17,31 +17,31 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Post
  *
- * @property int                                                        $id
- * @property string                                                     $title
- * @property string                                                     $slug
- * @property int                                                        $featured
- * @property string                                                     $type
- * @property int                                                        $author_id
- * @property string                                                     $description
- * @property string                                                     $meta_description
- * @property string                                                     $featured_image
- * @property string                                                     $image_old
- * @property int                                                        $views
- * @property int                                                        $status
- * @property Carbon|null                                                $created_at
- * @property Carbon|null                                                $updated_at
- * @property string                                                     $rating_desc
- * @property-read User                                                  $author
- * @property-read \Kalnoy\Nestedset\Collection|Category[]               $categories
- * @property-read int|null                                              $categories_count
- * @property-read Category                                              $category
- * @property-read string                                                $image_url
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property int $featured
+ * @property string $type
+ * @property int $author_id
+ * @property string $description
+ * @property string $meta_description
+ * @property string $featured_image
+ * @property string $image_old
+ * @property int $views
+ * @property int $status
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string $rating_desc
+ * @property-read User $author
+ * @property-read \Kalnoy\Nestedset\Collection|Category[] $categories
+ * @property-read int|null $categories_count
+ * @property-read Category $category
+ * @property-read string $image_url
  * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
- * @property-read int|null                                              $notifications_count
- * @property-read Collection|Tag[]                                      $tags
- * @property-read int|null                                              $tags_count
- * @property-read User                                                  $user
+ * @property-read int|null $notifications_count
+ * @property-read Collection|Tag[] $tags
+ * @property-read int|null $tags_count
+ * @property-read User $user
  * @method static Builder|Post newModelQuery()
  * @method static Builder|Post newQuery()
  * @method static Builder|Post query()
@@ -88,7 +88,8 @@ class Post extends Model
     /**
      * @return BelongsTo
      */
-    public function category(): BelongsTo
+    public function category()
+    : BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
@@ -96,7 +97,8 @@ class Post extends Model
     /**
      * @return BelongsToMany
      */
-    public function tags(): BelongsToMany
+    public function tags()
+    : BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
@@ -104,7 +106,8 @@ class Post extends Model
     /**
      * @return BelongsTo
      */
-    public function user(): BelongsTo
+    public function user()
+    : BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
@@ -112,7 +115,8 @@ class Post extends Model
     /**
      * @return BelongsTo
      */
-    public function author(): BelongsTo
+    public function author()
+    : BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
@@ -120,7 +124,8 @@ class Post extends Model
     /**
      * @return BelongsToMany
      */
-    public function categories(): BelongsToMany
+    public function categories()
+    : BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
@@ -130,7 +135,8 @@ class Post extends Model
      * @return string
      */
 
-    public function getImageUrlAttribute(): ?string
+    public function getImageUrlAttribute()
+    : ?string
     {
         if (!empty($this->featured_image)) {
             return asset('/uploads/images/posts/medium/' . $this->featured_image);

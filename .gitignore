@@ -1,4 +1,5 @@
 # Project exclude paths
 /node_modules/
-/vendor/
 /.env
+/.idea
+/vendor

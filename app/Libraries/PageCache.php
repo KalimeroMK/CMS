@@ -1,4 +1,5 @@
-<?php namespace App\Libraries;
+<?php
+namespace App\Libraries;
 
 use Cache;
 use Closure;

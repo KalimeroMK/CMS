@@ -51,8 +51,8 @@ class TagController extends Controller
      * @param Store $request
      * @return string
      */
-    public function store(Store $request): string
-    {
+    public function store(Store $request)
+    : string {
         $request['slug'] = Str::slug($request->input('title'));
         Tag::create($request->all());
         return redirect()->route('tags.index');
@@ -64,8 +64,8 @@ class TagController extends Controller
      * @throws Exception
      */
 
-    public function destroy(Tag $tag): string
-    {
+    public function destroy(Tag $tag)
+    : string {
         $tag->posts()->detach();
         $tag->delete();
         Session::flash('success_msg', trans('messages.tag_deleted_success'));

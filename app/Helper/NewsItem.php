@@ -11,6 +11,15 @@ use Spatie\Feed\Feedable;
 class NewsItem extends Post implements Feedable
 {
     /**
+     * @return Collection
+     */
+    public static function getFeedItems()
+    : Collection
+    {
+        return self::orderBy('created_at', 'desc')->limit(50)->get();
+    }
+
+    /**
      * @return array|\Spatie\Feed\FeedItem
      */
     public function toFeedItem()
@@ -22,13 +31,5 @@ class NewsItem extends Post implements Feedable
             ->updated($this->updated_at)
             ->link($this->slug)
             ->author($this->author);
-    }
-
-    /**
-     * @return Collection
-     */
-    public static function getFeedItems(): Collection
-    {
-        return self::orderBy('created_at', 'desc')->limit(50)->get();
     }
 }

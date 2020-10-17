@@ -61,8 +61,8 @@ class RoleController extends Controller
      * @param Store $request
      * @return RedirectResponse
      */
-    public function store(Store $request): RedirectResponse
-    {
+    public function store(Store $request)
+    : RedirectResponse {
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
         return redirect()->route('roles.index')
@@ -77,8 +77,12 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        $rolePermissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=",
-            "permissions.id")
+        $rolePermissions = Permission::join(
+            "role_has_permissions",
+            "role_has_permissions.permission_id",
+            "=",
+            "permissions.id"
+        )
             ->where("role_has_permissions.role_id", $role->id)
             ->get();
         return view('admin.roles.show', compact('role', 'rolePermissions'));
@@ -105,11 +109,11 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      *
      * @param Update $request
-     * @param Role   $role
+     * @param Role $role
      * @return RedirectResponse
      */
-    public function update(Update $request, Role $role): RedirectResponse
-    {
+    public function update(Update $request, Role $role)
+    : RedirectResponse {
         $role->name = $request->input('name');
         $role->save();
         $role->syncPermissions($request->input('permission'));
@@ -123,8 +127,8 @@ class RoleController extends Controller
      * @param Role $role
      * @return RedirectResponse
      */
-    public function destroy(Role $role): RedirectResponse
-    {
+    public function destroy(Role $role)
+    : RedirectResponse {
         DB::table("roles")->where('id', $role->id)->delete();
         return redirect()->route('roles.index')
             ->with('success', 'Role deleted successfully');

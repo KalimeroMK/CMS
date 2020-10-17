@@ -11,10 +11,10 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Gallery
  *
- * @property int         $id
- * @property int         $post_id
- * @property string      $image
- * @property int         $priority
+ * @property int $id
+ * @property int $post_id
+ * @property string $image
+ * @property int $priority
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static Builder|Gallery newModelQuery()

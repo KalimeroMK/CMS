@@ -49,11 +49,13 @@ class SettingController extends Controller
      * @param Store $request
      * @return string
      */
-    public function store(Store $request): string
-    {
-        $setting = Setting::create($request->except('image') + [
+    public function store(Store $request)
+    : string {
+        $setting = Setting::create(
+            $request->except('image') + [
                 'featured_image' => $this->verifyAndStoreImage($request)
-            ]);
+            ]
+        );
         $setting = Setting::create($request->all());
         Session::flash('success_msg', trans('messages.settings_updated_success'));
         return route('settings.index', $setting);
@@ -63,21 +65,23 @@ class SettingController extends Controller
      * @param Setting $setting
      * @return string
      */
-    public function edit(Setting $setting): string
-    {
+    public function edit(Setting $setting)
+    : string {
         return route('settings.index', $setting);
     }
 
     /**
-     * @param Update  $request
+     * @param Update $request
      * @param Setting $setting
      * @return JsonResponse
      */
-    public function update(Update $request, Setting $setting): JsonResponse
-    {
-        $setting->update($request->except('image') + [
+    public function update(Update $request, Setting $setting)
+    : JsonResponse {
+        $setting->update(
+            $request->except('image') + [
                 'featured_image' => $this->verifyAndStoreImage($request)
-            ]);
+            ]
+        );
         Session::flash('success_msg', trans('messages.settings_updated_success'));
         return response()->json($setting);
     }
