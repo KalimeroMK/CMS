@@ -64,8 +64,7 @@ class Category extends Model
     /**
      * @return string
      */
-    public static function getTree()
-    : string
+    public static function getTree(): string
     {
         $categories = self::get()->toTree();
         $traverse = function ($categories, $prefix = '') use (&$traverse, &$allCats) {
@@ -81,8 +80,7 @@ class Category extends Model
     /**
      * @return string
      */
-    public static function getList()
-    : string
+    public static function getList(): string
     {
         $categories = self::get()->toTree();
         $lists = '<li class="list-unstyled">';
@@ -97,8 +95,8 @@ class Category extends Model
      * @param $node
      * @return string
      */
-    public static function renderNodeHP($node)
-    : string {
+    public static function renderNodeHP($node): string
+    {
         $list = '<li class="dropdown-item"><a class="nav-link" href="/categories/' . $node->slug . '">' . $node->title . '</a>';
         if ($node->children()->count() > 0) {
             $list .= '<ul class="dropdown-menu">';

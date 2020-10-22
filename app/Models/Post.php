@@ -13,6 +13,8 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
 /**
  * App\Models\Post
@@ -62,7 +64,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Post whereViews($value)
  * @mixin Eloquent
  */
-class Post extends Model
+class Post extends Model implements Feedable
 {
     use Notifiable;
     use ClearsResponseCache;
@@ -88,8 +90,7 @@ class Post extends Model
     /**
      * @return BelongsTo
      */
-    public function category()
-    : BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
@@ -97,8 +98,7 @@ class Post extends Model
     /**
      * @return BelongsToMany
      */
-    public function tags()
-    : BelongsToMany
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
@@ -106,8 +106,7 @@ class Post extends Model
     /**
      * @return BelongsTo
      */
-    public function user()
-    : BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
@@ -115,8 +114,7 @@ class Post extends Model
     /**
      * @return BelongsTo
      */
-    public function author()
-    : BelongsTo
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
@@ -124,8 +122,7 @@ class Post extends Model
     /**
      * @return BelongsToMany
      */
-    public function categories()
-    : BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
@@ -135,8 +132,7 @@ class Post extends Model
      * @return string
      */
 
-    public function getImageUrlAttribute()
-    : ?string
+    public function getImageUrlAttribute(): ?string
     {
         if (!empty($this->featured_image)) {
             return asset('/uploads/images/posts/medium/' . $this->featured_image);
@@ -147,5 +143,26 @@ class Post extends Model
         }
 
         return asset('/uploads/images/posts/medium/rsz_biblija.jpg');
+    }
+
+    /**
+     * @return array|FeedItem
+     */
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary($this->description)
+            ->updated($this->updated_at)
+            ->link($this->slug)
+            ->author($this->author);
+    }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public static function getFeedItems(): \Illuminate\Support\Collection
+    {
+        return self::orderBy('created_at', 'desc')->limit(50)->get();
     }
 }
