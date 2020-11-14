@@ -11,7 +11,7 @@
     @include('laravelblocker::forms.partials.item-note-input')
     <div class="row">
         <div class="col-sm-6 offset-sm-6 mt-1">
-            {!! Form::button(trans('laravelblocker::laravelblocker.buttons.save-larger'), array('class' => 'btn btn-success btn-block margin-bottom-1 mb-1 float-right','type' => 'submit' )) !!}
+            {!! Form::button(trans('laravelblocker::laravelblocker.buttons.save-larger'), ['class' => 'btn btn-success btn-block margin-bottom-1 mb-1 float-right','type' => 'submit' ]) !!}
         </div>
     </div>
 {!! Form::close() !!}

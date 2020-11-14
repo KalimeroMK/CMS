@@ -1,13 +1,9 @@
 <?php
 
-use UniSharp\LaravelFilemanager\Lfm;
-
 Route::feeds();
 Route::get('sitemap', 'Controller@sitemap');
 //Admin Routes
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
-
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    Lfm::routes();
-});
+Route::get('auth/facebook', 'Auth\FacebookController@redirectToFacebook');
+Route::get('auth/facebook/callback', 'Auth\FacebookController@handleFacebookCallback');

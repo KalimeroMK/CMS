@@ -252,7 +252,7 @@ if (Request::is('activity/cleared')) {
 @if(config('LaravelLogger.loggerPaginationEnabled'))
     <div class="text-center">
         <div class="d-flex justify-content-center">
-            {!! $activities->render() !!}
+            {!! $activities->links('admin.partials.pagination') !!}
         </div>
         <p>
             {!! trans('LaravelLogger::laravel-logger.pagination.countText', ['firstItem' => $activities->firstItem(), 'lastItem' => $activities->lastItem(), 'total' => $activities->total(), 'perPage' => $activities->perPage()]) !!}

@@ -1,7 +1,7 @@
 <div class="form-group has-feedback row">
     {!! Form::label('typeId', trans('laravelblocker::laravelblocker.forms.blockedTypeLabel'), array('class' => 'col-md-3 control-label')); !!}
-    <div class="col-md-9">
-        <div class="input-group">
+    <div class="col-md-8">
+        <div>
             <select class="{{ $errors->has('typeId') ? 'custom-select form-control is-invalid ' : 'custom-select form-control' }}"
                     name="typeId" id="typeId">
                 <option value="">
@@ -16,11 +16,6 @@
                     @endforeach
                 @endif
             </select>
-            <div class="input-group-append">
-                <label class="input-group-text" for="typeId">
-                    <i class="fa fas fa-fw fa-shield" aria-hidden="true"></i>
-                </label>
-            </div>
         </div>
         @if ($errors->has('typeId'))
             <span class="help-block">

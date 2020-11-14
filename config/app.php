@@ -151,6 +151,7 @@ return [
         Yangqi\Htmldom\HtmldomServiceProvider::class,
         Cohensive\Embed\EmbedServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -202,7 +203,7 @@ return [
         'Embed' => Cohensive\Embed\Facades\Embed::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Input' => Illuminate\Support\Facades\Request::class,
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

@@ -1,12 +1,15 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
-class RolesAndPermissionsSeeder extends Seeder
+
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -114,4 +117,5 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         $user->assignRole($role3);
     }
+
 }

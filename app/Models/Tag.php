@@ -39,8 +39,7 @@ class Tag extends Model
     protected $table = 'tags';
     protected $fillable = ['title', 'slug', 'views'];
 
-    public function posts()
-    : BelongsToMany
+    public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);
     }

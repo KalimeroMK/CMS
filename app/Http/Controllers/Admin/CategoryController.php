@@ -64,13 +64,12 @@ class CategoryController extends Controller
     : RedirectResponse {
         $title = $request->title;
         $parent_id = $request->parent_id;
-        $slug = Str::slug($request->title, '_');
         if (!is_null($parent_id)) {
-            $category = Category::create(["title" => $title, "slug" => $slug, "parent_id" => $parent_id]);
+            $category = Category::create(["title" => $title, "parent_id" => $parent_id]);
             Session::flash('flash_message', 'Category successfully created!');
             return redirect()->route('categories.edit', $category);
         }
-        $category = Category::create(["title" => $title, "slug" => $slug]);
+        $category = Category::create(["title" => $title]);
         Session::flash('flash_message', 'Category successfully created!');
         return redirect()->route('categories.edit', $category);
     }

@@ -7,7 +7,7 @@
             <form class="form-import" method="POST" action="<?php echo action($controller . '@postImport') ?>" data-remote="true" role="form">
                 @csrf()
                 <div class="row form-group">
-                    <div class="col-auto">
+                    <div class="col-md-3">
                         <select name="replace" class="form-control">
                             <option value="0">Append new translations</option>
                             <option value="1">Replace existing translations</option>

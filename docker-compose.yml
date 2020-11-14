@@ -1,0 +1,37 @@
+version: '2.2'
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "mysql"]
+      timeout: 10s
+      retries: 5
+    user: root
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: test123
+
+  php:
+    container_name: php
+    image: kalimeromk/apache:7.4
+    restart: always
+    environment:
+      VIRTUAL_HOST: cms.test
+      VIRTUAL_PORT: 80
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      mysql:
+        condition: service_healthy
+networks:
+  default:
+    external:
+      name: nginx-proxy
+# Global volumes
+volumes:
+  mysql-data:

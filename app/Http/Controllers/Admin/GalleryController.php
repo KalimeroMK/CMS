@@ -84,9 +84,8 @@ class GalleryController extends Controller
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(Gallery $gallery)
-    : RedirectResponse {
-//         Delete images
+    public function destroy(Gallery $gallery): RedirectResponse
+    {
         $image = public_path() . '/uploads/images/gallery/' . $gallery->image;
         unlink($image);
         $gallery->delete();

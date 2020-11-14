@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class SettingsTableSeeder extends Seeder
@@ -14,9 +16,9 @@ class SettingsTableSeeder extends Seeder
     {
         \DB::table('settings')->delete();
 
-        \DB::table('settings')->insert(array(
+        \DB::table('settings')->insert([
             0 =>
-                array(
+                [
                     'id' => 1,
                     'title' => 'МПЦ - ОА Тетовско - гостиварска епархија',
                     'mainurl' => 'Гоце Делчев ББ Тетово Република Македонија',
@@ -39,7 +41,7 @@ class SettingsTableSeeder extends Seeder
                     'pinterest' => '',
                     'created_at' => '2018-06-26 15:50:52',
                     'updated_at' => '2018-06-26 15:50:52',
-                ),
-        ));
+                ],
+        ]);
     }
 }

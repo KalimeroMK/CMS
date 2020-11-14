@@ -64,7 +64,7 @@ class Category extends Model
     /**
      * @return string
      */
-    public static function getTree(): string
+    public static function getTree()
     {
         $categories = self::get()->toTree();
         $traverse = function ($categories, $prefix = '') use (&$traverse, &$allCats) {

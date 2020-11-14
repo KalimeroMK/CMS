@@ -6,6 +6,7 @@ use App\Traits\ClearsResponseCache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -119,7 +120,9 @@ class User extends Authenticatable
         'fb_page_url',
         'website_url',
         'twitter_url',
-        'google_plus_url'
+        'google_plus_url',
+        'facebook_id'
+
     ];
 
 
@@ -187,8 +190,7 @@ class User extends Authenticatable
     /**
      * @return HasMany
      */
-    public function author()
-    : HasMany
+    public function author(): HasMany
     {
         return $this->hasMany(Post::class, 'author_id');
     }
@@ -196,8 +198,7 @@ class User extends Authenticatable
     /**
      * @return BelongsTo
      */
-    public function ProductList()
-    : BelongsTo
+    public function ProductList(): BelongsTo
     {
         return $this->belongsTo(Post::class, 'id', 'author_id')->orderBy('updated_at', 'desc');
     }
@@ -205,9 +206,21 @@ class User extends Authenticatable
     /**
      * @return HasOne
      */
-    public function loginSecurity()
-    : HasOne
+    public function loginSecurity(): HasOne
     {
         return $this->hasOne(LoginSecurity::class);
+    }
+
+    /**
+     * @param $input
+     * @return User|Builder|Model|object
+     */
+    public function addNew($input)
+    {
+        $check = static::where('facebook_id',$input['facebook_id'])->first();
+        if(is_null($check)){
+            return static::create($input);
+        }
+        return $check;
     }
 }

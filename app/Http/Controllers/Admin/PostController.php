@@ -62,7 +62,6 @@ class PostController extends Controller
         $post = Post::create(
             $request->except('featured_image') + [
                 'featured_image' => $this->verifyAndStoreImage($request),
-                'slug' => $this->createSlug($request)
             ]
         );
         $post->tags()->attach($request->tags);
@@ -88,21 +87,15 @@ class PostController extends Controller
      * @param Post $post
      * @return RedirectResponse
      */
-    public function update(Update $request, Post $post)
-    : RedirectResponse {
+    public function update(Update $request, Post $post): RedirectResponse {
         if ($request->hasFile('featured_image')) {
             $post->update(
                 $request->except('featured_image') + [
                     'featured_image' => $this->verifyAndStoreImage($request),
-                    'slug' => $this->createSlug($request)
                 ]
             );
         } else {
-            $post->update(
-                $request->except('featured_image') + [
-                    'slug' => $this->createSlug($request)
-                ]
-            );
+            $post->update($request->all());
         }
         $post->tags()->sync($request->tags, true);
         $post->categories()->sync($request->category, true);
@@ -117,8 +110,7 @@ class PostController extends Controller
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(Post $post)
-    : RedirectResponse {
+    public function destroy(Post $post): RedirectResponse {
         $post->delete();
         Session::flash('success_msg', trans('messages.post_deleted_success'));
         return redirect()->route('posts.index');
