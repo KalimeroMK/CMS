@@ -9,9 +9,7 @@
                                 href="{{route('posts.index')}}">{{trans('messages.posts')}}</a></p>
                 </div>
                 <div class="card-body">
-                    {{ Form::model('$post', ['route' => ['posts.update', $post], 'method' => 'PUT','id'=>'form-username','class'=>'form-horizontal form-bordered', 'files'=>true]) }}
                     @include('admin.posts.partials.form')
-                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

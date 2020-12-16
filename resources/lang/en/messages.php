@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     'preview_mode_error' => 'Create , Edit , Delete are disabled in Preview mode',
     'admin_dashboard_title' => 'RSS AGGREGATOR - Feeder',
     'footer_copyright' => 'RSS AGGREGATOR by kodeinfo',
@@ -27,6 +27,7 @@ return array(
     'cancel' => 'Cancel',
     'save' => 'Save',
     'name' => 'Name',
+    'iso' => 'Iso',
     'my_profile' => 'My Profile',
     'logout' => 'Log Out',
     'description' => 'Description',
@@ -58,6 +59,7 @@ return array(
     'log' => 'Logs',
     'blocker' => 'Blocker',
     'translations' => 'Translations',
+    'language' => 'Language',
     'code_position_required' => 'Code and Position is required',
     'ads_created_success' => 'Ad created successfully',
     'ad_not_found' => 'Ad not found',
@@ -384,12 +386,12 @@ return array(
     'error_403' => 'Error 403',
     'sorry_maybe_lost' => 'Sorry, maybe you are lost below is the good starting point for you.',
     'search' =>
-        array(
+        [
             '' =>
-                array(
+                [
                     '' => 'Search...',
-                ),
-        ),
+                ],
+        ],
     'subscribe' => 'Subscribe',
     'we_dont_spam_loyal' => 'We dont spam our loyal customers , you can unsubscribe anytime',
     'follow_us' => 'Follow us',
@@ -471,4 +473,4 @@ return array(
     'timezone' => 'Timezone',
     'locale' => 'Locale',
     'will_only_work_with_english_locale' => 'Will only work with english locale',
-);
+];

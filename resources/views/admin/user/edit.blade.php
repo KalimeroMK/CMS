@@ -8,13 +8,11 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title "> {{trans('messages.home')}}</h4>
                     <p class="card-category"><a href="{{ route('dashboard')}}">{{trans('messages.home')}}</a> -> <a
-                                href="{{route('categories.index')}}">{{trans('messages.pages')}}</a></p>
+                                href="{{route('users.index')}}">{{trans('messages.pages')}}</a></p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        {!! Form::model('user', ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
                         @include('admin.user.partials.form')
-                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

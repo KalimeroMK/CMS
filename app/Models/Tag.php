@@ -6,6 +6,7 @@ use App\Traits\ClearsResponseCache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
@@ -13,14 +14,14 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Tag
  *
- * @property int $id
- * @property string $title
- * @property string $slug
- * @property int $views
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property int                    $id
+ * @property string                 $title
+ * @property string                 $slug
+ * @property int                    $views
+ * @property Carbon|null            $created_at
+ * @property Carbon|null            $updated_at
  * @property-read Collection|Post[] $posts
- * @property-read int|null $posts_count
+ * @property-read int|null          $posts_count
  * @method static Builder|Tag newModelQuery()
  * @method static Builder|Tag newQuery()
  * @method static Builder|Tag query()
@@ -35,6 +36,7 @@ use Illuminate\Support\Carbon;
 class Tag extends Model
 {
     use ClearsResponseCache;
+    use HasFactory;
 
     protected $table = 'tags';
     protected $fillable = ['title', 'slug', 'views'];

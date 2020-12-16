@@ -9,10 +9,7 @@
                                 href="{{route('settings.index')}}">{{trans('messages.settings')}}</a></p>
                 </div>
                 <div class="card-body">
-
-                    {{ Form::model('settings', ['route' => ['settings.store'], 'method' => 'POST', 'files'=>true]) }}
                     @include('admin.settings.partials.form')
-                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

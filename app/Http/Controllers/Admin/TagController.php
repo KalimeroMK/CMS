@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Request;
 use App\Http\Requests\Tag\Store;
 use App\Models\PostTag;
 use App\Models\Tag;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Session;
@@ -51,8 +53,8 @@ class TagController extends Controller
      * @param Store $request
      * @return string
      */
-    public function store(Store $request)
-    : string {
+    public function store(Store $request): string
+    {
         $request['slug'] = Str::slug($request->input('title'));
         Tag::create($request->all());
         return redirect()->route('tags.index');
@@ -63,9 +65,28 @@ class TagController extends Controller
      * @return string
      * @throws Exception
      */
+    /**
+     * @param Tag $tag
+     * @return Application|Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit(Tag $tag)
+    {
+        return view('admin.tags.edit', compact('tag'));
+    }
 
-    public function destroy(Tag $tag)
-    : string {
+    /**
+     * @param Request $request
+     * @param Tag $tag
+     * @return RedirectResponse]
+     */
+    public function update(Request $request, Tag $tag)
+    {
+        $tag->update($request->all());
+        return redirect()->route('tags.edit', $tag);
+    }
+
+    public function destroy(Tag $tag): string
+    {
         $tag->posts()->detach();
         $tag->delete();
         Session::flash('success_msg', trans('messages.tag_deleted_success'));

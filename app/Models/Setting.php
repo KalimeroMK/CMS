@@ -5,36 +5,37 @@ namespace App\Models;
 use App\Traits\ClearsResponseCache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Setting
  *
- * @property int $id
- * @property string $title
- * @property string $mainurl
- * @property string $email
- * @property string $description
- * @property string $logo
- * @property string $logomedium
- * @property string $logothumb
- * @property string $link
- * @property string $address
- * @property string $phone
- * @property string $twitter
- * @property string $facebook
- * @property string $skype
- * @property string $linkedin
- * @property string $gplus
- * @property string $youtube
- * @property string $flickr
- * @property string $pinterest
- * @property string $analytics_code
- * @property string $mailchimp_form
+ * @property int         $id
+ * @property string      $title
+ * @property string      $mainurl
+ * @property string      $email
+ * @property string      $description
+ * @property string      $logo
+ * @property string      $logomedium
+ * @property string      $logothumb
+ * @property string      $link
+ * @property string      $address
+ * @property string      $phone
+ * @property string      $twitter
+ * @property string      $facebook
+ * @property string      $skype
+ * @property string      $linkedin
+ * @property string      $gplus
+ * @property string      $youtube
+ * @property string      $flickr
+ * @property string      $pinterest
+ * @property string      $analytics_code
+ * @property string      $mailchimp_form
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property int $show_big_sharing
+ * @property int         $show_big_sharing
  * @method static Builder|Setting newModelQuery()
  * @method static Builder|Setting newQuery()
  * @method static Builder|Setting query()
@@ -67,6 +68,7 @@ use Illuminate\Support\Carbon;
 class Setting extends Model
 {
     use ClearsResponseCache;
+    use HasFactory;
 
     protected $table = 'settings';
 }

@@ -5,16 +5,17 @@ namespace App\Models;
 use App\Traits\ClearsResponseCache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
  * App\Models\PostTag
  *
- * @property int $id
- * @property int|null $post_id
- * @property int|null $tag_id
- * @property int $views
+ * @property int         $id
+ * @property int|null    $post_id
+ * @property int|null    $tag_id
+ * @property int         $views
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static Builder|PostTag newModelQuery()
@@ -31,6 +32,7 @@ use Illuminate\Support\Carbon;
 class PostTag extends Model
 {
     use ClearsResponseCache;
+    use HasFactory;
 
     protected $table = 'post_tag';
     protected $fillable = ['post_id', 'tag_id'];

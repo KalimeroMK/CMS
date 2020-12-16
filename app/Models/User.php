@@ -6,6 +6,7 @@ use App\Traits\ClearsResponseCache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,38 +20,38 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * App\Models\User
  *
- * @property int $id
- * @property string $name
- * @property string $slug
- * @property string $email
- * @property string $password
- * @property string|null $remember_token
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string $avatar
- * @property string $birthday
- * @property string $bio
- * @property string $gender
- * @property string $mobile_no
- * @property string $country
- * @property string $timezone
- * @property string $reset_password_code
- * @property string $reset_requested_on
- * @property int $activated
- * @property string $activation_code
- * @property string $activated_at
- * @property string $fb_url
- * @property string $fb_page_url
- * @property string $website_url
- * @property string $twitter_url
- * @property string $google_plus_url
- * @property-read Post $ProductList
- * @property-read Collection|Post[] $author
- * @property-read int|null $author_count
+ * @property int                          $id
+ * @property string                       $name
+ * @property string                       $slug
+ * @property string                       $email
+ * @property string                       $password
+ * @property string|null                  $remember_token
+ * @property Carbon|null                  $created_at
+ * @property Carbon|null                  $updated_at
+ * @property string                       $avatar
+ * @property string                       $birthday
+ * @property string                       $bio
+ * @property string                       $gender
+ * @property string                       $mobile_no
+ * @property string                       $country
+ * @property string                       $timezone
+ * @property string                       $reset_password_code
+ * @property string                       $reset_requested_on
+ * @property int                          $activated
+ * @property string                       $activation_code
+ * @property string                       $activated_at
+ * @property string                       $fb_url
+ * @property string                       $fb_page_url
+ * @property string                       $website_url
+ * @property string                       $twitter_url
+ * @property string                       $google_plus_url
+ * @property-read Post                    $ProductList
+ * @property-read Collection|Post[]       $author
+ * @property-read int|null                $author_count
  * @property-read Collection|Permission[] $permissions
- * @property-read int|null $permissions_count
- * @property-read Collection|Role[] $roles
- * @property-read int|null $roles_count
+ * @property-read int|null                $permissions_count
+ * @property-read Collection|Role[]       $roles
+ * @property-read int|null                $roles_count
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User permission($permissions)
@@ -82,18 +83,18 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereWebsiteUrl($value)
  * @mixin Eloquent
+ * @property string|null                  $facebook_id
+ * @property-read LoginSecurity|null      $loginSecurity
+ * @method static Builder|User whereFacebookId($value)
  */
 class User extends Authenticatable
 {
     use HasRoles;
+    use HasFactory;
 
     use ClearsResponseCache;
 
-    const TYPE_ADMIN = "admin";
-    const TYPE_CUSTOMER = "customer";
-    const TYPE_PUBLISHER = "publisher";
-    const TYPE_AUTHOR = "author";
-    const GENDER_MALE = "male";
+    const GENDER_MALE   = "male";
     const GENDER_FEMALE = "female";
     protected $table = 'users';
     protected $fillable = [
@@ -159,7 +160,7 @@ class User extends Authenticatable
     /**
      * Set the token value for the "remember me" session.
      *
-     * @param string $value
+     * @param  string  $value
      * @return void
      */
     public function setRememberToken($value)
@@ -217,8 +218,8 @@ class User extends Authenticatable
      */
     public function addNew($input)
     {
-        $check = static::where('facebook_id',$input['facebook_id'])->first();
-        if(is_null($check)){
+        $check = static::where('facebook_id', $input['facebook_id'])->first();
+        if (is_null($check)) {
             return static::create($input);
         }
         return $check;

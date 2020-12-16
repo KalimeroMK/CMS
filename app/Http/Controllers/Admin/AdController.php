@@ -76,12 +76,12 @@ class AdController extends Controller
      *
      * @param Update $request
      * @param Ad $ad
-     * @return Factory|View
+     * @return RedirectResponse
      */
     public function update(Update $request, Ad $ad)
     {
         $ad->update($request->all());
-        return view('admin.ads.edit', $ad);
+        return redirect()->route('ads.edit', $ad);
     }
 
     /**

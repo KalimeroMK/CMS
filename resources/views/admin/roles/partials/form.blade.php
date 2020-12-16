@@ -1,3 +1,15 @@
+@if(is_null($role))
+    {!! Form::model($role, [
+        'route' => ['roles.update', $role->id],
+        'method' => 'PUT',
+        'class' => 'form-horizontal'])
+    !!}
+@else
+    {!! Form::open([
+        'route' => 'roles.store',
+        'class' => 'form-horizontal'])
+    !!}
+@endif
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -20,3 +32,4 @@
         {{ Form::submit(trans('messages.save'), ['name' => 'submit', 'class'=>'btn purple' ]) }}
     </div>
 </div>
+{!! Form::close() !!}

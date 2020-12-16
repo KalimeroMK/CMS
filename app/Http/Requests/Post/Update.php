@@ -4,7 +4,6 @@ namespace App\Http\Requests\Post;
 
 use App\Http\Requests\CanAuthorise;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 /**
  * @property mixed title
@@ -23,15 +22,10 @@ class Update extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    : array
+    public function rules(): array
     {
         return [
-            'title' => [
-                'required',
-                Rule::unique('posts', 'title')->ignore($this->post)
-            ],
-            'description' => 'required'
+            'featured_image' => 'nullable|image'
         ];
     }
 }

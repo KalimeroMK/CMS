@@ -6,6 +6,7 @@ use App\Traits\ClearsResponseCache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -19,31 +20,31 @@ use Spatie\Feed\FeedItem;
 /**
  * App\Models\Post
  *
- * @property int $id
- * @property string $title
- * @property string $slug
- * @property int $featured
- * @property string $type
- * @property int $author_id
- * @property string $description
- * @property string $meta_description
- * @property string $featured_image
- * @property string $image_old
- * @property int $views
- * @property int $status
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string $rating_desc
- * @property-read User $author
- * @property-read \Kalnoy\Nestedset\Collection|Category[] $categories
- * @property-read int|null $categories_count
- * @property-read Category $category
- * @property-read string $image_url
+ * @property int                                                        $id
+ * @property string                                                     $title
+ * @property string                                                     $slug
+ * @property int                                                        $featured
+ * @property string                                                     $type
+ * @property int                                                        $author_id
+ * @property string                                                     $description
+ * @property string                                                     $meta_description
+ * @property string                                                     $featured_image
+ * @property string                                                     $image_old
+ * @property int                                                        $views
+ * @property int                                                        $status
+ * @property Carbon|null                                                $created_at
+ * @property Carbon|null                                                $updated_at
+ * @property string                                                     $rating_desc
+ * @property-read User                                                  $author
+ * @property-read \Kalnoy\Nestedset\Collection|Category[]               $categories
+ * @property-read int|null                                              $categories_count
+ * @property-read Category                                              $category
+ * @property-read string                                                $image_url
  * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
- * @property-read int|null $notifications_count
- * @property-read Collection|Tag[] $tags
- * @property-read int|null $tags_count
- * @property-read User $user
+ * @property-read int|null                                              $notifications_count
+ * @property-read Collection|Tag[]                                      $tags
+ * @property-read int|null                                              $tags_count
+ * @property-read User                                                  $user
  * @method static Builder|Post newModelQuery()
  * @method static Builder|Post newQuery()
  * @method static Builder|Post query()
@@ -68,6 +69,7 @@ class Post extends Model implements Feedable
 {
     use Notifiable;
     use ClearsResponseCache;
+    use HasFactory;
 
     protected $table = 'posts';
     protected $fillable = [
@@ -128,6 +130,14 @@ class Post extends Model implements Feedable
     }
 
     /**
+     * @return BelongsToMany
+     */
+    public function language(): BelongsToMany
+    {
+        return $this->belongsToMany(Language::class)->withPivot('title', 'description');
+    }
+
+    /**
      * @param $value
      * @return string
      */
@@ -135,7 +145,7 @@ class Post extends Model implements Feedable
     public function getImageUrlAttribute(): ?string
     {
         if (!empty($this->featured_image)) {
-            return asset('/uploads/images/posts/medium/' . $this->featured_image);
+            return asset('/uploads/images/posts/medium/'.$this->featured_image);
         }
 
         if (!empty($this->image_old)) {
@@ -158,6 +168,7 @@ class Post extends Model implements Feedable
             ->link($this->slug)
             ->author($this->author);
     }
+
     /**
      * @return \Illuminate\Support\Collection
      */

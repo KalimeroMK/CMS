@@ -2,6 +2,7 @@
 Route::resource('ads', 'AdController');
 Route::resource('categories', 'CategoryController');
 Route::resource('posts', 'PostController');
+Route::resource('languages', 'LanguageController');
 Route::resource('tags', 'TagController');
 Route::resource('roles', 'RoleController');
 Route::get('statistics', 'StatisticController@index')->name('statistics');

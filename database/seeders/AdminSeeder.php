@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -17,7 +16,7 @@ class AdminSeeder extends Seeder
      * @return void
      */
 
-    public function run()
+    public function run(): void
     {
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
@@ -28,6 +27,10 @@ class AdminSeeder extends Seeder
             'settings-create',
             'settings-edit',
             'settings-delete',
+            'source-list',
+            'source-create',
+            'source-edit',
+            'source-delete',
             'categories-list',
             'categories-create',
             'categories-edit',
@@ -51,7 +54,11 @@ class AdminSeeder extends Seeder
             'ad-list',
             'ad-create',
             'ad-edit',
-            'ad-delete'
+            'ad-delete',
+            'page-list',
+            'page-create',
+            'page-edit',
+            'page-delete'
 
         ];
 
@@ -70,7 +77,11 @@ class AdminSeeder extends Seeder
             'post-list',
             'post-create',
             'post-edit',
-            'post-delete'
+            'post-delete',
+            'user-list',
+            'user-create',
+            'user-edit',
+            'user-delete',
         ]);
 
         $role2 = Role::create(['name' => 'admin']);
@@ -88,6 +99,9 @@ class AdminSeeder extends Seeder
             'tags-edit',
             'tags-delete',
             'user-list',
+            'user-create',
+            'user-edit',
+            'user-delete',
             'role-list',
             'post-list',
             'post-create',
@@ -99,21 +113,32 @@ class AdminSeeder extends Seeder
         $role3->givePermissionTo(Permission::all());
 
         // create demo users
-        $user = Factory(User::class)->create([
+        $user = \App\Models\User::factory()->create([
             'name' => 'Example User',
             'email' => 'test@mail.com',
+            'avatar' => '/uploads/author-thumb.jpg',
+            'slug' => 'example-user',
+
         ]);
         $user->assignRole($role1);
 
-        $user = Factory(User::class)->create([
+        $user = \App\Models\User::factory()->create([
             'name' => 'Example Admin User',
             'email' => 'admin@mail.com',
+            'avatar' => '/uploads/author-thumb.jpg',
+            'slug' => 'example-admin-user',
+
+
         ]);
         $user->assignRole($role2);
 
-        $user = Factory(User::class)->create([
+        $user = \App\Models\User::factory()->create([
             'name' => 'Example Super-Admin User',
             'email' => 'superadmin@mail.com',
+            'avatar' => '/uploads/author-thumb.jpg',
+            'slug' => 'example-super-admin-user',
+
+
         ]);
         $user->assignRole($role3);
     }

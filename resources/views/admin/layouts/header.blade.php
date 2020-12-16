@@ -31,8 +31,7 @@
                             </p>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                            <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id) }}">Profile</a>
-                            <a class="dropdown-item" href="{{ route('users.edit', Auth::user()->id) }}">Settings</a>
+                            <a class="dropdown-item" href="{{ route('users.edit', Auth::user()->id) }}">Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">{{trans('messages.logout')}}</a>
                         </div>

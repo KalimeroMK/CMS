@@ -19,6 +19,7 @@
                                 <th>{{trans('messages.slug')}}</th>
                                 <th>{{trans('messages.view')}}</th>
                                 <th>{{trans('messages.posts_count')}}</th>
+                                <th>{{trans('messages.edit')}}</th>
                                 <th>{{trans('messages.delete')}}</th>
                             </tr>
                             </thead>
@@ -37,9 +38,10 @@
                                     <td> {{$t->slug}} </td>
                                     <td> {{$t->views}} </td>
                                     <td> {{$t->post_count}} </td>
+                                    <td><a href="{{ route('tags.edit', $t) }}"
+                                           class="btn btn-warning btn-sm">{{trans('messages.edit')}}</a>
+                                    </td>
                                     <td>   {{ Form::model('tag',['route' => ['tags.destroy', $t], 'method' => 'DELETE'])}}
-                                        {!! csrf_field() !!}
-
                                         <button type="submit" data-toggle="modal"
                                                 data-target="#confirm-delete"
                                                 class="btn btn-danger btn-sm">{{trans('messages.delete')}}</button>

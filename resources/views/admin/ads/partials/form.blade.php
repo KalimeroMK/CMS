@@ -1,10 +1,18 @@
 @if(isset($ad))
 
-    {{ Form::model('ad', ['route' => ['ads.update', $ad], 'method' => 'POST','id'=>'form-username','class'=>'form-horizontal form-bordered', 'files'=>true]) }}
-    {!! csrf_field() !!}
+    {{ Form::model('ad', [
+        'route' => ['ads.update', $ad],
+        'method' => 'PUT',
+        'class'=>'form-horizontal form-bordered',
+        'files'=>true])
+    }}
 @else
-    {{ Form::model('ad', ['route' => ['ads.store'], 'method' => 'POST','id'=>'form-username','class'=>'form-horizontal form-bordered', 'files'=>true]) }}
-    {!! csrf_field() !!}
+    {{ Form::model('ad', [
+        'route' => ['ads.store'],
+        'method' => 'POST',
+        'class'=>'form-horizontal form-bordered',
+        'files'=>true])
+    }}
 @endif
 
 <div class="form-group">

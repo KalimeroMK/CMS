@@ -5,15 +5,16 @@ namespace App\Models;
 use App\Traits\ClearsResponseCache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Ad
  *
- * @property int $id
- * @property string $code
- * @property string $position
+ * @property int         $id
+ * @property string      $code
+ * @property string      $position
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static Builder|Ad newModelQuery()
@@ -29,6 +30,7 @@ use Illuminate\Support\Carbon;
 class Ad extends Model
 {
     use ClearsResponseCache;
+    use HasFactory;
 
     protected $fillable = ['code', 'position'];
     protected $table = 'ads';

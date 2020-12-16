@@ -1,3 +1,15 @@
+@if(is_null($user))
+    {!! Form::model($user, [
+        'route' => ['users.update', $user->id],
+        'method' => 'PUT',
+        'class' => 'form-horizontal'])
+    !!}
+@else
+    {!! Form::open([
+        'route' => 'users.store',
+        'class' => 'form-horizontal'])
+    !!}
+@endif
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6">
         <strong>Name:</strong>
@@ -39,14 +51,27 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <strong>Role:</strong>
-
         <div class="form-group">
-            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
-            {!! Form::select('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-
+            <select data-placeholder="Select a Roles" class="form-control js-example-basic-multiple" name="roles[]"
+                    multiple="multiple">
+                @foreach($roles as $role)
+                    <option value="{{ $role->id }}" {{ $user->roles->contains($role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         {{ Form::submit(trans('messages.save'), ['name' => 'submit', 'class'=>'btn purple' ]) }}
     </div>
+    {!! Form::close() !!}
 </div>
+@section('style')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+@endsection
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>$(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+@endsection

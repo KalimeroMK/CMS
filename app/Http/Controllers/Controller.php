@@ -12,6 +12,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Session;
 use View;
 
 class Controller extends BaseController
@@ -19,6 +20,14 @@ class Controller extends BaseController
     use AuthorizesRequests,
         DispatchesJobs,
         ValidatesRequests;
+
+    /**
+     * @return mixed
+     */
+    public function lang()
+    {
+        return Session::get('locale');
+    }
 
     /**
      * Controller constructor.

@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\Localization;
 use App\Http\Middleware\LoginSecurityMiddleware;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrimStrings;
@@ -62,6 +63,7 @@ class Kernel extends HttpKernel
             VerifyCsrfToken::class,
             SubstituteBindings::class,
 //            CacheResponse::class,
+            Localization::class
 
         ],
 
@@ -93,6 +95,7 @@ class Kernel extends HttpKernel
         'permission' => PermissionMiddleware::class,
 //        'doNotCacheResponse' => DoNotCacheResponse::class,
         '2fa' => LoginSecurityMiddleware::class,
+        Localization::class
 
 
     ];

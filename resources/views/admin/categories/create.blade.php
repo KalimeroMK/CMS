@@ -13,9 +13,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        {{ Form::model('category', ['route' => ['categories.store'], 'method' => 'POST','id'=>'form-username','class'=>'form-horizontal form-bordered', 'files'=>true]) }}
                         @include('admin.categories.partials.form')
-                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

@@ -78,7 +78,12 @@
                         <span class="title">{{trans('messages.translations')}}</span>
                     </a>
                 </li>
-
+                <li class="nav-item {{ Route::currentRouteNamed('languages') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('languages.index') }}">
+                        <i class="material-icons">flag</i>
+                        <span class="title">{{trans('messages.language')}}</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

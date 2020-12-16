@@ -19,7 +19,6 @@
                                 <th>{{trans('messages.title')}}</th>
                                 <th>{{trans('messages.gallery')}}</th>
                                 <th>{{trans('messages.category')}}</th>
-                                <th>{{trans('messages.source')}}</th>
                                 <th>{{trans('messages.views')}}</th>
                                 <th>{{trans('messages.published_on')}}</th>
                                 <th>{{trans('messages.status')}}</th>
@@ -42,20 +41,17 @@
                                     <td>
                                         <img src="{{ $post->imageUrl }}" style="width:100px;"/>
                                     </td>
-                                    <td><a href="/{{$post->slug}}" target="_blank">{{$post->title}}</a></td>
+                                    <td><a href="/{{$post->slug}}" target="_blank">
+                                            @foreach($post->language as $type)
+                                                {{ $type->pivot->title }}
+                                            @endforeach
+                                        </a></td>
                                     <td><span class="time"><a href="{{ route('addGallery', $post->id) }}"
                                                               class="btn btn-info">{{trans('messages.image_gallery')}}</a></span>
                                     </td>
                                     <td> @foreach($post->categories as $category)
                                             {{$category->title}}
                                         @endforeach </td>
-
-                                    @if($post->type == config('constants.TYPE_SOURCE'))
-                                        <td>{{isset($post->source)?$post->source->channel_title:'NO SOURCE'}}</td>
-                                    @else
-                                        <td> {{trans('messages.manual')}} </td>
-                                    @endif
-
                                     <td> {{$post->views}} </td>
                                     <td> {{$post->created_at}} </td>
 

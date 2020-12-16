@@ -1,3 +1,15 @@
+@if(is_null($settings))
+    {!! Form::model($settings, [
+        'route' => ['settings.update', $settings->id],
+        'method' => 'PUT',
+        'class' => 'form-horizontal'])
+    !!}
+@else
+    {!! Form::open([
+        'route' => 'settings.store',
+        'class' => 'form-horizontal'])
+    !!}
+@endif
 <div class="row">
     <div class="input-group{{ $errors->has('logo') ? ' has-error' : '' }}">
 							<span class="input-group-btn">
@@ -44,7 +56,6 @@
         </div>
         @if ($errors->has('twitter')) <p
                 class="alert alert-danger">{{ $errors->first('twitter') }}</p> @endif
-
     </div>
     <div class="col-6">
         <div class="form-group">
@@ -109,6 +120,7 @@
         </div>
     </div>
 </div>
+{!! Form::close() !!}
 @section('extra_js')
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 @stop

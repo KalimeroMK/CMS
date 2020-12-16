@@ -32,7 +32,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return Factory|View
      */
@@ -58,12 +58,12 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Store $request
+     * @param  Store  $request
      *
      * @return RedirectResponse
      */
-    public function store(Store $request)
-    : RedirectResponse {
+    public function store(Store $request): RedirectResponse
+    {
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
@@ -77,7 +77,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param User $user
+     * @param  User  $user
      *
      * @return Factory|View
      */
@@ -89,13 +89,13 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param User $user
+     * @param  User  $user
      *
      * @return Factory|View
      */
     public function edit(User $user)
     {
-        $roles = Role::pluck('name', 'name')->all();
+        $roles = Role::get();
         $userRole = $user->roles->pluck('name', 'name')->all();
         return view('admin.user.edit', compact('user', 'roles', 'userRole'));
     }
@@ -103,13 +103,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param User $user
-     * @param Update $request
+     * @param  User    $user
+     * @param  Update  $request
      *
      * @return RedirectResponse
      */
-    public function update(User $user, Update $request)
-    : RedirectResponse {
+    public function update(User $user, Update $request): RedirectResponse
+    {
         $input = $request->all();
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
@@ -130,13 +130,13 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param User $user
+     * @param  User  $user
      *
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(User $user)
-    : RedirectResponse {
+    public function destroy(User $user): RedirectResponse
+    {
         $user->delete();
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');

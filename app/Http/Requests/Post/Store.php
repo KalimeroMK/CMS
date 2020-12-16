@@ -20,16 +20,11 @@ class Store extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    : array
+    public function rules(): array
     {
         return [
-            'title' => 'required|unique:posts,title',
-            'description' => 'required',
             'category' => 'required',
             'featured_image' => 'required|image|'
-
-
         ];
     }
 }

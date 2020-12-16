@@ -29,7 +29,11 @@
                 {!! Form::close() !!}
                 <div class="col-12">
                     @foreach($gallery as $galleries)
-                        {{ Form::model('gallery', ['route' => ['gallery.destroy' , $galleries], 'method' => 'POST', 'files'=>true]) }}
+                        {{ Form::model('gallery', [
+                                                    'route' => ['gallery.destroy' , $galleries],
+                                                    'method' => 'POST',
+                                                    'files'=>true])
+                         }}
                         {{ method_field('DELETE') }}
 
                         <img src="{{$galleries->galleryUrl}}" class="rounded col-3" style="margin: 2%">

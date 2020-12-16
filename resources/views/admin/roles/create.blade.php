@@ -9,9 +9,7 @@
                                 href="{{route('posts.index')}}">{{trans('messages.posts')}}</a></p>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
                     @include('admin.roles.partials.form')
-                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
