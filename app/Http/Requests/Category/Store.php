@@ -9,18 +9,15 @@ class Store extends FormRequest
 {
     use CanAuthorise;
 
-    /**
-     * @var mixed
-     */
-    public $name;
-    /**
-     * @var mixed
-     */
-    public $country;
+
     /**
      * @var mixed
      */
     public $title;
+    /**
+     * @var mixed
+     */
+    public $parent_id;
 
     /**
      * Get the validation rules that apply to the request.

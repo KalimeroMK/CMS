@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\Store;
 use App\Http\Requests\Category\Update;
-use App\Http\Requests\Gallery\Store;
 use App\Models\Category;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Session;
 
@@ -22,6 +21,7 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('permission:categories-list');
         $this->middleware('permission:categories-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:categories-edit', ['only' => ['edit', 'update']]);
@@ -60,16 +60,14 @@ class CategoryController extends Controller
      * @param Store $request
      * @return RedirectResponse
      */
-    public function store(Store $request)
-    : RedirectResponse {
-        $title = $request->title;
-        $parent_id = $request->parent_id;
-        if (!is_null($parent_id)) {
-            $category = Category::create(["title" => $title, "parent_id" => $parent_id]);
+    public function store(Store $request): RedirectResponse
+    {
+        if (!is_null($request->parent_id)) {
+            $category = Category::create(["parent_id" => $request->parent_id]);
             Session::flash('flash_message', 'Category successfully created!');
             return redirect()->route('categories.edit', $category);
         }
-        $category = Category::create(["title" => $title]);
+        $category = Category::create($request->all());
         Session::flash('flash_message', 'Category successfully created!');
         return redirect()->route('categories.edit', $category);
     }
@@ -93,13 +91,8 @@ class CategoryController extends Controller
      * @param Category $category
      * @return RedirectResponse
      */
-    public function update(Update $request, Category $category)
-    : RedirectResponse {
-        if ($request->has('parent_id')) {
-            $category->update($request->all());
-            Session::flash('flash_message', 'Category successfully created!');
-            return redirect()->back();
-        }
+    public function update(Update $request, Category $category): RedirectResponse
+    {
         $category->update($request->all());
         Session::flash('flash_message', 'Category successfully created!');
         return redirect()->back();
@@ -112,7 +105,7 @@ class CategoryController extends Controller
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
         Session::flash('flash_message', 'Category successfully deleted!');

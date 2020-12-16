@@ -22,6 +22,8 @@
                             <th>@lang('messages.name')</th>
                             <th>@lang('messages.country')</th>
                             <th>@lang('messages.iso')</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -31,8 +33,6 @@
                                 <td>{{ $languages->name }}</td>
                                 <td>{{ $languages->country }}</td>
                                 <td>>{{ $languages->iso }}</td>
-
-
                                 <td class="float-right"><span class="time"><a
                                                 href="{{ route('languages.edit',$languages) }}"
                                                 class="btn btn-info">@lang('messages.edit')</a></span>

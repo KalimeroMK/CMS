@@ -14,7 +14,6 @@
                         <table class="table">
                             <thead class=" text-primary">
                             <tr>
-                                <th>{{trans('messages.no')}}</th>
                                 <th>{{trans('messages.`name`')}}</th>
                                 <th>{{trans('messages.email')}}</th>
                                 <th>{{trans('messages.role')}}</th>
@@ -31,7 +30,6 @@
                             </div>
                             @foreach ($data as $key => $user)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>

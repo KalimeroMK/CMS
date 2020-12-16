@@ -14,14 +14,13 @@ class Store extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    : array
+    public function rules(): array
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|',
-            'role' => 'required',
+            'email' => 'required|email|unique:users,email',
             'password' => 'confirmed|min:6',
+            'role' => 'required',
         ];
     }
 }

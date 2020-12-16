@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
-    @include('admin.layouts.notify')
     <div class="container-fluid">
+        @include('admin.layouts.notify')
         <div class="content" style="margin-top: 7%">
             <div class="card">
                 <div class="card-header card-header-primary">

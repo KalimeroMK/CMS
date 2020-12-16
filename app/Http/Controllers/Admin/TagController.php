@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Request;
 use App\Http\Requests\Tag\Store;
 use App\Models\PostTag;
 use App\Models\Tag;
@@ -11,8 +10,8 @@ use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Request;
 use Session;
 
 class TagController extends Controller
@@ -22,6 +21,7 @@ class TagController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('permission:tags-list');
         $this->middleware('permission:tags-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:tags-edit', ['only' => ['edit', 'update']]);
@@ -55,7 +55,6 @@ class TagController extends Controller
      */
     public function store(Store $request): string
     {
-        $request['slug'] = Str::slug($request->input('title'));
         Tag::create($request->all());
         return redirect()->route('tags.index');
     }
@@ -79,7 +78,7 @@ class TagController extends Controller
      * @param Tag $tag
      * @return RedirectResponse]
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, Tag $tag): RedirectResponse
     {
         $tag->update($request->all());
         return redirect()->route('tags.edit', $tag);

@@ -4,6 +4,7 @@ namespace App\Http\Requests\User;
 
 use App\Http\Requests\CanAuthorise;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class Update extends FormRequest
 {
@@ -18,8 +19,10 @@ class Update extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|',
-            'roles' => 'required',
+            'email' => [
+                'required',
+                Rule::unique('users', 'id')->ignore($this['id']),
+            ], 'roles' => 'required',
         ];
     }
 }

@@ -1,4 +1,4 @@
-@if(is_null($user))
+@if($user->exists)
     {!! Form::model($user, [
         'route' => ['users.update', $user->id],
         'method' => 'PUT',

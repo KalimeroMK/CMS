@@ -62,7 +62,7 @@ class PostController extends Controller
     }
 
     /**
-     * @param  Store  $request
+     * @param Store $request
      * @return RedirectResponse
      */
     public function store(Store $request): RedirectResponse
@@ -82,7 +82,7 @@ class PostController extends Controller
     }
 
     /**
-     * @param  Post  $post
+     * @param Post $post
      * @return Factory|RedirectResponse|View
      */
     public function edit(Post $post)
@@ -94,8 +94,8 @@ class PostController extends Controller
     }
 
     /**
-     * @param  Update  $request
-     * @param  Post    $post
+     * @param Update $request
+     * @param Post $post
      * @return RedirectResponse
      */
     public function update(Update $request, Post $post): RedirectResponse
@@ -120,7 +120,7 @@ class PostController extends Controller
 
 
     /**
-     * @param  Post  $post
+     * @param Post $post
      * @return RedirectResponse
      * @throws Exception
      */
@@ -135,7 +135,7 @@ class PostController extends Controller
      * @param $request
      * @return array
      */
-    public function pivotData($request)
+    public function pivotData($request): array
     {
         $sync_data = [];
         for ($i = 0, $iMax = count($request['title']); $i < $iMax; $i++) {
@@ -153,11 +153,11 @@ class PostController extends Controller
      *
      * @return object
      */
-    public function makePaths()
+    public function makePaths(): object
     {
-        $original = public_path().'/uploads/images/posts/';
-        $thumbnail = public_path().'/uploads/images/posts/thumbnails/';
-        $medium = public_path().'/uploads/images/posts/medium/';
+        $original = public_path() . '/uploads/images/posts/';
+        $thumbnail = public_path() . '/uploads/images/posts/thumbnails/';
+        $medium = public_path() . '/uploads/images/posts/medium/';
         return (object)compact('original', 'thumbnail', 'medium');
     }
 }

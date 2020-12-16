@@ -6,6 +6,6 @@
 
 @if($errors->any())
     @foreach ($errors->all() as $error)
-        <div>{{ $error }}</div>
+        <div class="alert-primary">{{ $error }}</div>
     @endforeach
 @endif

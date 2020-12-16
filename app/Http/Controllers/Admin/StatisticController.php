@@ -57,15 +57,13 @@ class StatisticController extends Controller
      */
     public function getDevices()
     {
-        $devices = Analytics::performQuery(
+        return Analytics::performQuery(
             Period::years(1),
             'ga:sessions',
             [
                 'dimensions' => 'ga:deviceCategory'
             ]
         );
-
-        return $devices;
     }
 
     /**

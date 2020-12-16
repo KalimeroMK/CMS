@@ -78,7 +78,7 @@ class AdController extends Controller
      * @param Ad $ad
      * @return RedirectResponse
      */
-    public function update(Update $request, Ad $ad)
+    public function update(Update $request, Ad $ad): RedirectResponse
     {
         $ad->update($request->all());
         return redirect()->route('ads.edit', $ad);
