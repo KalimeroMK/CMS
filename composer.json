@@ -18,8 +18,6 @@
     "filp/whoops": "^2.5",
     "phpspec/phpspec": "^6.0",
     "spatie/laravel-responsecache": "^6.6",
-    "kalimeromk/update-htmldom": "dev-master",
-    "kalimeromk/update-thujohn-rss": "dev-master",
     "kalimeromk/laravel-translation-manager": "0.5.x-dev",
     "laravelcollective/html": "^6.0",
     "ext-curl": "*",

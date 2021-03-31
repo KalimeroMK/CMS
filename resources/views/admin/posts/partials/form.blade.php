@@ -105,7 +105,7 @@
                     <div class="form-group col-4">
                         <label for="tags" class="col-sm-3 control-label">{{trans('messages.select_tags')}}</label>
                         <div class="form-group">
-                            <select class="form-control select2-multiple" id="tags" name="tags[]" multiple="multiple">
+                            <select class="form-control select2-multiple" id="add_tag" name="tags[]" multiple="multiple">
                                 @foreach($tag as $tags)
                                     <option value='{{ $tags->id }}'>{!! $tags->title !!} </option>
                                 @endforeach

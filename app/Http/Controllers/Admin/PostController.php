@@ -10,7 +10,6 @@ use App\Models\Language;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Traits\ImageUpload;
-use App\Traits\SlugCreate;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -31,7 +30,6 @@ class PostController extends Controller
     }
 
     use ImageUpload;
-    use SlugCreate;
 
     /**
      * @return Factory|View
@@ -70,7 +68,6 @@ class PostController extends Controller
         $post = Post::create(
             $request->except('featured_image', 'title', 'description') + [
                 'featured_image' => $this->verifyAndStoreImage($request),
-                'slug' => $this->createSlug($request)
             ]
         );
         $post->language()->attach($this->pivotData($request));
@@ -109,7 +106,6 @@ class PostController extends Controller
         } else {
             $post->update($request->except('title', 'description'));
         }
-
         $post->language()->sync($this->pivotData($request), true);
         $post->tags()->sync($request->tags, true);
         $post->categories()->sync($request->category, true);

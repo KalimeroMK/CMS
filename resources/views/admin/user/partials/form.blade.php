@@ -11,51 +11,42 @@
     !!}
 @endif
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6">
-        <strong>Name:</strong>
-        {{Form::text("name",
-             old("name") ? old("name") : (!empty($user) ? $user->name : null),
-             [
-                "class" => "form-control",
-                "id" => "name",
-                "placeholder" =>"name"
-             ])
-        }}
-        <div class="form-group">
-
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+    
+            <strong>@lang('messages.name'):</strong>
+            <input id="name" class="form-control" placeholder="name" name="name" type="text"
+                value=" {{ old('name', $user->name ?? null) }}">
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-        <strong>Email:</strong>
-        {{Form::text("email",
-             old("email") ? old("email") : (!empty($user) ? $user->email : null),
-             [
-                "class" => "form-control",
-                "id" => "email",
-                "placeholder" =>"Email"
-             ])
-        }}
+    
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <strong>@lang('messages.email'):</strong>
+        <input id="email" class="form-control" placeholder="email" name="email" type="email"
+            value=" {{ old('email', $user->email ?? null) }}">
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
+    
+    <div class="col-xs-12 col-sm-12 col-md-12">
         <strong>Password:</strong>
         <div class="form-group">
-            {!! Form::password('password', ['placeholder' => 'Password','class' => 'form-control']) !!}
-
+            <input id="password" class="form-control" placeholder="password" name="password" type="password">
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
+    <div class="col-xs-12 col-sm-12 col-md-12">
         <strong>Confirm Password:</strong>
         <div class="form-group">
-            {!! Form::password('confirm-password', ['placeholder' => 'Confirm Password','class' => 'form-control']) !!}
+            <input id="password" class="form-control" placeholder="Confirm Password" name="confirm-password"
+                type="password">
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <strong>Role:</strong>
         <div class="form-group">
             <select data-placeholder="Select a Roles" class="form-control js-example-basic-multiple" name="roles[]"
-                    multiple="multiple">
-                @foreach($roles as $role)
-                    <option value="{{ $role->id }}" {{ $user->roles->contains($role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
+                multiple="multiple">
+                @foreach ($roles as $role)
+                <option value="{{ $role->id }}" {{ $user->roles->contains($role->id) ? 'selected' : '' }}>
+                    {{ $role->name }}</option>
                 @endforeach
             </select>
         </div>

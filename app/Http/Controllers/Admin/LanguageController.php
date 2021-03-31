@@ -22,7 +22,7 @@ class LanguageController extends Controller
     public function index()
     {
         $language = language::all();
-        return view('admin.language.index', compact('language'));
+        return view('admin.language.index', ['language' => language::all()]);
     }
 
     /**
@@ -32,14 +32,13 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        $language = new language();
-        return view('admin.language.create', compact('language'));
+        return view('admin.language.create', ['language' => new language()]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Store $request
+     * @param  Store  $request
      *
      * @return Language|Model|RedirectResponse
      */
@@ -48,13 +47,12 @@ class LanguageController extends Controller
         $language = Language::create($request->all());
         Session::flash('success_msg', trans('messages.ads_created_success'));
         return redirect()->route('languages.edit', $language);
-
     }
 
     /**
      * Show the partials for editing the specified resource.
      *
-     * @param language $language
+     * @param  language  $language
      *
      * @return Application|Factory|View|RedirectResponse
      */
@@ -64,8 +62,8 @@ class LanguageController extends Controller
     }
 
     /**
-     * @param Update $request
-     * @param Language $language
+     * @param  Update  $request
+     * @param  Language  $language
      * @return mixed
      */
     public function update(Update $request, language $language)
@@ -77,12 +75,12 @@ class LanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param language $language
+     * @param  language  $language
      *
      * @return RedirectResponse
      * @throws /Exception
      */
-    public function destroy(language $language)
+    public function destroy(language $language): RedirectResponse
     {
         $language->delete();
         return redirect()->back();

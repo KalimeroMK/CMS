@@ -1,17 +1,17 @@
 @extends('admin.layouts.master')
 @section('content')
     @include('admin.layouts.notify')
-    <div class="page-body">
-        <div class="row">
-            <div class="col-12">
-                <div class="widget">
-                    <div class="widget-header bordered-bottom bordered-warning">
-                        <span class="widget-caption">Edit comment: {{ strip_tags($language->name) }}</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            @include('admin.language.partials.form')
-                        </div>
+    <div class="container-fluid">
+        <div class="content" style="margin-top: 7%">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title "> {{trans('messages.languages')}}</h4>
+                    <p class="card-category"><a href="{{ route('dashboard')}}">{{trans('messages.home')}}</a> -> <a
+                            href="{{route('languages.index')}}">{{trans('messages.languages')}}</a></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        @include('admin.language.partials.form')
                     </div>
                 </div>
             </div>

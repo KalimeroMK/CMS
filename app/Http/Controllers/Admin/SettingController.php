@@ -33,8 +33,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $settings = Setting::all();
-        return view('admin.settings.index', compact('settings'));
+        return view('admin.settings.index', ['settings' => Setting::all()]);
     }
 
     /**

@@ -50,7 +50,6 @@
 <div class="container-fluid" style="margin-top: 5%">
     @yield('content')
     <?php if ($paginationEnabled) echo $translations->links()->toHtml(); ?>
-
 </div>
 
 <!-- END CONTENT -->
