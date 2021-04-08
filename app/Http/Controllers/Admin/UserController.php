@@ -56,24 +56,22 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Store $request
+     * @param  Store  $request
      *
      * @return RedirectResponse
      */
     public function store(Store $request): RedirectResponse
     {
         $request['password'] = Hash::make($request['password']);
-
         $user = User::create($request->all());
         $user->assignRole($request->input('roles'));
-
         return redirect()->route('users.edit', $user)->with('success', 'User created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param User $user
+     * @param  User  $user
      *
      * @return Factory|View
      */
@@ -85,7 +83,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param User $user
+     * @param  User  $user
      *
      * @return Factory|View
      */
@@ -99,14 +97,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param User $user
-     * @param Update $request
+     * @param  User  $user
+     * @param  Update  $request
      *
      * @return RedirectResponse
      */
     public function update(User $user, Update $request): RedirectResponse
     {
-
         if (!empty($request['password'])) {
             $request['password'] = Hash::make($request['password']);
         }
@@ -124,7 +121,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param User $user
+     * @param  User  $user
      *
      * @return RedirectResponse
      * @throws Exception

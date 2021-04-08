@@ -50,7 +50,7 @@ class TagController extends Controller
     }
 
     /**
-     * @param Store $request
+     * @param  Store  $request
      * @return string
      */
     public function store(Store $request): string
@@ -60,12 +60,12 @@ class TagController extends Controller
     }
 
     /**
-     * @param Tag $tag
+     * @param  Tag  $tag
      * @return string
      * @throws Exception
      */
     /**
-     * @param Tag $tag
+     * @param  Tag  $tag
      * @return Application|Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Tag $tag)
@@ -74,9 +74,9 @@ class TagController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Tag $tag
-     * @return RedirectResponse]
+     * @param  Request  $request
+     * @param  Tag  $tag
+     * @return RedirectResponse
      */
     public function update(Request $request, Tag $tag): RedirectResponse
     {
@@ -84,6 +84,11 @@ class TagController extends Controller
         return redirect()->route('tags.edit', $tag);
     }
 
+    /**
+     * @param  Tag  $tag
+     * @return string
+     * @throws Exception
+     */
     public function destroy(Tag $tag): string
     {
         $tag->posts()->detach();

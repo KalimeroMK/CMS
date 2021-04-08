@@ -53,9 +53,9 @@ class StatisticController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return array|null
      */
-    public function getDevices()
+    public function getDevices(): ?array
     {
         return Analytics::performQuery(
             Period::years(1),
@@ -67,9 +67,9 @@ class StatisticController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return array|null
      */
-    public function getVisitsPerCountry()
+    public function getVisitsPerCountry(): ?array
     {
         return Analytics::performQuery(
             Period::years(1),

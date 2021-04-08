@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class LanguagesTableSeeder extends Seeder
@@ -14,11 +15,9 @@ class LanguagesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('languages')->delete();
 
-
-        \DB::table('languages')->delete();
-
-        \DB::table('languages')->insert([
+        DB::table('languages')->insert([
             0 =>
                 [
                     'id' => 1,
@@ -40,7 +39,5 @@ class LanguagesTableSeeder extends Seeder
                     'updated_at' => '2020-11-18 03:16:56',
                 ],
         ]);
-
-
     }
 }

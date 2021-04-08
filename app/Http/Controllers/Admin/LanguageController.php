@@ -9,26 +9,23 @@ use App\Models\Language;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 
 class LanguageController extends Controller
 {
     /**
-     * @return Language[]|Application|Factory|View|Collection
+     * @return Application|Factory|View
      */
     public function index()
     {
-        $language = language::all();
         return view('admin.language.index', ['language' => language::all()]);
     }
 
     /**
      * Show the partials for creating a new resource.
      *
-     * @return Language|Application|Factory|View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -40,9 +37,9 @@ class LanguageController extends Controller
      *
      * @param  Store  $request
      *
-     * @return Language|Model|RedirectResponse
+     * @return RedirectResponse
      */
-    public function store(Store $request)
+    public function store(Store $request): RedirectResponse
     {
         $language = Language::create($request->all());
         Session::flash('success_msg', trans('messages.ads_created_success'));
@@ -54,7 +51,7 @@ class LanguageController extends Controller
      *
      * @param  language  $language
      *
-     * @return Application|Factory|View|RedirectResponse
+     * @return Application|Factory|View
      */
     public function edit(language $language)
     {
@@ -64,9 +61,9 @@ class LanguageController extends Controller
     /**
      * @param  Update  $request
      * @param  Language  $language
-     * @return mixed
+     * @return RedirectResponse
      */
-    public function update(Update $request, language $language)
+    public function update(Update $request, language $language): RedirectResponse
     {
         $language->update($request->all());
         return redirect()->route('languages.edit', $language);

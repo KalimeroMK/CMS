@@ -11,6 +11,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Traits\ImageUpload;
 use Exception;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -60,7 +61,7 @@ class PostController extends Controller
     }
 
     /**
-     * @param Store $request
+     * @param  Store  $request
      * @return RedirectResponse
      */
     public function store(Store $request): RedirectResponse
@@ -79,8 +80,8 @@ class PostController extends Controller
     }
 
     /**
-     * @param Post $post
-     * @return Factory|RedirectResponse|View
+     * @param  Post  $post
+     * @return Factory|Application|\Illuminate\Contracts\View\View
      */
     public function edit(Post $post)
     {
@@ -91,8 +92,8 @@ class PostController extends Controller
     }
 
     /**
-     * @param Update $request
-     * @param Post $post
+     * @param  Update  $request
+     * @param  Post  $post
      * @return RedirectResponse
      */
     public function update(Update $request, Post $post): RedirectResponse
@@ -116,7 +117,7 @@ class PostController extends Controller
 
 
     /**
-     * @param Post $post
+     * @param  Post  $post
      * @return RedirectResponse
      * @throws Exception
      */
@@ -151,9 +152,9 @@ class PostController extends Controller
      */
     public function makePaths(): object
     {
-        $original = public_path() . '/uploads/images/posts/';
-        $thumbnail = public_path() . '/uploads/images/posts/thumbnails/';
-        $medium = public_path() . '/uploads/images/posts/medium/';
-        return (object)compact('original', 'thumbnail', 'medium');
+        $original = public_path().'/uploads/images/posts/';
+        $thumbnail = public_path().'/uploads/images/posts/thumbnails/';
+        $medium = public_path().'/uploads/images/posts/medium/';
+        return (object) compact('original', 'thumbnail', 'medium');
     }
 }

@@ -44,15 +44,15 @@ class GalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Store $request
+     * @param  Store  $request
      * @return RedirectResponse
      */
-    public function store(Store $request)
-    : RedirectResponse {
+    public function store(Store $request): RedirectResponse
+    {
         $post_id = $request['post_id'];
         if ($request->hasfile('image')) {
             foreach ($request->file('image') as $image) {
-                $name = Str::random(15) . '.' . $image->getClientOriginalExtension();
+                $name = Str::random(15).'.'.$image->getClientOriginalExtension();
                 $paths = $this->makePaths();
                 File::makeDirectory($paths->original, $mode = 0755, true, true);
                 $image->move($paths->original, $name);
@@ -71,22 +71,22 @@ class GalleryController extends Controller
      *
      * @return object
      */
-    public function makePaths()
+    public function makePaths(): object
     {
-        $original = public_path() . '/uploads/images/gallery/';
-        return (object)compact('original');
+        $original = public_path().'/uploads/images/gallery/';
+        return (object) compact('original');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Gallery $gallery
+     * @param  Gallery  $gallery
      * @return RedirectResponse
      * @throws Exception
      */
     public function destroy(Gallery $gallery): RedirectResponse
     {
-        $image = public_path() . '/uploads/images/gallery/' . $gallery->image;
+        $image = public_path().'/uploads/images/gallery/'.$gallery->image;
         unlink($image);
         $gallery->delete();
         return redirect()->back();

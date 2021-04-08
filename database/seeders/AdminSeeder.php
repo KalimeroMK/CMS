@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -113,7 +114,7 @@ class AdminSeeder extends Seeder
         $role3->givePermissionTo(Permission::all());
 
         // create demo users
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Example User',
             'email' => 'test@mail.com',
             'avatar' => '/uploads/author-thumb.jpg',
@@ -122,7 +123,7 @@ class AdminSeeder extends Seeder
         ]);
         $user->assignRole($role1);
 
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Example Admin User',
             'email' => 'admin@mail.com',
             'avatar' => '/uploads/author-thumb.jpg',
@@ -132,7 +133,7 @@ class AdminSeeder extends Seeder
         ]);
         $user->assignRole($role2);
 
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Example Super-Admin User',
             'email' => 'superadmin@mail.com',
             'avatar' => '/uploads/author-thumb.jpg',
